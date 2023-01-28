@@ -5,14 +5,23 @@ class UserController extends CI_Controller{
 
 
     public function index(){
-        $this->load->view('user/home');
+        $this->load->view('user/index');
     }
 
     public function about(){
-        echo "about page";
+        $this->load->view('user/about');
     }
 
     public function contact(){
-        echo "contact page";
+        $this->load->view('user/contact');
     }
+    
+    public function courses(){
+        $this->load->view('user/courses');
+    }
+
+    public function blog(){
+        $this->load->view('user/blog');
+    }
+
 }

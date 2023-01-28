@@ -53,6 +53,8 @@ $route['default_controller'] = 'UserController';
 $route['home'] = 'UserController/index';
 $route['about'] = 'UserController/about';
 $route['contact'] = 'UserController/contact';
+$route['courses'] = 'UserController/courses';
+$route['blog'] = 'UserController/blog';
 
 
 

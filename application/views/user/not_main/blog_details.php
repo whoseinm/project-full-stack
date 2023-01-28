@@ -9,19 +9,19 @@
     <title>Courses | Education</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/user/')?>img/favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/hamburgers.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/slicknav.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/hamburgers.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/magnific-popup.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/themify-icons.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/nice-select.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/user/')?>css/style.css">
     <script
         nonce="33f742f8-aa12-4558-83ef-4b264e8387b9">(function (w, d) { !function (f, g, h, i) { f[h] = f[h] || {}; f[h].executed = []; f.zaraz = { deferred: [], listeners: [] }; f.zaraz.q = []; f.zaraz._f = function (j) { return function () { var k = Array.prototype.slice.call(arguments); f.zaraz.q.push({ m: j, a: k }) } }; for (const l of ["track", "set", "debug"]) f.zaraz[l] = f.zaraz._f(l); f.zaraz.init = () => { var m = g.getElementsByTagName(i)[0], n = g.createElement(i), o = g.getElementsByTagName("title")[0]; o && (f[h].t = g.getElementsByTagName("title")[0].text); f[h].x = Math.random(); f[h].w = f.screen.width; f[h].h = f.screen.height; f[h].j = f.innerHeight; f[h].e = f.innerWidth; f[h].l = f.location.href; f[h].r = g.referrer; f[h].k = f.screen.colorDepth; f[h].n = g.characterSet; f[h].o = (new Date).getTimezoneOffset(); if (f.dataLayer) for (const s of Object.entries(Object.entries(dataLayer).reduce(((t, u) => ({ ...t[1], ...u[1] }))))) zaraz.set(s[0], s[1], { scope: "page" }); f[h].q = []; for (; f.zaraz.q.length;) { const v = f.zaraz.q.shift(); f[h].q.push(v) } n.defer = !0; for (const w of [localStorage, sessionStorage]) Object.keys(w || {}).filter((y => y.startsWith("_zaraz_"))).forEach((x => { try { f[h]["z_" + x.slice(7)] = JSON.parse(w.getItem(x)) } catch { f[h]["z_" + x.slice(7)] = w.getItem(x) } })); n.referrerPolicy = "origin"; n.src = "../../cdn-cgi/zaraz/sd0d9.js?z=" + btoa(encodeURIComponent(JSON.stringify(f[h]))); m.parentNode.insertBefore(n, m) };["complete", "interactive"].includes(g.readyState) ? zaraz.init() : f.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
 </head>
@@ -33,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="<?php echo base_url('assets/user/')?>img/logo/loder.png" alt="">
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
 
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="index-2.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="index-2.html"><img src="<?php echo base_url('assets/user/')?>img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -120,7 +120,7 @@
                     <div class="col-lg-8 posts-list">
                         <div class="single-post">
                             <div class="feature-img">
-                                <img class="img-fluid" src="assets/img/blog/single_blog_1.png" alt="">
+                                <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/blog/single_blog_1.png" alt="">
                             </div>
                             <div class="blog_details">
                                 <h2 style="color: #2d2d2d;">Second divided from form fish beast made every of seas
@@ -195,7 +195,7 @@
                                         class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="img-fluid" src="assets/img/post/preview.png" alt="">
+                                                <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/preview.png" alt="">
                                             </a>
                                         </div>
                                         <div class="arrow">
@@ -225,7 +225,7 @@
                                         </div>
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="img-fluid" src="assets/img/post/next.png" alt="">
+                                                <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/next.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -234,7 +234,7 @@
                         </div>
                         <div class="blog-author">
                             <div class="media align-items-center">
-                                <img src="assets/img/blog/author.png" alt="">
+                                <img src="<?php echo base_url('assets/user/')?>img/blog/author.png" alt="">
                                 <div class="media-body">
                                     <a href="#">
                                         <h4>Harvard milan</h4>
@@ -251,7 +251,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="assets/img/blog/comment_1.png" alt="">
+                                            <img src="<?php echo base_url('assets/user/')?>img/blog/comment_1.png" alt="">
                                         </div>
                                         <div class="desc">
                                             <p class="comment">
@@ -279,7 +279,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="assets/img/blog/comment_2.png" alt="">
+                                            <img src="<?php echo base_url('assets/user/')?>img/blog/comment_2.png" alt="">
                                         </div>
                                         <div class="desc">
                                             <p class="comment">
@@ -307,7 +307,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="assets/img/blog/comment_3.png" alt="">
+                                            <img src="<?php echo base_url('assets/user/')?>img/blog/comment_3.png" alt="">
                                         </div>
                                         <div class="desc">
                                             <p class="comment">
@@ -430,7 +430,7 @@
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
                                 <div class="media post_item">
-                                    <img src="assets/img/post/post_1.png" alt="post">
+                                    <img src="<?php echo base_url('assets/user/')?>img/post/post_1.png" alt="post">
                                     <div class="media-body">
                                         <a href="blog_details.html">
                                             <h3 style="color: #2d2d2d;">From life was you fish...</h3>
@@ -439,7 +439,7 @@
                                     </div>
                                 </div>
                                 <div class="media post_item">
-                                    <img src="assets/img/post/post_2.png" alt="post">
+                                    <img src="<?php echo base_url('assets/user/')?>img/post/post_2.png" alt="post">
                                     <div class="media-body">
                                         <a href="blog_details.html">
                                             <h3 style="color: #2d2d2d;">The Amazing Hubble</h3>
@@ -448,7 +448,7 @@
                                     </div>
                                 </div>
                                 <div class="media post_item">
-                                    <img src="assets/img/post/post_3.png" alt="post">
+                                    <img src="<?php echo base_url('assets/user/')?>img/post/post_3.png" alt="post">
                                     <div class="media-body">
                                         <a href="blog_details.html">
                                             <h3 style="color: #2d2d2d;">Astronomy Or Astrology</h3>
@@ -457,7 +457,7 @@
                                     </div>
                                 </div>
                                 <div class="media post_item">
-                                    <img src="assets/img/post/post_4.png" alt="post">
+                                    <img src="<?php echo base_url('assets/user/')?>img/post/post_4.png" alt="post">
                                     <div class="media-body">
                                         <a href="blog_details.html">
                                             <h3 style="color: #2d2d2d;">Asteroids telescope</h3>
@@ -500,32 +500,32 @@
                                 <ul class="instagram_row flex-wrap">
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_5.png" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_6.png" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_7.png" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_8.png" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_9.png" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
+                                            <img class="img-fluid" src="<?php echo base_url('assets/user/')?>img/post/post_10.png" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -560,7 +560,7 @@
                                 <div class="single-footer-caption mb-30">
 
                                     <div class="footer-logo mb-25">
-                                        <a href="index-2.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="index-2.html"><img src="<?php echo base_url('assets/user/')?>img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                     <div class="footer-tittle">
                                         <div class="footer-pera">
@@ -649,39 +649,39 @@
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 
-    <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/vendor/modernizr-3.5.0.min.js"></script>
 
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/popper.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/bootstrap.min.js"></script>
 
-    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.slicknav.min.js"></script>
 
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/slick.min.js"></script>
 
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/animated.headline.js"></script>
-    <script src="assets/js/jquery.magnific-popup.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/wow.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/animated.headline.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.magnific-popup.js"></script>
 
-    <script src="assets/js/gijgo.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/gijgo.min.js"></script>
 
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/jquery.sticky.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.nice-select.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.sticky.js"></script>
 
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/hover-direction-snake.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.counterup.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/waypoints.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.countdown.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/hover-direction-snake.min.js"></script>
 
-    <script src="assets/js/contact.js"></script>
-    <script src="assets/js/jquery.form.js"></script>
-    <script src="assets/js/jquery.validate.min.js"></script>
-    <script src="assets/js/mail-script.js"></script>
-    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/contact.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.form.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/mail-script.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/jquery.ajaxchimp.min.js"></script>
 
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/plugins.js"></script>
+    <script src="<?php echo base_url('assets/user/')?>js/main.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
