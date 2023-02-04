@@ -23,7 +23,6 @@
                     <li><a href="<?php echo base_url('blog')?>">Blog</a></li>
                     <li><a href="<?php echo base_url('contact')?>">Contact</a></li>
 
-                    <li class="button-header margin-left "><a href="#" class="btn">Join</a></li>
                     <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
                   </ul>
                 </nav>
