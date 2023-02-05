@@ -250,7 +250,7 @@
         <div class="right-content1">
 
           <div class="right-img">
-            <img src="<?php echo base_url('assets/user/')?>img/gallery/about.html"  alt="">
+            <img src="<?php echo base_url('assets/user/')?>img/gallery/about.html" alt="">
             <div class="video-icon">
               <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i
                   class="fas fa-play"></i></a>
