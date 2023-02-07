@@ -61,7 +61,7 @@ $route['blog'] = 'UserController/blog';
 // ---------------ADMIN SIDE----------------- //
 $route['admin_default'] = 'AdminController';
 $route['admin_page'] = 'AdminController/index';
-
+$route['admin_login'] = 'AdminController/login_page';
 
 $route['404_override'] = 'error_php';
 $route['translate_uri_dashes'] = FALSE;
