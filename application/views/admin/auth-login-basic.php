@@ -125,7 +125,7 @@
               <h4 class="mb-2">Admin Page-ə xoş gəldiniz👋</h4>
               <p class="mb-4">Lütfən akauntunuza daxil olun və macəraya başlayın :)</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="<?php echo base_url("admin_page") ?>" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
@@ -133,15 +133,15 @@
                     class="form-control"
                     id="email"
                     name="email-username"
-                    placeholder="Enter your email"
+                    placeholder="Emailinizi daxil edin"
                     autofocus
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
+                    <a href="<?php echo base_url("forgot_password") ?>">
+                      <small>Parolunuzu Unutmusuz?</small>
                     </a>
                   </div>
                   <div class="input-group input-group-merge">
@@ -157,16 +157,10 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit">Daxil Ol</button>
                 </div>
               </form>
 
-              <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
-                </a>
-              </p>
             </div>
           </div>
           <!-- /Register -->

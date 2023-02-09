@@ -12,4 +12,9 @@ class AdminController extends CI_Controller{
         $this->load->view('admin/auth-login-basic');
     }
 
+    public function forget_password(){
+        $this->load->view('admin/auth-forgot-password-basic');
+    }
+
+
 }
