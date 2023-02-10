@@ -16,5 +16,9 @@ class AdminController extends CI_Controller{
         $this->load->view('admin/auth-forgot-password-basic');
     }
 
+    public function error(){
+        $this->load->view('admin/pages-misc-error');
+    }
+
 
 }

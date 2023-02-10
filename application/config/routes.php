@@ -63,6 +63,7 @@ $route['admin_default'] = 'AdminController';
 $route['admin_page'] = 'AdminController/index';
 $route['admin_login'] = 'AdminController/login_page';
 $route['forgot_password'] = 'AdminController/forget_password';
+$route['error404'] = 'AdminController/error';
 
 
 $route['404_override'] = 'error_php';
