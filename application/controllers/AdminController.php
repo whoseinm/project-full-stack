@@ -20,5 +20,9 @@ class AdminController extends CI_Controller{
         $this->load->view('admin/pages-misc-error');
     }
 
+    public function error2(){
+        $this->load->view('admin/pages-misc-under-maintenance');
+    }
+
 
 }
