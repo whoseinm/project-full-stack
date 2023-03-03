@@ -1,3 +1,8 @@
+<?php if (!isset($_SESSION['admin_login_id'])) {
+  $this->session->set_flashdata('err', 'Bütün sahələri doldurun.');
+  redirect(base_url('admin_login'));
+} ?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================

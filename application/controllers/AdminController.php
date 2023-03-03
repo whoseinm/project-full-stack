@@ -38,6 +38,13 @@ class AdminController extends CI_Controller{
         }
     }
 
+    public function log_out(){
+        $this->session->set_flashdata('success', 'Sizi bir daha gözləyirik :)');
+
+        unset($_SESSION['admin_login_id']);
+        redirect(base_url('admin_login'));
+    }
+
     public function forget_password(){
         $this->load->view('admin/auth-forgot-password-basic');
     }

@@ -64,6 +64,7 @@ $route['admin_page'] = 'AdminController/index';
 $route['admin_login'] = 'AdminController/login_page';
 
 $route['login_act'] = "AdminController/login_act";
+$route['log_out'] = "AdminController/log_out";
 
 $route['forgot_password'] = 'AdminController/forget_password';
 $route['error404'] = 'AdminController/error';

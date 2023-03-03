@@ -1,5 +1,10 @@
 <!-- / Menu -->
-
+<?php
+  $admin = $this->db
+  ->select('a_name')
+  ->where('a_id',$_SESSION['admin_login_id'])
+  ->get('admin')->row_array();
+?>
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
@@ -49,7 +54,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
+                            <span class="fw-semibold d-block"><?php echo $admin['a_name']?></span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -60,7 +65,7 @@
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="<?php echo base_url("admin_login") ?>">
+                      <a class="dropdown-item" href="<?php echo base_url("log_out") ?>">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
