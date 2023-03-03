@@ -125,14 +125,14 @@
               <h4 class="mb-2">Admin Page-ə xoş gəldiniz👋</h4>
               <p class="mb-4">Lütfən akauntunuza daxil olun və macəraya başlayın :)</p>
 
-              <form id="formAuthentication" class="mb-3" action="<?php echo base_url("admin_page") ?>" method="POST">
+              <form id="formAuthentication" class="mb-3" action="<?php echo base_url("login_act") ?>" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
+                    name="email"
                     placeholder="Emailinizi daxil edin"
                     autofocus
                   />
@@ -159,6 +159,27 @@
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Daxil Ol</button>
                 </div>
+                <?php if ($this->session->flashdata('err')) { ?>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                  </svg>
+                  <div>
+                    <?php echo $this->session->flashdata('err'); ?>
+                  </div>
+                </div>
+              <?php } ?>
+
+              <?php if ($this->session->flashdata('success')) { ?>
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                  </svg>
+                  <div>
+                    <?php echo $this->session->flashdata('success'); ?>
+                  </div>
+                </div>
+              <?php } ?>
               </form>
 
             </div>
