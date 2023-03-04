@@ -17,4 +17,11 @@ class Posts_model extends CI_Model{
             ->join("admin", "admin.a_id = posts.post_creator_id", "left")
             ->get('posts')->result_array();
     }
+
+    public function post_single($id){
+        return $this->db
+        ->where('post_id',$id)
+        ->join("admin", "admin.a_id = posts.post_creator_id", "left")
+        ->get("posts")->row_array();
+    }
 }

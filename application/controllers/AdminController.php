@@ -140,6 +140,17 @@ class AdminController extends CI_Controller
     }
 
 
+    public function detail($id){
+
+        $data['post_single'] = $this->Posts_model->post_single($id);
+        // print_r("<pre>");
+        // print_r($data['post_single']);
+        // die();
+
+
+        $this->load->view('admin/blog_posts/detail',$data);
+    }
+
     public function forget_password()
     {
         $this->load->view('admin/auth-forgot-password-basic');

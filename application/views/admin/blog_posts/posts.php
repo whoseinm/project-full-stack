@@ -101,11 +101,14 @@
 
                                 </td>
                                 <td>
+
+                                <a href="<?php echo base_url("post_detail/" . $item["post_id"]); ?>">
                                     <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
+                                </a>
+                                    
                                     <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     <a href="<?php echo base_url("post_delete/" . $item["post_id"]); ?>">
-                                        <button onclick="return confirm('postu silmək istədiyinizə əminsiz?')" type="button"
-                                            class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button onclick="return confirm('postu silmək istədiyinizə əminsiz?')" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 
                                 </td>

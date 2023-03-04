@@ -72,6 +72,7 @@ $route['posts'] = "AdminController/posts";
 $route['post_create'] = "AdminController/post_create";
 $route['post_create_act'] = "AdminController/post_create_act";
 $route['post_delete/(.*)'] = "AdminController/delete_post/$1";
+$route['post_detail/(.*)'] = "AdminController/detail/$1";
 
 // =========================BLOG POSTS END===========================
 $route['forgot_password'] = 'AdminController/forget_password';
