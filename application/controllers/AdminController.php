@@ -1,18 +1,26 @@
 <?php
 
-class AdminController extends CI_Controller{
-    
+class AdminController extends CI_Controller
+{
+
+    public function __construct(){
+        parent::__construct();
+        $this->load->model('Posts_model');
+    }
 
 
-    public function index(){
+    public function index()
+    {
         $this->load->view('admin/index_admin');
     }
 
-    public function login_page(){
+    public function login_page()
+    {
         $this->load->view('admin/auth-login-basic');
     }
 
-    public function login_act(){
+    public function login_act()
+    {
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
@@ -48,45 +56,72 @@ class AdminController extends CI_Controller{
     // =========================BLOG POSTS START===========================
 
     public function posts(){
-        $data['get_all_posts'] = $this->db->order_by("post_id","DESC")
-        ->join("admin","admin.a_id = posts.post_creator_id", "left")
-        ->get('posts')->result_array();
-        
+        $data['get_all_posts'] = $this->Posts_model->posts();
+
         $this->load->view("admin/blog_posts/posts", $data);
     }
 
-    public function post_create(){
+    public function post_create()
+    {
         $this->load->view("admin/blog_posts/create");
     }
 
     public function post_create_act(){
-        $title      = $_POST['title'];
+        $title = $_POST['title'];
         $description = $_POST['description'];
-        $date       = $_POST['date'];
-        $category   = $_POST['category'];
-        $status     = $_POST['status'];
+        $date = $_POST['date'];
+        $category = $_POST['category'];
+        $status = $_POST['status'];
 
-        if(!empty($title) && !empty($description) && !empty($date) && !empty($category) && !empty($status)){
-            $data = [
-                'post_title'        => $title,
-                'post_description'  => $description,
-                'post_date'         => $date,
-                'post_category'     => $category,
-                'post_status'       => $status,
-                // 'post_img' =>"",
-                'post_creator_id'   => $_SESSION['admin_login_id'],
-                'post_create_date'  => date("Y-m-d H:i:s"),
-            ];
+        if (!empty($title) && !empty($description) && !empty($date) && !empty($category) && !empty($status)) {
+
+            $config['upload_path']      = './uploads/posts/';
+            $config['allowed_types']    = 'gif|jpg|png|jpeg';
+            $config['encrypt_name']     = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ( !$this->upload->do_upload('user_img')){
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'post_title'        => $title,
+                    'post_description'  => $description,
+                    'post_date'         => $date,
+                    'post_category'     => $category,
+                    'post_status'       => $status,
+                    'post_img'          => $file_name,
+                    'post_file_ext'     => $file_ext,
+                    'post_creator_id'   => $_SESSION['admin_login_id'],
+                    'post_create_date'  => date("Y-m-d H:i:s"),
+                ];
+
+                $data = $this->security->xss_clean($data);
+                
+                // insert to DATABASE code
+                $this->Posts_model->insert($data);
+
     
-            // insert to DATABASE code
-            $this->db->insert('posts', $data);
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Post uğurla əlavə olundu");
     
-            // notification for post added successfully
-            $this->session->set_flashdata('success', "Post uğurla əlavə olundu");
-    
-            // redirect to page
-            redirect(base_url('posts'));
-        }else{
+                // redirect to page
+                redirect(base_url('posts'));
+            }else{
+                $this->session->set_flashdata('err', "File yüklənməsində xəta!");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            
+        } else {
             $this->session->set_flashdata('err', "Boşluq buraxmayın");
             redirect($_SERVER['HTTP_REFERER']);
         }
@@ -97,22 +132,26 @@ class AdminController extends CI_Controller{
 
 
     public function delete_post($id){
-        $this->db->where('post_id', $id);
-        $this->db->delete('posts');
-        $this->session->set_flashdata("success", "Post uğurla silindi");
-        redirect(base_url("posts"));
+
+        $data = $this->security->xss_clean($id);
+
+        $this->Posts_model->delete_post($id);
+
     }
 
 
-    public function forget_password(){
+    public function forget_password()
+    {
         $this->load->view('admin/auth-forgot-password-basic');
     }
 
-    public function error(){
+    public function error()
+    {
         $this->load->view('admin/pages-misc-error');
     }
 
-    public function error2(){
+    public function error2()
+    {
         $this->load->view('admin/pages-misc-under-maintenance');
     }
 

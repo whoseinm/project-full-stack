@@ -19,6 +19,7 @@
                   <ul id="navigation">
                     <li class="active"><a href="<?php echo base_url('home')?>">Home</a></li>
                     <li><a href="<?php echo base_url('courses')?>">Courses</a></li>
+                    <li><a href="<?php echo base_url('contact')?>">Trainers</a></li>
                     <li><a href="<?php echo base_url('about')?>">About</a></li>
                     <li><a href="<?php echo base_url('blog')?>">Blog</a></li>
                     <li><a href="<?php echo base_url('contact')?>">Contact</a></li>

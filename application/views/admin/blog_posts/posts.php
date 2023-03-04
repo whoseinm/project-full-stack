@@ -44,6 +44,7 @@
                     <tbody>
 
                         <tr>
+                            <th>#</th>
                             <th>Title</th>
                             <th>Date</th>
                             <th>Category</th>
@@ -55,8 +56,12 @@
 
                         </tr>
 
-                        <?php foreach ($get_all_posts as $item) { ?>
+                        <?php $say = 0; foreach ($get_all_posts as $item) {  strrev($say++) ?>
                             <tr>
+
+                                <td>
+                                    <?php echo $say ?>
+                                </td>
                                 <td>
                                     <?php echo $item['post_title'] ?>
                                 </td>
@@ -69,8 +74,17 @@
                                 <td>
                                     <?php echo $item['a_name'] ?>
                                 </td>
+
+
                                 <td>
-                                    <img src="" alt="">
+                                    <?php if ($item["post_img"]) { ?>
+                                        <img width="70px" height="60px" style="object-fit: cover;"
+                                            src="<?php echo base_url('uploads/posts/' . $item['post_img']); ?>" alt="img">
+                                    <?php } else { ?>
+                                        <img width="80px" height="60px" style="object-fit: cover;"
+                                            src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg"
+                                            alt="img">
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($item['post_status'] == "Active") { ?>
@@ -90,7 +104,8 @@
                                     <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
                                     <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     <a href="<?php echo base_url("post_delete/" . $item["post_id"]); ?>">
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button onclick="return confirm('postu silmək istədiyinizə əminsiz?')" type="button"
+                                            class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 
                                 </td>
