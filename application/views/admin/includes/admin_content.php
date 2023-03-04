@@ -1,6 +1,6 @@
 <?php
   $admin = $this->db
-  ->select('a_name')
+  ->select('a_name', 'a_category')
   ->where('a_id',$_SESSION['admin_login_id'])
   ->get('admin')->row_array();
 ?>

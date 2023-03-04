@@ -1,16 +1,18 @@
 <!-- / Menu -->
 <?php
   $admin = $this->db
-  ->select('a_name')
+  ->select('a_name', 'a_category')
   ->where('a_id',$_SESSION['admin_login_id'])
   ->get('admin')->row_array();
 ?>
+
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
           <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            style="margin-bottom: 20px;"
             id="layout-navbar"
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">

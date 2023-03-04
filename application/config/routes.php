@@ -66,6 +66,13 @@ $route['admin_login'] = 'AdminController/login_page';
 $route['login_act'] = "AdminController/login_act";
 $route['log_out'] = "AdminController/log_out";
 
+// =========================BLOG POSTS START===========================
+
+$route['posts'] = "AdminController/posts";
+$route['post_create'] = "AdminController/post_create";
+$route['post_create_act'] = "AdminController/post_create_act";
+
+// =========================BLOG POSTS END===========================
 $route['forgot_password'] = 'AdminController/forget_password';
 $route['error404'] = 'AdminController/error';
 $route['error-misc'] = 'AdminController/error2';

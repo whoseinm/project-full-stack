@@ -45,6 +45,27 @@ class AdminController extends CI_Controller{
         redirect(base_url('admin_login'));
     }
 
+    // =========================BLOG POSTS START===========================
+
+    public function posts(){
+        $this->load->view("admin/blog_posts/posts");
+    }
+
+    public function post_create(){
+        $this->load->view("admin/blog_posts/create");
+    }
+
+    public function post_create_act(){
+        $title      = $_POST['title'];
+        $descripton = $_POST['descripton'];
+        $date       = $_POST['date'];
+        $category   = $_POST['category'];
+        $status     = $_POST['status'];
+    }
+
+    // =========================BLOG POSTS END===========================
+
+
     public function forget_password(){
         $this->load->view('admin/auth-forgot-password-basic');
     }
