@@ -85,7 +85,7 @@
 
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px">
-                    <br>
+
                     <?php if ($post_single['post_img']) { ?>
                         <?php if (!empty($post['post_img'])) { ?>
                             <img width="100%" style="object-fit: cover;" src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg" alt="">
@@ -100,8 +100,11 @@
 
                         <?php } ?>
                     <?php } else { ?>
-                        <img width="100%" style="object-fit: cover;" src="https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc=" alt="">
-                    <?php } ?>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">
+                                <label for="img">IMG</label>
+                                <input type="file" id="img" class="form-control" name="user_img">
+                            </div>
+                        <?php } ?>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">
