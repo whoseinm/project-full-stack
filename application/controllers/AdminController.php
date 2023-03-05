@@ -151,6 +151,94 @@ class AdminController extends CI_Controller
         $this->load->view('admin/blog_posts/detail',$data);
     }
 
+    public function post_edit($id){
+        $data['post_single'] = $this->db->where('post_id', $id)->get('posts')->row_array();
+        $this->load->view('admin/blog_posts/edit',$data);
+    }
+
+    public function post_edit_act($id){
+        $title            =     $_POST['title'];
+        $description      =     $_POST['description'];
+        $date             =     $_POST['date'];
+        $category         =     $_POST['category'];
+        $status           =     $_POST['status'];
+        
+
+        if(!empty($title) && !empty($description) && !empty($date) && !empty($category) && !empty($status)){
+            
+
+            $config['upload_path']      = "./uploads/posts/";
+            $config['allowed_types']    = "gif|jpg|png|jpeg";
+            $config['encrypt_name']     = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if($this->upload->do_upload('user_img')){
+                $file_name = $this->upload->data('file_name');
+                $file_ext  = $this->upload->data('file_ext');
+
+                $data = [
+                    'post_title'        => $title,
+                    'post_description'  => $description,
+                    'post_date'         => $date,
+                    'post_category'     => $category,
+                    'post_status'       => $status,
+                    'post_img'          => $file_name,
+                    'post_file_ext'     => $file_ext,
+                    'post_updater_id'   => $_SESSION['admin_login_id'],
+                    'post_update_date'  => date("Y-m-d H:i:s"),
+                ];
+
+                // insert to db code
+                $this->Posts_model->update_post($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Xəbər uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('posts'));
+            }else{
+
+                $data = [
+                    'post_title'       => $title,
+                    'post_description' => $description,
+                    'post_date'        => $date,
+                    'post_category'    => $category,
+                    'post_status'      => $status,
+                    'post_updater_id'  => $_SESSION['admin_login_id'],
+                    'post_update_date' => date("Y-m-d H:i:s")
+                ];
+
+                // update in db info
+                $this->Posts_model->update_post($id,$data);
+
+                $this->session->set_flashdata('success', "Xəbər uğurla yeniləndi!");
+
+                redirect(base_url('posts'));
+            }
+
+        }else{
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    
+    }
+
+    public function post_img_delete($id){
+
+        $data = [
+            'post_img' => "",
+            'post_file_ext' => "",
+        ];
+
+        $this->Posts_model->update_post($id,$data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+
+    }
+
     public function forget_password()
     {
         $this->load->view('admin/auth-forgot-password-basic');

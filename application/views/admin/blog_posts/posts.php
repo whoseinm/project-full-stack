@@ -51,12 +51,15 @@
                             <th>Creator name</th>
                             <th>Img</th>
                             <th>Status</th>
+                            <th>Updated</th>
                             <th>Actions</th>
 
 
                         </tr>
 
-                        <?php $say = 0; foreach ($get_all_posts as $item) {  strrev($say++) ?>
+                        <?php $say = 0;
+                        foreach ($get_all_posts as $item) {
+                            strrev($say++) ?>
                             <tr>
 
                                 <td>
@@ -100,15 +103,26 @@
                                     <?php } ?>
 
                                 </td>
+
+                                <td>
+                                    <?php if($item['post_updater_id']){ ?>
+                                        Edited by <?php echo $item['a_name']; ?> 
+                                    <?php }else{ ?>
+                                        No one edited
+                                    <?php } ?>
+                                </td>
+
                                 <td>
 
-                                <a href="<?php echo base_url("post_detail/" . $item["post_id"]); ?>">
-                                    <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
-                                </a>
-                                    
-                                    <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
+                                    <a href="<?php echo base_url("post_detail/" . $item["post_id"]); ?>">
+                                        <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
+                                    </a>
+                                    <a href="<?php echo base_url("post_edit/".$item["post_id"]);?>">
+                                        <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
+                                    </a>
                                     <a href="<?php echo base_url("post_delete/" . $item["post_id"]); ?>">
-                                        <button onclick="return confirm('postu silmək istədiyinizə əminsiz?')" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button onclick="return confirm('postu silmək istədiyinizə əminsiz?')" type="button"
+                                            class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 
                                 </td>
