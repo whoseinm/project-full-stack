@@ -87,7 +87,7 @@ class AdminController extends CI_Controller
             $this->upload->initialize($config);
 
 
-            if ( !$this->upload->do_upload('user_img')){
+            if ($this->upload->do_upload('user_img')){
                 $file_name = $this->upload->data('file_name');
                 $file_ext = $this->upload->data('file_ext');
 
@@ -103,8 +103,6 @@ class AdminController extends CI_Controller
                     'post_creator_id'   => $_SESSION['admin_login_id'],
                     'post_create_date'  => date("Y-m-d H:i:s"),
                 ];
-
-                $data = $this->security->xss_clean($data);
                 
                 // insert to DATABASE code
                 $this->Posts_model->insert($data);

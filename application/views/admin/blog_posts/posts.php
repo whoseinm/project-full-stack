@@ -66,23 +66,23 @@
                                     <?php echo $say ?>
                                 </td>
                                 <td>
-                                    <?php echo $item['post_title'] ?>
+                                    <?php echo $item['post_title']; ?>
                                 </td>
                                 <td>
                                     <?php echo date("d-m-Y", strtotime($item['post_date'])); ?>
                                 </td>
                                 <td>
-                                    <?php echo $item['post_category'] ?>
+                                    <?php echo $item['post_category']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $item['a_name'] ?>
+                                    <?php echo $item['a_name']; ?>
                                 </td>
 
 
                                 <td>
                                     <?php if ($item["post_img"]) { ?>
                                         <img width="70px" height="60px" style="object-fit: cover;"
-                                            src="<?php echo base_url('uploads/posts/' . $item['post_img']); ?>" alt="img">
+                                            src="<?php echo base_url('uploads/posts/' . $item['post_img']); ?>" alt="img"></img>
                                     <?php } else { ?>
                                         <img width="80px" height="60px" style="object-fit: cover;"
                                             src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg"
@@ -105,9 +105,9 @@
                                 </td>
 
                                 <td>
-                                    <?php if($item['post_updater_id']){ ?>
-                                        Edited by <?php echo $item['a_name']; ?> 
-                                    <?php }else{ ?>
+                                    <?php if ($item['post_updater_id']) { ?>
+                                        <?php echo "Edited by" . " " . $item['a_name']; ?>
+                                    <?php } else { ?>
                                         No one edited
                                     <?php } ?>
                                 </td>
@@ -117,7 +117,7 @@
                                     <a href="<?php echo base_url("post_detail/" . $item["post_id"]); ?>">
                                         <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
                                     </a>
-                                    <a href="<?php echo base_url("post_edit/".$item["post_id"]);?>">
+                                    <a href="<?php echo base_url("post_edit/" . $item["post_id"]); ?>">
                                         <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     </a>
                                     <a href="<?php echo base_url("post_delete/" . $item["post_id"]); ?>">
