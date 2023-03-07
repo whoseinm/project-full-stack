@@ -13,8 +13,8 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">News List
-            <a href="<?php echo base_url('trainer_create') ?>">
+        <h5 class="card-header spaceB">About List
+            <a href="<?php echo base_url('about_create') ?>">
                 <button type="button" class="btn  btn-sm btn-success">Create</button>
             </a>
         </h5>
@@ -37,7 +37,7 @@
                     <tbody>
                         <tr>
                             <th>#</th>
-                            <th>Name,surname</th>
+                            <th>Title</th>
                             <th>Img</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -45,20 +45,24 @@
 
                         </tr>
 
-                        <?php $say=0; foreach ($trainers as $item) { $say++ ?>
+                        <?php $say = 0;
+                        foreach ($about as $item) {
+                            $say++ ?>
 
 
                             <tr>
                                 <td>
-                                    <span><?php echo $say ?></span>
+                                    <span>
+                                        <?php echo $say ?>
+                                    </span>
                                 </td>
                                 <td>
-                                    <?php echo $item['trainer_name'] ?>
+                                    <?php echo $item['about_title'] ?>
                                 </td>
                                 <td>
-                                    <?php if ($item["trainer_img"]) { ?>
+                                    <?php if ($item["about_img"]) { ?>
                                         <img width="70px" height="60px" style="object-fit: cover;"
-                                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>"
+                                            src="<?php echo base_url('uploads/about/' . $item['about_img']); ?>"
                                             alt="img"></img>
                                     <?php } else { ?>
                                         <img width="80px" height="60px" style="object-fit: cover;"
@@ -67,13 +71,13 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                <?php if ($item['trainer_status'] == "Active") { ?>
+                                    <?php if ($item['about_status'] == "Active") { ?>
                                         <span class="badge bg-label-success me-1">
-                                            <?php echo $item['trainer_status']; ?>
+                                            <?php echo $item['about_status']; ?>
                                         </span>
-                                    <?php } else if ($item['trainer_status'] == "Deactive") { ?>
+                                    <?php } else if ($item['about_status'] == "Deactive") { ?>
                                             <span class="badge bg-label-danger me-1">
-                                            <?php echo $item['trainer_status']; ?>
+                                            <?php echo $item['about_status']; ?>
                                             </span>
                                     <?php } else { ?>
                                             <span class="badge bg-label-primary me-1">---------</span>
@@ -81,15 +85,19 @@
                                 </td>
                                 <td>
 
-                                    <a href="<?php echo base_url("trainer_detail/" . $item["trainer_id"]) ?>">
+                                    <a href="<?php echo base_url("about_detail/" . $item["about_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
                                     </a>
 
-                                    <a href="<?php echo base_url("trainer_edit/" . $item["trainer_id"]) ?>">
+
+
+                                        <a href="<?php echo base_url("about_edit/" . $item["about_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     </a>
 
-                                    <a href="<?php echo base_url("delete_trainer/" . $item["trainer_id"]) ?>">
+
+
+                                    <a href="<?php echo base_url("about_delete/" . $item["about_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 

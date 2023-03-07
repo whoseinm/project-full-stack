@@ -8,6 +8,7 @@ class AdminController extends CI_Controller
         parent::__construct();
         $this->load->model('Posts_model');
         $this->load->model('Trainers_model');
+        $this->load->model('About_model');
     }
 
 
@@ -421,6 +422,182 @@ class AdminController extends CI_Controller
 
 
     // =========================TRAINERS END===========================
+
+    
+    
+    // =========================ABOUT END===========================
+    
+    
+    
+    public function about_list()
+    {
+        $data['about'] = $this->About_model->about();
+
+        $this->load->view("admin/about/about", $data);
+    }
+
+    public function about_create()
+    {
+        $this->load->view("admin/about/about_create");
+    }
+    
+    public function about_create_act()
+    {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $status = $_POST['status'];
+        
+
+        if (!empty($title) && !empty($description) && !empty($status)) {
+
+            $config['upload_path'] = './uploads/about/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'about_title' => $title,
+                    'about_description' => $description,
+                    'about_status' => $status,
+                    'about_img' => $file_name,
+                    'about_img_ext' => $file_ext,
+                    'about_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                // insert to DATABASE code
+                $this->About_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('admin_about'));
+            } else {
+                $this->session->set_flashdata('err', "File yüklənməsində xəta!");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function about_delete($id)
+    {
+        $this->About_model->about_delete($id);
+    }
+
+    public function about_detail($id)
+    {
+
+        $data['about_single'] = $this->About_model->about_single($id);
+        // print_r("<pre>");
+        // print_r($data['post_single']);
+        // die();
+
+        $this->load->view('admin/about/about_detail', $data);
+    }
+
+    public function about_edit($id)
+    {
+        $data['about_single'] = $this->db->where('about_id', $id)->get('about')->row_array();
+        $this->load->view('admin/about/about_edit', $data);
+    }
+
+    public function about_edit_act($id)
+    {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $status = $_POST['status'];
+
+
+        if (!empty($title) && !empty($description) && !empty($status)) {
+
+
+            $config['upload_path'] = "./uploads/about/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'about_title' => $title,
+                    'about_description' => $description,
+                    'about_status' => $status,
+                    'about_img' => $file_name,
+                    'about_img_ext' => $file_ext,
+                ];
+
+                // insert to db code
+                $this->About_model->update_about($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "About uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('admin_about'));
+            } else {
+
+                $data = [
+                    'about_title' => $title,
+                    'about_description' => $description,
+                    'about_status' => $status,
+                ];
+
+                // update in db info
+                $this->About_model->update_about($id, $data);
+
+                $this->session->set_flashdata('success', "About uğurla yeniləndi!");
+
+                redirect(base_url('admin_about'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function about_img_delete($id)
+    {
+
+        $data = [
+            'about_img' => "",
+            'about_img_ext' => "",
+        ];
+
+        $this->About_model->update_about($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+
+    }
+    
+    
+    // =========================ABOUT END===========================
+
 
 
 

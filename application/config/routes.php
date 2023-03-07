@@ -93,6 +93,25 @@ $route['trainer_edit_act/(.*)'] = 'AdminController/trainer_edit_act/$1';
 $route['trainer_img_delete/(.*)'] = 'AdminController/trainer_img_delete/$1';
 
 // =========================TRAINERS END=============================
+
+
+
+
+// =========================ABOUT START=============================
+
+
+$route['admin_about'] = "AdminController/about_list";
+$route['about_create'] = "AdminController/about_create";
+$route['about_create_act'] = "AdminController/about_create_act";
+$route['about_delete/(.*)'] = "AdminController/about_delete/$1";
+$route['about_detail/(.*)'] = "AdminController/about_detail/$1";
+
+
+$route['about_edit/(.*)'] = "AdminController/about_edit/$1";
+$route['about_edit_act/(.*)'] = 'AdminController/about_edit_act/$1';
+$route['about_img_delete/(.*)'] = 'AdminController/about_img_delete/$1';
+// =========================ABOUT END=============================
+
 $route['forgot_password'] = 'AdminController/forget_password';
 $route['error404'] = 'AdminController/error';
 $route['error-misc'] = 'AdminController/error2';

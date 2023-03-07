@@ -83,15 +83,22 @@
 
             <li class="menu-item">
               <a href="<?php echo base_url("posts")?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Analytics">Posts</div>
               </a>
             </li>
             
             <li class="menu-item">
               <a href="<?php echo base_url("trainers")?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Analytics">Trainers</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("admin_about")?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Analytics">About</div>
               </a>
             </li>
             
