@@ -9,6 +9,7 @@ class AdminController extends CI_Controller
         $this->load->model('Posts_model');
         $this->load->model('Trainers_model');
         $this->load->model('About_model');
+        $this->load->model('Courses_model');
     }
 
 
@@ -63,6 +64,7 @@ class AdminController extends CI_Controller
 
     public function posts()
     {
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
         $data['get_all_posts'] = $this->Posts_model->posts();
 
         $this->load->view("admin/blog_posts/posts", $data);
@@ -597,6 +599,129 @@ class AdminController extends CI_Controller
     
     
     // =========================ABOUT END===========================
+
+
+
+    // ========================COURSES START==========================
+
+
+    public function courses()
+    {
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
+        $this->load->view("admin/courses/courses",$data);
+    }
+
+    public function course_create()
+    {
+        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+        $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
+        $this->load->view("admin/courses/course_create", $data);
+    }
+    
+    public function course_create_act()
+    {
+        $course_name = $_POST['title'];
+        $description = $_POST['description'];
+        $course_duration = $_POST['course_duration'];
+        $trainer = $_POST['trainer'];
+        $status = $_POST['status'];
+        
+
+        if (!empty($course_name) && !empty($description) && !empty($status) && !empty($course_duration)) {
+
+            $config['upload_path'] = './uploads/courses/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'course_name' => $course_name,
+                    'course_description' => $description,
+                    'course_status' => $status,
+                    'course_duration' => $course_duration,
+                    'course_img' => $file_name,
+                    'course_img_ext' => $file_ext,
+                    'course_trainer' => $trainer,
+                    'course_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                // insert to DATABASE code
+                $this->Courses_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('courses_admin'));
+
+                
+            } else {
+
+                $data = [
+                    'course_name' => $course_name,
+                    'course_description' => $description,
+                    'course_status' => $status,
+                    'course_duration' => $course_duration,
+                    'course_trainer' => $trainer,
+                    'course_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                // insert to DATABASE code
+                $this->Courses_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('courses_admin'));
+
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function course_delete($id){
+        $this->Courses_model->delete_course($id);
+    }
+
+    public function course_detail($id){
+        $data['course_single'] = $this->Courses_model->get_single_course($id);
+        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+
+
+        $this->load->view('admin/courses/course_detail', $data);
+    }
+
+    public function course_edit($id)
+    {
+        $data['course_single'] = $this->Courses_model->get_single_course($id);
+        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+        $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
+        $this->load->view('admin/courses/course_edit', $data);
+    }
+
+
+    // ========================COURSES END==========================
+
 
 
 

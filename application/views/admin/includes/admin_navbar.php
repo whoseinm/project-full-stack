@@ -25,7 +25,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img style="object-fit:cover; width: 40px; height: 40px;" src="<?php echo base_url("uploads/posts/364f3a4e8911bf7e7c69949260e4abb5.jpeg") ?>" alt class="w-px-40  rounded-circle" />
+                      <img style="object-fit:cover; width: 40px; height: 40px;" src="<?php echo base_url("uploads/trainers/49da392af507ad53c95f815ba68e0b45.jpg") ?>" alt class="w-px-40  rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -34,7 +34,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img style="object-fit:cover; width: 40px; height: 40px;" src="<?php echo base_url("uploads/posts/364f3a4e8911bf7e7c69949260e4abb5.jpeg") ?>" alt class="w-px-40  rounded-circle" />
+                              <img style="object-fit:cover; width: 40px; height: 40px;" src="<?php echo base_url("uploads/trainers/49da392af507ad53c95f815ba68e0b45.jpg") ?>" alt class="w-px-40  rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">

@@ -74,7 +74,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="<?php echo base_url("admin_page")?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -99,6 +99,13 @@
               <a href="<?php echo base_url("admin_about")?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Analytics">About</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("courses_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-book-open"></i>
+                <div data-i18n="Analytics">Courses</div>
               </a>
             </li>
             

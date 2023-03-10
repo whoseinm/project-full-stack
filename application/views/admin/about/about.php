@@ -98,7 +98,7 @@
 
 
                                     <a href="<?php echo base_url("about_delete/" . $item["about_id"]) ?>">
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button onclick="return confirm('silmək istədiyinizə, əminsinizmi?')" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 
                                 </td>

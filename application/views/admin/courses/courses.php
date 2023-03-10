@@ -13,8 +13,8 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">News List
-            <a href="<?php echo base_url('trainer_create') ?>">
+        <h5 class="card-header spaceB">Course List
+            <a href="<?php echo base_url('course_create') ?>">
                 <button type="button" class="btn  btn-sm btn-success">Create</button>
             </a>
         </h5>
@@ -37,15 +37,15 @@
                     <tbody>
                         <tr>
                             <th>#</th>
-                            <th>Name,surname</th>
+                            <th>Course</th>
+                            <th>Trainer</th>
+                            <th>Course Duration</th>
                             <th>Img</th>
                             <th>Status</th>
                             <th>Actions</th>
-
-
                         </tr>
 
-                        <?php $say=0; foreach ($trainers as $item) { $say++ ?>
+                        <?php $say=0; foreach ($get_all_courses as $item) { $say++ ?>
 
 
                             <tr>
@@ -53,7 +53,13 @@
                                     <span><?php echo $say ?></span>
                                 </td>
                                 <td>
+                                    <?php echo $item['course_name'] ?>
+                                </td>
+                                <td>
                                     <?php echo $item['trainer_name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $item['course_duration'] ?>
                                 </td>
                                 <td>
                                     <?php if ($item["trainer_img"]) { ?>
@@ -67,13 +73,13 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                <?php if ($item['trainer_status'] == "Active") { ?>
+                                <?php if ($item['course_status'] == "Active") { ?>
                                         <span class="badge bg-label-success me-1">
-                                            <?php echo $item['trainer_status']; ?>
+                                            <?php echo $item['course_status']; ?>
                                         </span>
-                                    <?php } else if ($item['trainer_status'] == "Deactive") { ?>
+                                    <?php } else if ($item['course_status'] == "Deactive") { ?>
                                             <span class="badge bg-label-danger me-1">
-                                            <?php echo $item['trainer_status']; ?>
+                                            <?php echo $item['course_status']; ?>
                                             </span>
                                     <?php } else { ?>
                                             <span class="badge bg-label-primary me-1">---------</span>
@@ -81,15 +87,15 @@
                                 </td>
                                 <td>
 
-                                    <a href="<?php echo base_url("trainer_detail/" . $item["trainer_id"]) ?>">
+                                    <a href="<?php echo base_url("course_detail/" . $item["course_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
                                     </a>
 
-                                    <a href="<?php echo base_url("trainer_edit/" . $item["trainer_id"]) ?>">
+                                    <a href="<?php echo base_url("course_edit/" . $item["course_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     </a>
 
-                                    <a href="<?php echo base_url("delete_trainer/" . $item["trainer_id"]) ?>">
+                                    <a href="<?php echo base_url("course_delete/" . $item["course_id"]) ?>">
                                         <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
 

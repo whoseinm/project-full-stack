@@ -13,7 +13,7 @@
 <div class="container">
     <div class="card">
 
-        <h5 class="card-header spaceB">Post detail
+        <h5 class="card-header spaceB">Trainer detail
             <a href="<?php echo base_url('trainers') ?>">
                 <button type="button" class="btn  btn-sm btn-danger">Back</button>
             </a>

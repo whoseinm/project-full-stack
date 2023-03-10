@@ -60,7 +60,7 @@
                     <label for="img"><b>File</b></label>
                     <br>
                     <?php if (!empty($about_single["about_img"])) { ?>
-                        <img width="300px" height="300px" style="object-fit: cover;"
+                        <img width="600px" height="300px" style="object-fit: cover;"
                             src="<?php echo base_url("uploads/about/" . $about_single["about_img"]) ?>" alt="">
                     <?php } else { ?>
                         <img width="150px" height="150px" style="object-fit: cover;"

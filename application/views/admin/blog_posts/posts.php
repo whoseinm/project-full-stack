@@ -51,7 +51,6 @@
                             <th>Creator name</th>
                             <th>Img</th>
                             <th>Status</th>
-                            <th>Updated</th>
                             <th>Actions</th>
 
 
@@ -65,8 +64,9 @@
                                 <td>
                                     <?php echo $say ?>
                                 </td>
-                                <td>
-                                    <?php echo $item['post_title']; ?>
+                                <td><?php 
+                                    $title = mb_strimwidth($item['post_title'], 0, 30, '...');
+                                    echo $title ?></td>
                                 </td>
                                 <td>
                                     <?php echo date("d-m-Y", strtotime($item['post_date'])); ?>
@@ -75,7 +75,7 @@
                                     <?php echo $item['post_category']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $item['a_name']; ?>
+                                    <?php echo $admin['a_name']; ?>
                                 </td>
 
 
@@ -104,13 +104,7 @@
 
                                 </td>
 
-                                <td>
-                                    <?php if ($item['post_updater_id']) { ?>
-                                        <?php echo "Edited by" . " " . $item['a_name']; ?>
-                                    <?php } else { ?>
-                                        No one edited
-                                    <?php } ?>
-                                </td>
+
 
                                 <td>
 
