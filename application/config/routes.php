@@ -127,6 +127,18 @@ $route['course_img_delete/(.*)'] = 'AdminController/course_img_delete/$1';
 // ========================COURSES END============================
 
 
+
+
+// =======================CONTACT START===========================
+$route['admin_contact'] = "AdminController/contact_admin";
+$route['contact_message_act'] = "AdminController/contact_message_act";
+
+
+
+// ========================CONTACT END============================
+
+
+
 $route['forgot_password'] = 'AdminController/forget_password';
 $route['error404'] = 'AdminController/error';
 $route['error-misc'] = 'AdminController/error2';

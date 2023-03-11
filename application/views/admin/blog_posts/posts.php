@@ -52,8 +52,6 @@
                             <th>Img</th>
                             <th>Status</th>
                             <th>Actions</th>
-
-
                         </tr>
 
                         <?php $say = 0;
@@ -64,9 +62,11 @@
                                 <td>
                                     <?php echo $say ?>
                                 </td>
-                                <td><?php 
+                                <td>
+                                    <?php
                                     $title = mb_strimwidth($item['post_title'], 0, 30, '...');
-                                    echo $title ?></td>
+                                    echo $title ?>
+                                </td>
                                 </td>
                                 <td>
                                     <?php echo date("d-m-Y", strtotime($item['post_date'])); ?>

@@ -33,8 +33,7 @@
         <div class="container">
             <div class="d-none d-sm-block mb-5 pb-4">
                 
-                
-                
+
             </div>
             <div class="row">
                 <div class="col-12">
@@ -42,8 +41,7 @@
                 </div>
                 <div class="col-lg-8">
                     <form class="form-contact contact_form"
-                        action="" method="post"
-                        id="contactForm" novalidate="novalidate">
+                        action="<?php echo base_url('contact_message_act') ?>" method="post">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -97,7 +95,7 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3><a href="" class="__cf_email__"
+                            <h3><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
                                     data-cfemail="780b0d0808170a0c381b1714170a14111a561b1715">[email&#160;protected]</a>
                             </h3>
                             <p>Send us your query anytime!</p>

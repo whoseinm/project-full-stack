@@ -10,6 +10,7 @@ class AdminController extends CI_Controller
         $this->load->model('Trainers_model');
         $this->load->model('About_model');
         $this->load->model('Courses_model');
+        $this->load->model('Contact_model');
     }
 
 
@@ -817,6 +818,44 @@ class AdminController extends CI_Controller
     // ========================COURSES END==========================
 
 
+
+    // ========================CONTACT START==========================
+
+
+    public function contact_admin(){
+        $data['get_messages'] = $this->Contact_model->get_all_messages();
+
+        $this->load->view('admin/contact/messages',$data);
+    }
+
+    public function contact_message_act(){
+        $message = $_POST['message'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $subject = $_POST['subject'];
+
+        if(!empty($message) && !empty($name) && !empty($email) && !empty($subject)){
+            $data=[
+                'contact_message' => $message,
+                'contact_name'    => $name,
+                'contact_email'   => $email,
+                'contact_date'    => date("Y-m-d H:i:s"),
+                'contact_subject' => $subject
+            ];
+
+            // insert to DATABASE code
+            $this->Contact_model->insert($data);
+
+
+            // notification for post added successfully
+            $this->session->set_flashdata('success', "Mesaj uğurla göndərildi");
+
+            // redirect to page
+            redirect(base_url('contact'));
+        }
+    }
+
+    // ========================CONTACT END==========================
 
 
 

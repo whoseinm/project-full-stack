@@ -13,92 +13,47 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">Course List
-            <a href="<?php echo base_url('course_create') ?>">
-                <button type="button" class="btn  btn-sm btn-success">Create</button>
-            </a>
+        <h5 class="card-header spaceB">Messages List
         </h5>
 
         <div class="card-body">
-
-            <?php if ($this->session->flashdata('success')) { ?>
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                        <use xlink:href="#exclamation-triangle-fill" />
-                    </svg>
-                    <div>
-                        <?php echo $this->session->flashdata('success'); ?>
-                    </div>
-                </div>
-            <?php } ?>
-
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered">
                     <tbody>
+
                         <tr>
                             <th>#</th>
-                            <th>Course</th>
-                            <th>Trainer</th>
-                            <th>Course Duration</th>
-                            <th>Trainer Img</th>
+                            <th>Göndərən</th>
+                            <th>E-poçt</th>
+                            <th>Müraciət tarixi</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
 
-                        <?php $say=0; foreach ($get_all_courses as $item) { $say++ ?>
-
-
+                        <?php $say = 0; foreach ($get_messages as $item)  { $say++?>
                             <tr>
                                 <td>
-                                    <span><?php echo $say ?></span>
+                                    <?php echo $say; ?>
                                 </td>
                                 <td>
-                                    <?php echo $item['course_name'] ?>
+                                    <?php $name = mb_strimwidth($item['contact_name'], 0, 20, '...');
+                                    echo $name ?>
                                 </td>
-                                <td>
-                                    <?php echo $item['trainer_name'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $item['course_duration'] ?>
-                                </td>
-                                <td>
-                                    <?php if ($item["trainer_img"]) { ?>
-                                        <img width="70px" height="70px" style="object-fit: cover; border-radius: 50%;"
-                                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>"
-                                            alt="img"></img>
-                                    <?php } else { ?>
-                                        <img width="70px" height="70px" style="object-fit: cover; border-radius: 50%;"
-                                            src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg"
-                                            alt="img">
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                <?php if ($item['course_status'] == "Active") { ?>
-                                        <span class="badge bg-label-success me-1">
-                                            <?php echo $item['course_status']; ?>
-                                        </span>
-                                    <?php } else if ($item['course_status'] == "Deactive") { ?>
-                                            <span class="badge bg-label-danger me-1">
-                                            <?php echo $item['course_status']; ?>
-                                            </span>
-                                    <?php } else { ?>
-                                            <span class="badge bg-label-primary me-1">---------</span>
-                                    <?php } ?>
-                                </td>
-                                <td>
 
-                                    <a href="<?php echo base_url("course_detail/" . $item["course_id"]) ?>">
-                                        <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
-                                    </a>
+                                <td>
+                                    <?php echo $item['contact_email'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $item['contact_date'] ?>
+                                </td>
+                                <td>
+                                    <span class="badge bg-label-success me-1">Active</span>
+                                </td>
 
-                                    <a href="<?php echo base_url("course_edit/" . $item["course_id"]) ?>">
-                                        <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
-                                    </a>
-
-                                    <a href="<?php echo base_url("course_delete/" . $item["course_id"]) ?>">
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                                    </a>
-
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
+                                    <button type="button" class="btn btn-sm btn-outline-warning">Baxılıb</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                                 </td>
                             </tr>
                         <?php } ?>
