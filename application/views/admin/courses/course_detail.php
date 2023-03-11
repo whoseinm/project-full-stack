@@ -62,9 +62,8 @@
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px 10px">
                     <label for="cate"><b>Category</b></label>
                         
-                         <?php foreach ($get_all_categories as $item) { ?>
-                            <p><?php echo $item['category_title']; ?></p>
-                        <?php } ?>
+                            <p><?php echo $course_single['category_title']; ?></p>
+                        
                     </select>
                 </div>
 

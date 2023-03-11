@@ -120,7 +120,10 @@ $route['course_create'] = "AdminController/course_create";
 $route['course_create_act'] = "AdminController/course_create_act";
 $route['course_delete/(.*)'] = "AdminController/course_delete/$1";
 $route['course_detail/(.*)'] = "AdminController/course_detail/$1";
+
 $route['course_edit/(.*)'] = "AdminController/course_edit/$1";
+$route['course_edit_act/(.*)'] = 'AdminController/course_edit_act/$1';
+$route['course_img_delete/(.*)'] = 'AdminController/course_img_delete/$1';
 // ========================COURSES END============================
 
 

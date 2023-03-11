@@ -1,9 +1,9 @@
 <?php $this->load->view("admin/includes/admin_header_style") ?>
 
 <?php $this->load->view("admin/includes/admin_sidebar") ?>
-    
+
 <?php $this->load->view("admin/includes/admin_navbar") ?>
-    <br>
+<br>
 <style>
     .spaceB {
         display: flex;
@@ -22,7 +22,7 @@
 
         <div class="card-body">
 
-        <?php if ($this->session->flashdata('err')) { ?>
+            <?php if ($this->session->flashdata('err')) { ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
                         <use xlink:href="#exclamation-triangle-fill" />
@@ -33,30 +33,49 @@
                 </div>
             <?php } ?>
 
-            <form action="<?php echo base_url('course_edit_act/').$course_single['course_id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('course_edit_act/') . $course_single['course_id']; ?>" method="post"
+                enctype="multipart/form-data">
                 <label for="title">Name</label>
-                <input type="text" id="name" name="name" class="form-control" value="<?php echo $course_single['course_name']; ?>">
+                <input type="text" id="name" name="title" class="form-control"
+                    value="<?php echo $course_single['course_name']; ?>">
                 <br>
-                
+
 
                 <label for="descr">About</label>
-                <textarea name="about" class="form-control" id="about" cols="30" rows="10" ><?php echo $course_single['course_description']; ?></textarea>
+                <textarea name="description" class="form-control" id="about" cols="30"
+                    rows="10"><?php echo $course_single['course_description']; ?></textarea>
                 <br>
 
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px 10px">
                     <label for="course_duration">Course Duration</label>
-                    <input type="text" id="course_duration" name="course_duration" class="form-control" value="<?php echo $course_single['course_duration']; ?>">
+                    <input type="text" id="course_duration" name="course_duration" class="form-control"
+                        value="<?php echo $course_single['course_duration']; ?>">
                 </div>
-               
+
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px 10px">
                     <label for="cate">Category</label>
                     <select name="category" id="cate" class="form-control">
-                        <option value="">-SELECT-</option>
-                        <?php foreach ($get_all_categories as $item) { ?>
-                            <option value="<?php echo $item['category_title']; ?>"><?php echo $item['category_title']; ?></option>
-                        <?php } ?>
+                        <option <?php if ($get_single_data['course_category'] == "") {
+                            echo "SELECTED";
+                        } ?> value="">
+                            -SELECT-</option>
+                        <option <?php if ($get_single_data['course_category'] == "Big Data") {
+                            echo "SELECTED";
+                        } ?>
+                            value="Big Data">Big Data</option>
+                        <option <?php if ($get_single_data['course_category'] == "Mobil developer") {
+                            echo "SELECTED";
+                        } ?>
+                            value="Mobil developer">Mobil developer</option>
+                        <option <?php if ($get_single_data['course_category'] == "Full/Stack Developer") {
+                            echo "SELECTED";
+                        } ?> value="Full/Stack Developer">Full/Stack Developer</option>
+
+                        <option <?php if ($get_single_data['course_category'] == "QA Mühəndisliyi") { 
+                            echo "SELECTED";
+                        } ?> value="QA Mühəndisliyi">QA Mühəndisliyi</option>
                     </select>
                 </div>
 
@@ -65,11 +84,11 @@
                     <label for="trainer">Trainer name</label>
                     <select name="trainer" id="trainer" class="form-control">
                         <option value="SELECT">-SELECT-</option>
-                        <?php foreach ($get_all_trainers as $item) { ?>
-                            <?php if ($item['trainer_status'] != "Deactive") { ?>
-                                <option value="<?php echo $item['trainer_name']; ?>"></option>
-                            <?php } ?>
-                        <?php } ?>
+                        <?php foreach($get_all_trainers as $item){ ?>
+                            <option <?php if($item['trainer_name'] == $get_single_data['course_trainer']){
+                                echo "SELECTED";
+                            } ?> value="<?php echo $item['trainer_name'];?>"><?php echo $item['trainer_name'] ?></option>
+                       <?php } ?>
                     </select>
                 </div>
 
@@ -77,15 +96,15 @@
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="float: left; margin:0px 10px">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
-                    <option <?php if ($course_single['course_status'] == "") {
-                                    echo "SELECTED";
-                                } ?> value="">-SELECT-</option>
+                        <option <?php if ($course_single['course_status'] == "") {
+                            echo "SELECTED";
+                        } ?> value="">-SELECT-</option>
                         <option <?php if ($course_single['course_status'] == "Active") {
-                                    echo "SELECTED";
-                                } ?> value="Active">Active</option>
+                            echo "SELECTED";
+                        } ?> value="Active">Active</option>
                         <option <?php if ($course_single['course_status'] == "Deactive") {
-                                    echo "SELECTED";
-                                } ?> value="Deactive">Deactive</option>
+                            echo "SELECTED";
+                        } ?> value="Deactive">Deactive</option>
                     </select>
                 </div>
 
@@ -94,23 +113,26 @@
 
                     <?php if ($course_single['course_img']) { ?>
                         <?php if (empty($course_single['course_img'])) { ?>
-                            <img width="100%" style="object-fit: cover;" src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg" alt="">
+                            <img width="100%" style="object-fit: cover;"
+                                src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg" alt="">
 
                         <?php } else { ?>
-                            <img width="100%" style="object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $course_single['course_img']); ?>" alt="">
+                            <img width="100%" style="object-fit: cover;"
+                                src="<?php echo base_url('uploads/courses/' . $course_single['course_img']); ?>" alt="">
 
-                            <a href="<?php echo base_url('trainer_img_delete/'.$course_single['course_id']); ?>">
-                                <button onclick="return confirm('Məlumatı silmək istədiyinizə əminsiniz?')" type="button" class="btn btn-danger">Delete img</button>
+                            <a href="<?php echo base_url('course_img_delete/' . $course_single['course_id']); ?>">
+                                <button onclick="return confirm('Məlumatı silmək istədiyinizə əminsiniz?')" type="button"
+                                    class="btn btn-danger">Delete img</button>
                             </a>
 
 
                         <?php } ?>
                     <?php } else { ?>
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">
-                                <label for="img">IMG</label>
-                                <input type="file" id="img" class="form-control" name="user_img">
-                            </div>
-                        <?php } ?>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">
+                            <label for="img">IMG</label>
+                            <input type="file" id="img" class="form-control" name="user_img">
+                        </div>
+                    <?php } ?>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">

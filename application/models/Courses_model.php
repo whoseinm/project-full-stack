@@ -29,6 +29,12 @@ class Courses_model extends CI_Model{
         return $this->db->where('trainer_id', $id)->delete('trainers');
     }
 
+
+    public function update_course($id,$data){
+        $this->db->where("course_id", $id)->update("courses", $data);
+    }
+
+
     public function delete_course($id){
         $this->db->where('course_id', $id);
         $this->db->delete('courses');
@@ -36,16 +42,22 @@ class Courses_model extends CI_Model{
         redirect(base_url("courses_admin"));
     }
 
+    
+
     public function get_single_course($id){
         return $this->db
         ->where('course_id',$id)
         ->join('admin','admin.a_id = courses.course_creator_id','left')
+        ->join('category','category.category_title = courses.course_category','left')
         ->join('trainers','trainers.trainer_name = courses.course_trainer','left')
         ->get('courses')->row_array();
     }
 
     public function get_single_data($id){
-        return $this->db->where('course_id', $id)->get('courses')->row_array();
+        return $this->db->where('course_id', $id)
+        ->join('category','category.category_title = courses.course_category','left')
+        ->join('trainers','trainers.trainer_name = courses.course_trainer','left')
+        ->get('courses')->row_array();
     }
 
 }
