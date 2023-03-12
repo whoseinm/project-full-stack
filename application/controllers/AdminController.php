@@ -764,7 +764,7 @@ class AdminController extends CI_Controller
                 ];
 
                 // insert to DATABASE code
-                $this->Courses_model->insert($data);
+                $this->Courses_model->update_course($data);
 
 
                 // notification for post added successfully
@@ -780,11 +780,12 @@ class AdminController extends CI_Controller
                     'course_name' => $course_name,
                     'course_description' => $description,
                     'course_status' => $status,
+                    'course_category' => $category,
                     'course_duration' => $course_duration,
                     'course_trainer' => $trainer,
                 ];
 
-                $this->Courses_model->update_course($id, $data);
+                $this->Courses_model->update_course($id,$data);
 
                 $this->session->set_flashdata('success', "Course uğurla yeniləndi!");
 
@@ -840,7 +841,8 @@ class AdminController extends CI_Controller
                 'contact_name'    => $name,
                 'contact_email'   => $email,
                 'contact_date'    => date("Y-m-d H:i:s"),
-                'contact_subject' => $subject
+                'contact_subject' => $subject,
+                'contact_status'  => "Müraciət cavablandırılmayıb"
             ];
 
             // insert to DATABASE code
@@ -853,6 +855,42 @@ class AdminController extends CI_Controller
             // redirect to page
             redirect(base_url('contact'));
         }
+    }
+
+    public function contact_message_detail($id){
+        $data['get_single_message'] = $this->Contact_model->contact_single($id);
+        
+        $this->load->view('admin/contact/message_single', $data);
+    }
+
+    public function contact_viewed($id){
+    
+        $data=[
+            'contact_status' => 'Müraciət cavablandırılıb',
+            'contact_viewer_id' => $_SESSION['admin_login_id'],
+            'contact_viewed_date' => date('Y-m-d H:i:s')
+        ];
+
+        $this->Contact_model->viewed($id,$data);
+
+        redirect(base_url('admin_contact'));
+        
+    }
+
+    public function contact_view_delete($id){
+        $data = [
+            'contact_status' => 'Müraciət cavablandırılmayıb',
+            'contact_viewed_date' => '',
+            'contact_viewer_id' => '',
+        ];
+
+        $this->Contact_model->view_delete($id,$data);
+
+        redirect(base_url('admin_contact'));
+    }
+
+    public function contact_delete($id){
+        $this->Contact_model->contact_delete($id);
     }
 
     // ========================CONTACT END==========================

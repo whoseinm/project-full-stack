@@ -84,28 +84,28 @@
             <li class="menu-item">
               <a href="<?php echo base_url("posts")?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Analytics">Posts</div>
+                <div data-i18n="Analytics">Eventlər</div>
               </a>
             </li>
             
             <li class="menu-item">
               <a href="<?php echo base_url("trainers")?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Trainers</div>
+                <div data-i18n="Analytics">Treynerlər</div>
               </a>
             </li>
 
             <li class="menu-item">
               <a href="<?php echo base_url("admin_about")?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Analytics">About</div>
+                <div data-i18n="Analytics">Haqqımzıda</div>
               </a>
             </li>
 
             <li class="menu-item">
               <a href="<?php echo base_url("courses_admin")?>" class="menu-link">
               <i class="menu-icon tf-icons bx bx-book-open"></i>
-                <div data-i18n="Analytics">Courses</div>
+                <div data-i18n="Analytics">Kurslar</div>
               </a>
             </li>
 

@@ -13,7 +13,7 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">News List
+        <h5 class="card-header spaceB">Treynerlərin Siyahısı
             <a href="<?php echo base_url('trainer_create') ?>">
                 <button type="button" class="btn  btn-sm btn-success">Create</button>
             </a>

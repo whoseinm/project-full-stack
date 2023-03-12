@@ -132,14 +132,14 @@ $route['course_img_delete/(.*)'] = 'AdminController/course_img_delete/$1';
 // =======================CONTACT START===========================
 $route['admin_contact'] = "AdminController/contact_admin";
 $route['contact_message_act'] = "AdminController/contact_message_act";
-
-
+$route['contact_message_single/(.*)'] = "AdminController/contact_message_detail/$1";
+$route['contact_viewed/(.*)'] = "AdminController/contact_viewed/$1";
+$route['contact_view_delete/(.*)'] = "AdminController/contact_view_delete/$1";
+$route['contact_delete/(.*)'] = "AdminController/contact_delete/$1";
 
 // ========================CONTACT END============================
 
 
-
-$route['forgot_password'] = 'AdminController/forget_password';
 $route['error404'] = 'AdminController/error';
 $route['error-misc'] = 'AdminController/error2';
 

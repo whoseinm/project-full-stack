@@ -140,9 +140,6 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="<?php echo base_url("forgot_password") ?>">
-                      <small>Parolunuzu Unutmusuz?</small>
-                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input
@@ -159,6 +156,7 @@
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Daxil Ol</button>
                 </div>
+
                 <?php if ($this->session->flashdata('err')) { ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
@@ -180,10 +178,11 @@
                   </div>
                 </div>
               <?php } ?>
-              </form>
 
+              </form>
             </div>
           </div>
+          
           <!-- /Register -->
         </div>
       </div>

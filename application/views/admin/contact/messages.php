@@ -30,7 +30,9 @@
                             <th>Actions</th>
                         </tr>
 
-                        <?php $say = 0; foreach ($get_messages as $item)  { $say++?>
+                        <?php $say = 0;
+                        foreach ($get_messages as $item) {
+                            $say++ ?>
                             <tr>
                                 <td>
                                     <?php echo $say; ?>
@@ -46,14 +48,43 @@
                                 <td>
                                     <?php echo $item['contact_date'] ?>
                                 </td>
+
+
                                 <td>
-                                    <span class="badge bg-label-success me-1">Active</span>
+                                <?php if ($item['contact_status'] == "Müraciət cavablandırılıb") { ?>
+                                        <span class="badge bg-label-success me-1">
+                                            <?php echo $item['contact_status']; ?>
+                                        </span>
+                                    <?php } else if ($item['contact_status'] == "Müraciət cavablandırılmayıb") { ?>
+                                            <span class="badge bg-label-danger me-1">
+                                            <?php echo $item['contact_status']; ?>
+                                            </span>
+                                    <?php } else { ?>
+                                            <span class="badge bg-label-primary me-1">---------</span>
+                                    <?php } ?>
+                                </td>
+
                                 </td>
 
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
-                                    <button type="button" class="btn btn-sm btn-outline-warning">Baxılıb</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    <a href="<?php echo base_url('contact_message_single/' . $item["contact_id"]) ?>">
+                                        <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
+                                    </a>
+
+                                    <?php if ($item['contact_status'] == 'Müraciət cavablandırılmayıb') { ?>
+                                        <a href="<?php echo base_url('contact_viewed/' . $item['contact_id']) ?>">
+                                            <button type="button" class="btn btn-sm btn-outline-success">mark as read</button>
+                                        </a>
+                                    <?php } else { ?>
+                                        <a href="<?php echo base_url('contact_view_delete/' . $item['contact_id']) ?>">
+                                            <button type="button" class="btn btn-sm btn-outline-danger">cancel view</button>
+                                        </a>
+                                    <?php } ?>
+
+                                     <a href="<?php echo base_url("contact_delete/".$item['contact_id']) ?>">
+                                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                     </a>   
+
                                 </td>
                             </tr>
                         <?php } ?>

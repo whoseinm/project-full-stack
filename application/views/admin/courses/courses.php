@@ -13,7 +13,7 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">Course List
+        <h5 class="card-header spaceB">Kursların Siyahısı
             <a href="<?php echo base_url('course_create') ?>">
                 <button type="button" class="btn  btn-sm btn-success">Create</button>
             </a>
