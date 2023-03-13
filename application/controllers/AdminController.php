@@ -665,7 +665,7 @@ class AdminController extends CI_Controller
 
 
                 // notification for post added successfully
-                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+                $this->session->set_flashdata('success', "Kurs uğurla əlavə olundu");
 
                 // redirect to page
                 redirect(base_url('courses_admin'));
@@ -764,7 +764,7 @@ class AdminController extends CI_Controller
                 ];
 
                 // insert to DATABASE code
-                $this->Courses_model->update_course($data);
+                $this->Courses_model->update_course($id,$data);
 
 
                 // notification for post added successfully

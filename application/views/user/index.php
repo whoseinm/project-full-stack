@@ -32,8 +32,8 @@
                 <img src="<?php echo base_url('assets/user/')?>img/icon/icon1.svg" alt="">
               </div>
               <div class="features-caption">
-                <h3>60+ UX courses</h3>
-                <p>The automated process all your website tasks.</p>
+                <h3>20+ Kurs sayısı</h3>
+                <p>Əsas sayı deyil əsas onların necə keçirildiyidir.</p>
               </div>
             </div>
           </div>
@@ -43,8 +43,8 @@
                 <img src="<?php echo base_url('assets/user/')?>img/icon/icon2.svg" alt="">
               </div>
               <div class="features-caption">
-                <h3>Expert instructors</h3>
-                <p>The automated process all your website tasks.</p>
+                <h3>İşində Ekspert Treynerlər</h3>
+                <p>Müəllimlərimiz sizin üçün hər an hazırdırlar</p>
               </div>
             </div>
           </div>
@@ -54,8 +54,8 @@
                 <img src="<?php echo base_url('assets/user/')?>img/icon/icon3.svg" alt="">
               </div>
               <div class="features-caption">
-                <h3>Life time access</h3>
-                <p>The automated process all your website tasks.</p>
+                <h3>Yaxşı Kurslar</h3>
+                <p>Ən yaxşı kursları siz sadəcə burda tapa bilərsiniz.</p>
               </div>
             </div>
           </div>
@@ -68,197 +68,54 @@
         <div class="row justify-content-center">
           <div class="col-xl-7 col-lg-8">
             <div class="section-tittle text-center mb-55">
-              <h2>Our featured courses</h2>
+              <h2><a href="<?php echo base_url('courses')?>" style="text-decoration:none; color:#4255A4;">Kurslarımız</a></h2>
             </div>
           </div>
         </div>
         <div class="courses-actives">
 
-          <div class="properties pb-20">
-            <div class="properties__card">
-              <div class="properties__img overlay1">
-                <a href="#"><img src="<?php echo base_url('assets/user/')?>img/gallery/featured1.png" alt=""></a>
-              </div>
-              <div class="properties__caption">
-                <p>User Experience</p>
-                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively
-                  with vulnerable children and young people.
-                </p>
-                <div class="properties__footer d-flex justify-content-between align-items-center">
-                  <div class="restaurant-name">
-                    <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half"></i>
+        <?php foreach ($get_all_courses as $item) { ?>
+          <?php if ($item['course_status'] == "Active") { ?>
+            <div class="col-lg-4">
+              <div class="properties properties2 mb-30">
+                <div class="properties__card">
+                  <div class="properties__img overlay1">
+                    <a href="#"><img style="width:100%; height:250px; object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+                  </div>
+
+                  <div class="properties__caption">
+                    <h3><a href="#">
+                        <p>
+                          <?php echo $item['course_duration'] ?>
+                        </p>
+                        <?php echo $item['course_name'] ?>
+                      </a></h3>
+                    <div class="properties__footer d-flex justify-content-between align-items-center">
+                      <div class="restaurant-name">
+                        <div>
+                          <img width="40px" height="40px" style="border-radius:50%;"
+                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
+                          <p style="color:#6E7697; font-size: 17px;">
+                            <?php echo $item['trainer_name'] ?>
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <p><span>(4.5)</span> based on 120</p>
+                    <a href="#" class="border-btn border-btn2">Daha Çox</a>
                   </div>
-                  <div class="price">
-                    <span>$135</span>
-                  </div>
+                  
                 </div>
-                <a href="#" class="border-btn border-btn2">Find out more</a>
               </div>
             </div>
-          </div>
-
-
-          <div class="properties pb-20">
-            <div class="properties__card">
-              <div class="properties__img overlay1">
-                <a href="#"><img src="<?php echo base_url('assets/user/')?>img/gallery/featured2.png" alt=""></a>
-              </div>
-              <div class="properties__caption">
-                <p>User Experience</p>
-                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively
-                  with vulnerable children and young people.
-                </p>
-                <div class="properties__footer d-flex justify-content-between align-items-center">
-                  <div class="restaurant-name">
-                    <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half"></i>
-                    </div>
-                    <p><span>(4.5)</span> based on 120</p>
-                  </div>
-                  <div class="price">
-                    <span>$135</span>
-                  </div>
-                </div>
-                <a href="#" class="border-btn border-btn2">Find out more</a>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="properties pb-20">
-            <div class="properties__card">
-              <div class="properties__img overlay1">
-                <a href="#"><img src="<?php echo base_url('assets/user/')?>img/gallery/featured3.png" alt=""></a>
-              </div>
-              <div class="properties__caption">
-                <p>User Experience</p>
-                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively
-                  with vulnerable children and young people.
-                </p>
-                <div class="properties__footer d-flex justify-content-between align-items-center">
-                  <div class="restaurant-name">
-                    <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half"></i>
-                    </div>
-                    <p><span>(4.5)</span> based on 120</p>
-                  </div>
-                  <div class="price">
-                    <span>$135</span>
-                  </div>
-                </div>
-                <a href="#" class="border-btn border-btn2">Find out more</a>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="properties pb-20">
-            <div class="properties__card">
-              <div class="properties__img overlay1">
-                <a href="#"><img src="<?php echo base_url('assets/user/')?>img/gallery/featured2.png" alt=""></a>
-              </div>
-              <div class="properties__caption">
-                <p>User Experience</p>
-                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively
-                  with vulnerable children and young people.
-                </p>
-                <div class="properties__footer d-flex justify-content-between align-items-center">
-                  <div class="restaurant-name">
-                    <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half"></i>
-                    </div>
-                    <p><span>(4.5)</span> based on 120</p>
-                  </div>
-                  <div class="price">
-                    <span>$135</span>
-                  </div>
-                </div>
-                <a href="#" class="border-btn border-btn2">Find out more</a>
-              </div>
-            </div>
-          </div>
+          <?php } ?>
+        <?php } ?>
 
         </div>
       </div>
     </div>
 
 
-    <section class="about-area1 fix pt-10">
-      <div class="support-wrapper align-items-center">
-        <div class="left-content1">
-          <div class="about-icon">
-            <img src="<?php echo base_url('assets/user/')?>img/icon/about.svg" alt="">
-          </div>
-
-          <div class="section-tittle section-tittle2 mb-55">
-            <div class="front-text">
-              <h2 class="">Learn new skills online with top educators</h2>
-              <p>The automated process all your website tasks. Discover tools and
-                techniques to engage effectively with vulnerable children and young
-                people.</p>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Techniques to engage effectively with vulnerable children and young people.</p>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Join millions of people from around the world learning together.</p>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Join millions of people from around the world learning together. Online learning is as easy and
-                natural.</p>
-            </div>
-          </div>
-        </div>
-        <div class="right-content1">
-
-          <div class="right-img">
-            <img src="<?php echo base_url('assets/user/')?>img/gallery/about.html" alt="">
-            <div class="video-icon">
-              <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i
-                  class="fas fa-play"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
 
     <div class="topic-area section-padding40">
@@ -266,224 +123,31 @@
         <div class="row justify-content-center">
           <div class="col-xl-7 col-lg-8">
             <div class="section-tittle text-center mb-55">
-              <h2>Explore top subjects</h2>
+              <h2>Məşhur Kategoriyalar</h2>
             </div>
           </div>
         </div>
         <div class="row">
+        <?php foreach($get_all_categories as $item){ ?>
           <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="single-topic text-center mb-30">
               <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic1.png" alt="">
+                <div style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; width:270px; border-radius: 10px;"></div>
                 <div class="topic-content-box">
                   <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
+                    <h3><a href="#" style="text-decoration: none;"><?php echo $item['category_title'] ?></a></h3>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic2.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic3.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic4.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic5.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic6.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic7.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <img src="<?php echo base_url('assets/user/')?>img/gallery/topic8.png" alt="">
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#">Programing</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-xl-12">
-            <div class="section-tittle text-center mt-20">
-              <a href="courses.html" class="border-btn">View More Subjects</a>
-            </div>
-          </div>
+        <?php } ?>
         </div>
       </div>
     </div>
 
 
-    <section class="about-area3 fix">
-      <div class="support-wrapper align-items-center">
-        <div class="right-content3">
-
-          <div class="right-img">
-            <img src="<?php echo base_url('assets/user/')?>img/gallery/about3.png" alt="">
-          </div>
-        </div>
-        <div class="left-content3">
-
-          <div class="section-tittle section-tittle2 mb-20">
-            <div class="front-text">
-              <h2 class="">Learner outcomes on courses you will take</h2>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Techniques to engage effectively with vulnerable children and young people.</p>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Join millions of people from around the world
-                learning together.</p>
-            </div>
-          </div>
-          <div class="single-features">
-            <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/icon/right-icon.svg" alt="">
-            </div>
-            <div class="features-caption">
-              <p>Join millions of people from around the world learning together.
-                Online learning is as easy and natural.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="team-area section-padding40 fix">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-8">
-            <div class="section-tittle text-center mb-55">
-              <h2>Community experts</h2>
-            </div>
-          </div>
-        </div>
-        <div class="team-active">
-          <div class="single-cat text-center">
-            <div class="cat-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/gallery/team1.png" alt="">
-            </div>
-            <div class="cat-cap">
-              <h5><a href="services.html">Mr. Urela</a></h5>
-              <p>The automated process all your website tasks.</p>
-            </div>
-          </div>
-          <div class="single-cat text-center">
-            <div class="cat-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/gallery/team2.png" alt="">
-            </div>
-            <div class="cat-cap">
-              <h5><a href="services.html">Mr. Uttom</a></h5>
-              <p>The automated process all your website tasks.</p>
-            </div>
-          </div>
-          <div class="single-cat text-center">
-            <div class="cat-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/gallery/team3.png" alt="">
-            </div>
-            <div class="cat-cap">
-              <h5><a href="services.html">Mr. Shakil</a></h5>
-              <p>The automated process all your website tasks.</p>
-            </div>
-          </div>
-          <div class="single-cat text-center">
-            <div class="cat-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/gallery/team4.png" alt="">
-            </div>
-            <div class="cat-cap">
-              <h5><a href="services.html">Mr. Arafat</a></h5>
-              <p>The automated process all your website tasks.</p>
-            </div>
-          </div>
-          <div class="single-cat text-center">
-            <div class="cat-icon">
-              <img src="<?php echo base_url('assets/user/')?>img/gallery/team3.png" alt="">
-            </div>
-            <div class="cat-cap">
-              <h5><a href="services.html">Mr. saiful</a></h5>
-              <p>The automated process all your website tasks.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  
 
     <section class="about-area2 fix pb-padding">
       <div class="support-wrapper align-items-center">
@@ -497,13 +161,8 @@
 
           <div class="section-tittle section-tittle2 mb-20">
             <div class="front-text">
-              <h2 class="">Take the next step
-                toward your personal
-                and professional goals
-                with us.</h2>
-              <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with
-                vulnerable children and young people.</p>
-              <a href="#" class="btn">Join now for Free</a>
+              <h2 class="">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.</h2>
+              <a href="<?php echo base_url('contact') ?>" class="btn">Əlaqə</a>
             </div>
           </div>
         </div>

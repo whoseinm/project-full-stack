@@ -43,7 +43,7 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="<?php echo base_url("..assets/admin/")?>assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/css/core.css" class="template-customizer-core-css" />
@@ -106,7 +106,6 @@
 
     <!-- Page JS -->
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
   </body>
 </html>
