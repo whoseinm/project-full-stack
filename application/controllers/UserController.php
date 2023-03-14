@@ -10,12 +10,14 @@ class UserController extends CI_Controller{
         $this->load->model('About_model');
         $this->load->model('Courses_model');
         $this->load->model('Contact_model');
+        $this->load->model('Hero_model');
     }
 
 
     public function index(){
         $data['get_all_courses'] = $this->Courses_model->get_all_courses();
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+        $data['slider'] = $this->Hero_model->slides();
 
         $this->load->view('user/index',$data);
     }
@@ -46,6 +48,10 @@ class UserController extends CI_Controller{
 
     public function blog(){
         $this->load->view('user/blog');
+    }
+
+    public function blog_detail(){
+        $this->load->view('user/not_main/blog_details');
     }
 
 }

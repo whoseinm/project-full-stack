@@ -56,6 +56,7 @@ $route['about'] = 'UserController/about';
 $route['contact'] = 'UserController/contact';
 $route['courses'] = 'UserController/courses';
 $route['blog'] = 'UserController/blog';
+$route['blog_detail'] = 'UserController/blog_detail';
 
 
 
@@ -66,6 +67,21 @@ $route['admin_login'] = 'AdminController/login_page';
 
 $route['login_act'] = "AdminController/login_act";
 $route['log_out'] = "AdminController/log_out";
+
+
+
+// ========================HERO CAPTION START==========================
+$route['hero_caption'] = "AdminController/hero_caption";
+$route['hero_caption_create'] = "AdminController/hero_caption_create";
+$route['hero_caption_create_act'] = "AdminController/here_caption_create_act";
+$route['hero_caption_delete/(.*)'] = "AdminController/hero_caption_delete/$1";
+$route['hero_detail/(.*)'] = "AdminController/hero_detail/$1";
+
+$route['hero_edit/(.*)'] = "AdminController/hero_update/$1";
+$route['hero_update_act/(.*)'] = 'AdminController/hero_update_act/$1';
+$route['slider_img_delete/(.*)'] = 'AdminController/slider_img_delete/$1';
+// =========================HERO CAPTION END===========================
+
 
 // =========================BLOG POSTS START===========================
 

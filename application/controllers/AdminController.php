@@ -11,6 +11,7 @@ class AdminController extends CI_Controller
         $this->load->model('About_model');
         $this->load->model('Courses_model');
         $this->load->model('Contact_model');
+        $this->load->model('Hero_model');
     }
 
 
@@ -60,6 +61,187 @@ class AdminController extends CI_Controller
         unset($_SESSION['admin_login_id']);
         redirect(base_url('admin_login'));
     }
+
+
+
+    // =========================HERO CAPTION START===========================
+
+    public function hero_caption(){
+        $data['slides'] = $this->Hero_model->slides();
+
+        $this->load->view('admin/hero_caption/hero_caption',$data);
+    }
+
+    public function hero_caption_create(){
+        $this->load->view('admin/hero_caption/hero_caption_create');
+    }
+
+    public function here_caption_create_act(){
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $link = $_POST['link'];
+        $status = $_POST['status'];
+
+        if (!empty($title) && !empty($description) && !empty($link) && !empty($status)) {
+
+            $config['upload_path'] = './uploads/slider/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'slider_title' => $title,
+                    'slider_description' => $description,
+                    'slider_link' => $link,
+                    'slider_status' => $status,
+                    'slider_img' => $file_name,
+                    'slider_img_ext' => $file_ext,
+                ];
+
+                // insert to DATABASE code
+                $this->Hero_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Slide uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('hero_caption'));
+            } else {
+                $data = [
+                    'slider_title' => $title,
+                    'slider_link'  => $link,
+                    'slider_description' => $description,
+                    'slider_status' => $status,
+                ];
+
+                $this->Hero_model->insert($data);
+
+                $this->session->set_flashdata('success', "Slide uğurla əlavə olundu");
+
+                redirect(base_url('hero_caption'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function hero_detail($id){
+        $data['hero_single'] = $this->Hero_model->hero_single($id);
+
+        $this->load->view('admin/hero_caption/hero_single',$data);
+    }
+
+    public function hero_update($id){
+        $data['hero_single'] = $this->Hero_model->hero_single($id);
+
+        $this->load->view('admin/hero_caption/hero_edit',$data);
+    }
+
+    public function hero_update_act($id){
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $link = $_POST['link'];
+        $status = $_POST['status'];
+
+        if (!empty($title) && !empty($description) && !empty($link) && !empty($status)) {
+
+            $config['upload_path'] = './uploads/slider/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'slider_title' => $title,
+                    'slider_description' => $description,
+                    'slider_link'  => $link,
+                    'slider_status' => $status,
+                    'slider_img' => $file_name,
+                    'slider_img_ext' => $file_ext,
+                ];
+
+                // Update in DATABASE code
+                $this->Hero_model->update_slider($id,$data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Slide uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('hero_caption'));
+            } else {
+                $data = [
+                    'slider_title' => $title,
+                    'slider_link'  => $link,
+                    'slider_description' => $description,
+                    'slider_status' => $status,
+                ];
+
+                $this->Hero_model->update_slider($id,$data);
+
+                $this->session->set_flashdata('success', "Slide uğurla yeniləndi");
+
+                redirect(base_url('hero_caption'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function hero_caption_delete($id){
+        $this->Hero_model->hero_caption_delete($id);
+    }
+
+    public function slider_img_delete($id)
+    {
+
+        $data = [
+            'slider_img' => "",
+            'slider_img_ext' => "",
+        ];
+
+        $this->Hero_model->update_slider($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+
+    }
+
+
+
+
+
+    // =========================HERO CAPTION END===========================
+
 
     // =========================BLOG POSTS START===========================
 
@@ -125,8 +307,20 @@ class AdminController extends CI_Controller
                 // redirect to page
                 redirect(base_url('posts'));
             } else {
-                $this->session->set_flashdata('err', "File yüklənməsində xəta!");
-                redirect($_SERVER['HTTP_REFERER']);
+                $data = [
+                    'post_title' => $title,
+                    'post_description' => $description,
+                    'post_date' => $date,
+                    'post_category' => $category,
+                    'post_status' => $status,
+                    'post_creator_id' => $_SESSION['admin_login_id'],
+                    'post_create_date' => date("Y-m-d H:i:s"),
+                ];
+                $this->Posts_model->insert($data);
+
+                $this->session->set_flashdata('success', "Post uğurla əlavə olundu");
+                
+                redirect(base_url('posts'));
             }
 
 
@@ -139,9 +333,6 @@ class AdminController extends CI_Controller
 
     public function delete_post($id)
     {
-
-        $data = $this->security->xss_clean($id);
-
         $this->Posts_model->delete_post($id);
 
     }
