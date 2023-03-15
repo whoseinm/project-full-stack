@@ -52,9 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'UserController';
 $route['home'] = 'UserController/index';
 $route['treyners'] = "UserController/trainers";
+$route['trainer_single/(.*)'] = "UserController/trainer_single/$1";
 $route['about'] = 'UserController/about';
 $route['contact'] = 'UserController/contact';
 $route['courses'] = 'UserController/courses';
+$route['course_single/(.*)'] = "UserController/course_single/$1";
 $route['blog'] = 'UserController/blog';
 $route['blog_detail'] = 'UserController/blog_detail';
 

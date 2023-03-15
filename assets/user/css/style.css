@@ -88,22 +88,22 @@ a:focus,
 }
 
 a {
-    color: #635c5c
+    color: #000!important;
 }
 
 a:hover {
-    color: #fff
+    color: #000!important;
 }
 
 a:focus,
 a:hover {
-    text-decoration: none
+    text-decoration: none!important;
 }
 
 a,
 button {
-    color: #fff;
-    outline: medium none
+    color: #000!important;
+    outline: medium none;
 }
 
 button:focus,
@@ -121,14 +121,7 @@ input:focus::-moz-placeholder {
     transition: .4s
 }
 
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-    color: inherit
-}
+
 
 ul {
     margin: 0px;

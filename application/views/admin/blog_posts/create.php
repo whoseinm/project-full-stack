@@ -38,8 +38,8 @@
                 <input type="text" id="title" name="title" class="form-control">
                 <br>
 
-                <label for="descr">Description</label>
-                <textarea name="description" class="form-control" id="descr" cols="30" rows="10"></textarea>
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="10"></textarea>
                 <br>
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left;">

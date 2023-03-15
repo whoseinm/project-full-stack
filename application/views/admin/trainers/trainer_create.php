@@ -36,10 +36,12 @@
             <form action="<?php echo base_url('trainer_create_act'); ?>" method="post" enctype="multipart/form-data">
                 <label for="trainer_name">Name</label>
                 <input type="text" id="name" name="name" class="form-control">
+                
                 <br>
 
                 <label for="descr">Treyner haqqında</label>
-                <textarea name="about" class="form-control" id="about" cols="30" rows="10"></textarea>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="10"></textarea>
+
                 <br>
 
 
@@ -73,5 +75,7 @@
     </div>
     <!--/ Bordered Table -->
 </div>
+
+
 
 <?php $this->load->view("admin/includes/admin_footer") ?>

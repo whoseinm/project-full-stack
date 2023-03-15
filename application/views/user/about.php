@@ -30,8 +30,8 @@
     </section>
 
 
-    <?php foreach($about as $item){ ?>
-          <section class="about-area1" style="width:100%!important;">
+    <?php foreach($about as $item){ if($item['about_status'] == "Active" && $item['about_id']== "12"){ ?>
+      <section class="about-area1" style="width:100%!important;">
           <div class="support-wrapper align-items-center" style="margin: 50px 0px 50px 0px; width:100%!important;">
             <div class="left-content1" style="width:82%!important; text-align:center;">
               <div class="about-icon" >
@@ -49,6 +49,10 @@
 
           </div>
         </section>
+    <?php }else { ?>
+
+    <?php } ?>
+          
     <?php } ?>
 
 

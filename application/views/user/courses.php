@@ -57,7 +57,7 @@
                       </a></h3>
                     <div class="properties__footer d-flex justify-content-between align-items-center">
                       <div class="restaurant-name">
-                        <div>
+                        <div style="margin-top:10px;">
                           <img width="40px" height="40px" style="border-radius:50%;"
                             src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
                           <p style="color:#6E7697; font-size: 17px;">
@@ -66,7 +66,7 @@
                         </div>
                       </div>
                     </div>
-                    <a href="#" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
                   </div>
                   
                 </div>
@@ -77,47 +77,10 @@
 
 
       </div>
-      <div style="display:flex; justify-content:center;">
-          <div class="col-xl-12">
-            <div class="section-tittle text-center mt-20" style="margin-bottom:30px;">
-              <a href="courses.html" class="border-btn">View More Subjects</a>
-            </div>
-          </div>
-        </div>
     </div>
 
 
-    <div class="topic-area">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-8">
-            <div class="section-tittle text-center mb-55">
-              <h2>Məşhur Kategoriyalar</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-
-        <?php foreach($get_all_categories as $item){ ?>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="single-topic text-center mb-30">
-              <div class="topic-img">
-                <div style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; width:270px; border-radius: 10px;"></div>
-                <div class="topic-content-box">
-                  <div class="topic-content">
-                    <h3><a href="#" style="text-decoration: none;"><?php echo $item['category_title'] ?></a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php } ?>
-
-          
-        </div>
-
-      </div>
-    </div>
+    
 
 
     

@@ -39,7 +39,7 @@
                 <br>
 
                 <label for="descr">About course</label>
-                <textarea name="description" class="form-control" id="descr" cols="30" rows="10"></textarea>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="10"></textarea>
                 <br>
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left;">

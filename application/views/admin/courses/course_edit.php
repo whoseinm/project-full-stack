@@ -41,8 +41,8 @@
                 <br>
 
 
-                <label for="descr">About</label>
-                <textarea name="description" class="form-control" id="about" cols="30"
+                <label for="descr">Description</label>
+                <textarea name="description" class="form-control" id="description" cols="30"
                     rows="10"><?php echo $course_single['course_description']; ?></textarea>
                 <br>
 
@@ -57,25 +57,12 @@
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px 10px">
                     <label for="cate">Category</label>
                     <select name="category" id="cate" class="form-control">
-                        <option <?php if ($get_single_data['course_category'] == "") {
-                            echo "SELECTED";
-                        } ?> value="">
-                            -SELECT-</option>
-                        <option <?php if ($get_single_data['course_category'] == "Big Data") {
-                            echo "SELECTED";
-                        } ?>
-                            value="Big Data">Big Data</option>
-                        <option <?php if ($get_single_data['course_category'] == "Mobil developer") {
-                            echo "SELECTED";
-                        } ?>
-                            value="Mobil developer">Mobil developer</option>
-                        <option <?php if ($get_single_data['course_category'] == "Full/Stack Developer") {
-                            echo "SELECTED";
-                        } ?> value="Full/Stack Developer">Full/Stack Developer</option>
-
-                        <option <?php if ($get_single_data['course_category'] == "QA Mühəndisliyi") { 
-                            echo "SELECTED";
-                        } ?> value="QA Mühəndisliyi">QA Mühəndisliyi</option>
+                        <option value="">-SELECT-</option>
+                        <?php foreach($get_all_categories as $item){ ?>
+                            <option <?php if($item['category_title'] == $get_single_data['course_category']){
+                                echo "SELECTED";
+                            } ?> value="<?php echo $item['category_title'];?>"><?php echo $item['category_title'] ?></option>
+                       <?php } ?>
                     </select>
                 </div>
 

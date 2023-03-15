@@ -12,15 +12,17 @@
             <div class="col-xl-6 col-lg-7 col-md-12">
               <div class="hero__caption">
                 <?php foreach ($slider as $item) { ?>
-                  <?php if ($item['slider_status'] == "Active") { ?>
+                  <?php if ($item['slider_status'] == "Active") { if($item['slider_id'] == "1"){ ?>
                     <h1 data-animation="fadeInLeft" data-delay="0.2s">
-                      <?php echo $item['slider_title'] ?>
-                    </h1>
-                    <p data-animation="fadeInLeft" data-delay="0.4s">
-                      <?php echo $item['slider_description'] ?>
-                    </p>
-                    <a href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
-                      data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
+                    <?php echo $item['slider_title'] ?>
+                  </h1>
+                  <p data-animation="fadeInLeft" data-delay="0.4s">
+                    <?php echo $item['slider_description'] ?>
+                  </p>
+                  <a href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
+                    data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
+                  <?php } ?>
+
                   <?php } else { ?>
                     <h1 data-animation="fadeInLeft" data-delay="0.2s">CourseAZ Azərbaycanın ən yaxşı kurs yeri :)</h1>
                     <p data-animation="fadeInLeft" data-delay="0.4s">Əgər yaxşı kurslar axtarırsınızsa bizim sayta baxın :)
@@ -99,7 +101,7 @@
               <div class="properties properties2 mb-30">
                 <div class="properties__card">
                   <div class="properties__img overlay1">
-                    <a href="#"><img style="width:100%; height:250px; object-fit: cover;"
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:250px; object-fit: cover;"
                         src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
                   </div>
 
@@ -121,7 +123,7 @@
                         </div>
                       </div>
                     </div>
-                    <a href="#" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
                   </div>
 
                 </div>

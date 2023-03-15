@@ -28,6 +28,12 @@ class UserController extends CI_Controller{
         $this->load->view('user/trainers',$data);
     }
 
+    public function trainer_single($id){
+        $data['trainer_single'] = $this->Trainers_model->trainer_single($id);
+
+        $this->load->view('user/trainer_single', $data);
+    }
+
     public function about(){
         $data['about'] = $this->About_model->about();
         $data['get_all_trainers'] = $this->Trainers_model->trainers();
@@ -44,6 +50,12 @@ class UserController extends CI_Controller{
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
 
         $this->load->view('user/courses', $data);
+    }
+
+    public function course_single($id){
+        $data['course_single'] = $this->Courses_model->get_single_course($id);
+
+        $this->load->view("user/courses_single", $data);
     }
 
     public function blog(){

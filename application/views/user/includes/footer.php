@@ -10,7 +10,7 @@
                 <div class="single-footer-caption mb-30">
 
                   <div class="footer-logo mb-25">
-                    <a href="index-2.html"><img src="<?php echo base_url('assets/user/')?>img/logo/logo2_footer.png" alt=""></a>
+                    <a href="<?php echo base_url("home") ?>"><img src="<?php echo base_url('assets/user/')?>img/logo/logo2_footer.png" alt=""></a>
                   </div>
                   <div class="footer-tittle">
                     <div class="footer-pera">
@@ -29,13 +29,13 @@
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
               <div class="single-footer-caption mb-50">
                 <div class="footer-tittle">
-                  <h4>Our solutions</h4>
+                  <h4>Səhifələr</h4>
                   <ul>
-                    <li><a href="#">Design & creatives</a></li>
-                    <li><a href="#">Telecommunication</a></li>
-                    <li><a href="#">Restaurant</a></li>
-                    <li><a href="#">Programing</a></li>
-                    <li><a href="#">Architecture</a></li>
+                  <li class="active"><a href="<?php echo base_url('home')?>">Ana səhifə</a></li>
+                    <li><a href="<?php echo base_url('treyners')?>">Treynerlər</a></li>
+                    <li><a href="<?php echo base_url('courses')?>">Kurslar</a></li>
+                    <li><a href="<?php echo base_url('about')?>">Haqqımızda</a></li>
+                    <li><a href="<?php echo base_url('blog')?>">Eventlər</a></li>
                   </ul>
                 </div>
               </div>
@@ -43,13 +43,11 @@
             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
               <div class="single-footer-caption mb-50">
                 <div class="footer-tittle">
-                  <h4>Support</h4>
+                  <h4>Dəstək</h4>
                   <ul>
-                    <li><a href="#">Design & creatives</a></li>
-                    <li><a href="#">Telecommunication</a></li>
-                    <li><a href="#">Restaurant</a></li>
-                    <li><a href="#">Programing</a></li>
-                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Əlaqə</a></li>
+                    <li><a href="tel:+9940555283545">Mobil əlaqə</a></li>
+                    <li><a href="mailto:">E-Mail</a></li>
                   </ul>
                 </div>
               </div>
@@ -111,6 +109,9 @@
   <script src="<?php echo base_url('assets/user/')?>js/mail-script.js"></script>
   <script src="<?php echo base_url('assets/user/')?>js/jquery.ajaxchimp.min.js"></script>
 
+<!-- CKEDITOR -->
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+<!-- CKEDITOR -->
   <script src="<?php echo base_url('assets/user/')?>js/plugins.js"></script>
   <script src="<?php echo base_url('assets/user/')?>js/main.js"></script>
 

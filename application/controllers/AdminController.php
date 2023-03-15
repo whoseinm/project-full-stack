@@ -66,17 +66,20 @@ class AdminController extends CI_Controller
 
     // =========================HERO CAPTION START===========================
 
-    public function hero_caption(){
+    public function hero_caption()
+    {
         $data['slides'] = $this->Hero_model->slides();
 
-        $this->load->view('admin/hero_caption/hero_caption',$data);
+        $this->load->view('admin/hero_caption/hero_caption', $data);
     }
 
-    public function hero_caption_create(){
+    public function hero_caption_create()
+    {
         $this->load->view('admin/hero_caption/hero_caption_create');
     }
 
-    public function here_caption_create_act(){
+    public function here_caption_create_act()
+    {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $link = $_POST['link'];
@@ -122,7 +125,7 @@ class AdminController extends CI_Controller
             } else {
                 $data = [
                     'slider_title' => $title,
-                    'slider_link'  => $link,
+                    'slider_link' => $link,
                     'slider_description' => $description,
                     'slider_status' => $status,
                 ];
@@ -141,19 +144,22 @@ class AdminController extends CI_Controller
         }
     }
 
-    public function hero_detail($id){
+    public function hero_detail($id)
+    {
         $data['hero_single'] = $this->Hero_model->hero_single($id);
 
-        $this->load->view('admin/hero_caption/hero_single',$data);
+        $this->load->view('admin/hero_caption/hero_single', $data);
     }
 
-    public function hero_update($id){
+    public function hero_update($id)
+    {
         $data['hero_single'] = $this->Hero_model->hero_single($id);
 
-        $this->load->view('admin/hero_caption/hero_edit',$data);
+        $this->load->view('admin/hero_caption/hero_edit', $data);
     }
 
-    public function hero_update_act($id){
+    public function hero_update_act($id)
+    {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $link = $_POST['link'];
@@ -181,14 +187,14 @@ class AdminController extends CI_Controller
                 $data = [
                     'slider_title' => $title,
                     'slider_description' => $description,
-                    'slider_link'  => $link,
+                    'slider_link' => $link,
                     'slider_status' => $status,
                     'slider_img' => $file_name,
                     'slider_img_ext' => $file_ext,
                 ];
 
                 // Update in DATABASE code
-                $this->Hero_model->update_slider($id,$data);
+                $this->Hero_model->update_slider($id, $data);
 
 
                 // notification for post added successfully
@@ -199,12 +205,12 @@ class AdminController extends CI_Controller
             } else {
                 $data = [
                     'slider_title' => $title,
-                    'slider_link'  => $link,
+                    'slider_link' => $link,
                     'slider_description' => $description,
                     'slider_status' => $status,
                 ];
 
-                $this->Hero_model->update_slider($id,$data);
+                $this->Hero_model->update_slider($id, $data);
 
                 $this->session->set_flashdata('success', "Slide uğurla yeniləndi");
 
@@ -218,7 +224,8 @@ class AdminController extends CI_Controller
         }
     }
 
-    public function hero_caption_delete($id){
+    public function hero_caption_delete($id)
+    {
         $this->Hero_model->hero_caption_delete($id);
     }
 
@@ -319,7 +326,7 @@ class AdminController extends CI_Controller
                 $this->Posts_model->insert($data);
 
                 $this->session->set_flashdata('success', "Post uğurla əlavə olundu");
-                
+
                 redirect(base_url('posts'));
             }
 
@@ -462,11 +469,11 @@ class AdminController extends CI_Controller
     public function trainer_create_act()
     {
         $name_surname = $_POST['name'];
-        $about = $_POST['about'];
+        $description = $_POST['description'];
         $status = $_POST['status'];
-        
 
-        if (!empty($name_surname) && !empty($about) && !empty($status)) {
+
+        if (!empty($name_surname) && !empty($description) && !empty($status)) {
 
             $config['upload_path'] = './uploads/trainers/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -487,7 +494,7 @@ class AdminController extends CI_Controller
 
                 $data = [
                     'trainer_name' => $name_surname,
-                    'trainer_about' => $about,
+                    'trainer_about' => $description,
                     'trainer_status' => $status,
                     'trainer_img' => $file_name,
                     'trainer_img_ext' => $file_ext,
@@ -504,8 +511,22 @@ class AdminController extends CI_Controller
                 // redirect to page
                 redirect(base_url('trainers'));
             } else {
-                $this->session->set_flashdata('err', "File yüklənməsində xəta!");
-                redirect($_SERVER['HTTP_REFERER']);
+                $data = [
+                    'trainer_name' => $name_surname,
+                    'trainer_about' => $description,
+                    'trainer_status' => $status,
+                    'trainer_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                // insert to DATABASE code
+                $this->Trainers_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Treyner uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('trainers'));
             }
 
 
@@ -541,11 +562,11 @@ class AdminController extends CI_Controller
     public function trainer_edit_act($id)
     {
         $name_surname = $_POST['name'];
-        $about = $_POST['about'];
+        $description = $_POST['description'];
         $status = $_POST['status'];
 
 
-        if (!empty($name_surname) && !empty($about) && !empty($status)) {
+        if (!empty($name_surname) && !empty($description) && !empty($status)) {
 
 
             $config['upload_path'] = "./uploads/trainers/";
@@ -562,7 +583,7 @@ class AdminController extends CI_Controller
 
                 $data = [
                     'trainer_name' => $name_surname,
-                    'trainer_about' => $about,
+                    'trainer_about' => $description,
                     'trainer_status' => $status,
                     'trainer_img' => $file_name,
                     'trainer_img_ext' => $file_ext,
@@ -580,18 +601,18 @@ class AdminController extends CI_Controller
 
                 $data = [
                     'trainer_name' => $name_surname,
-                    'trainer_about' => $about,
+                    'trainer_about' => $description,
                     'trainer_status' => $status,
                 ];
 
                 // update in db info
                 $this->Trainers_model->update_trainer($id, $data);
 
-                $this->session->set_flashdata('success', "Xəbər uğurla yeniləndi!");
+                $this->session->set_flashdata('success', "Trainer uğurla yeniləndi!");
 
                 redirect(base_url('trainers'));
             }
-            
+
 
         } else {
             $this->session->set_flashdata('err', "Boşluq buraxmayın!");
@@ -617,12 +638,12 @@ class AdminController extends CI_Controller
 
     // =========================TRAINERS END===========================
 
-    
-    
+
+
     // =========================ABOUT END===========================
-    
-    
-    
+
+
+
     public function about_list()
     {
         $data['about'] = $this->About_model->about();
@@ -634,13 +655,13 @@ class AdminController extends CI_Controller
     {
         $this->load->view("admin/about/about_create");
     }
-    
+
     public function about_create_act()
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $status = $_POST['status'];
-        
+
 
         if (!empty($title) && !empty($description) && !empty($status)) {
 
@@ -680,8 +701,22 @@ class AdminController extends CI_Controller
                 // redirect to page
                 redirect(base_url('admin_about'));
             } else {
-                $this->session->set_flashdata('err', "File yüklənməsində xəta!");
-                redirect($_SERVER['HTTP_REFERER']);
+                $data = [
+                    'about_title' => $title,
+                    'about_description' => $description,
+                    'about_status' => $status,
+                    'about_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                // insert to DATABASE code
+                $this->About_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('admin_about'));
             }
 
 
@@ -788,8 +823,8 @@ class AdminController extends CI_Controller
         redirect($_SERVER['HTTP_REFERER']);
 
     }
-    
-    
+
+
     // =========================ABOUT END===========================
 
 
@@ -801,7 +836,7 @@ class AdminController extends CI_Controller
     {
         $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
         $data['get_all_courses'] = $this->Courses_model->get_all_courses();
-        $this->load->view("admin/courses/courses",$data);
+        $this->load->view("admin/courses/courses", $data);
     }
 
     public function course_create()
@@ -810,7 +845,7 @@ class AdminController extends CI_Controller
         $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
         $this->load->view("admin/courses/course_create", $data);
     }
-    
+
     public function course_create_act()
     {
         $course_name = $_POST['title'];
@@ -819,7 +854,7 @@ class AdminController extends CI_Controller
         $category = $_POST['category'];
         $trainer = $_POST['trainer'];
         $status = $_POST['status'];
-        
+
 
         if (!empty($course_name) && !empty($description) && !empty($status) && !empty($category) && !empty($course_duration)) {
 
@@ -861,7 +896,7 @@ class AdminController extends CI_Controller
                 // redirect to page
                 redirect(base_url('courses_admin'));
 
-                
+
             } else {
 
                 $data = [
@@ -878,7 +913,7 @@ class AdminController extends CI_Controller
 
 
                 // notification for post added successfully
-                $this->session->set_flashdata('success', "About uğurla əlavə olundu");
+                $this->session->set_flashdata('success', "Kurs uğurla əlavə olundu");
 
                 // redirect to page
                 redirect(base_url('courses_admin'));
@@ -893,11 +928,13 @@ class AdminController extends CI_Controller
 
     }
 
-    public function course_delete($id){
+    public function course_delete($id)
+    {
         $this->Courses_model->delete_course($id);
     }
 
-    public function course_detail($id){
+    public function course_detail($id)
+    {
         $data['course_single'] = $this->Courses_model->get_single_course($id);
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
 
@@ -924,7 +961,8 @@ class AdminController extends CI_Controller
         $category = $_POST['category'];
         $trainer = $_POST['trainer'];
         $status = $_POST['status'];
-        if (!empty($course_name) && !empty($description) && !empty($status) && !empty($category) && !empty($course_duration)) {
+
+        if (!empty($course_name) && !empty($description) && !empty($status) && !empty($trainer) && !empty($category) && !empty($course_duration)) {
 
             $config['upload_path'] = './uploads/courses/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -955,7 +993,7 @@ class AdminController extends CI_Controller
                 ];
 
                 // insert to DATABASE code
-                $this->Courses_model->update_course($id,$data);
+                $this->Courses_model->update_course($id, $data);
 
 
                 // notification for post added successfully
@@ -964,7 +1002,7 @@ class AdminController extends CI_Controller
                 // redirect to page
                 redirect(base_url('courses_admin'));
 
-                
+
             } else {
 
                 $data = [
@@ -976,7 +1014,7 @@ class AdminController extends CI_Controller
                     'course_trainer' => $trainer,
                 ];
 
-                $this->Courses_model->update_course($id,$data);
+                $this->Courses_model->update_course($id, $data);
 
                 $this->session->set_flashdata('success', "Course uğurla yeniləndi!");
 
@@ -1014,26 +1052,28 @@ class AdminController extends CI_Controller
     // ========================CONTACT START==========================
 
 
-    public function contact_admin(){
+    public function contact_admin()
+    {
         $data['get_messages'] = $this->Contact_model->get_all_messages();
 
-        $this->load->view('admin/contact/messages',$data);
+        $this->load->view('admin/contact/messages', $data);
     }
 
-    public function contact_message_act(){
+    public function contact_message_act()
+    {
         $message = $_POST['message'];
         $name = $_POST['name'];
         $email = $_POST['email'];
         $subject = $_POST['subject'];
 
-        if(!empty($message) && !empty($name) && !empty($email) && !empty($subject)){
-            $data=[
+        if (!empty($message) && !empty($name) && !empty($email) && !empty($subject)) {
+            $data = [
                 'contact_message' => $message,
-                'contact_name'    => $name,
-                'contact_email'   => $email,
-                'contact_date'    => date("Y-m-d H:i:s"),
+                'contact_name' => $name,
+                'contact_email' => $email,
+                'contact_date' => date("Y-m-d H:i:s"),
                 'contact_subject' => $subject,
-                'contact_status'  => "Müraciət cavablandırılmayıb"
+                'contact_status' => "Müraciət cavablandırılmayıb"
             ];
 
             // insert to DATABASE code
@@ -1048,39 +1088,43 @@ class AdminController extends CI_Controller
         }
     }
 
-    public function contact_message_detail($id){
+    public function contact_message_detail($id)
+    {
         $data['get_single_message'] = $this->Contact_model->contact_single($id);
-        
+
         $this->load->view('admin/contact/message_single', $data);
     }
 
-    public function contact_viewed($id){
-    
-        $data=[
+    public function contact_viewed($id)
+    {
+
+        $data = [
             'contact_status' => 'Müraciət cavablandırılıb',
             'contact_viewer_id' => $_SESSION['admin_login_id'],
             'contact_viewed_date' => date('Y-m-d H:i:s')
         ];
 
-        $this->Contact_model->viewed($id,$data);
+        $this->Contact_model->viewed($id, $data);
 
         redirect(base_url('admin_contact'));
-        
+
     }
 
-    public function contact_view_delete($id){
+    public function contact_view_delete($id)
+    {
         $data = [
             'contact_status' => 'Müraciət cavablandırılmayıb',
             'contact_viewed_date' => '',
             'contact_viewer_id' => '',
         ];
 
-        $this->Contact_model->view_delete($id,$data);
+        $this->Contact_model->view_delete($id, $data);
 
         redirect(base_url('admin_contact'));
     }
 
-    public function contact_delete($id){
+    public function contact_delete($id)
+    {
         $this->Contact_model->contact_delete($id);
     }
 

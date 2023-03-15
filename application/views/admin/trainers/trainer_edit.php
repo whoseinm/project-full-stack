@@ -39,7 +39,7 @@
                 <br>
 
                 <label for="descr">About</label>
-                <textarea name="about" class="form-control" id="about" cols="30" rows="10" ><?php echo $trainer_single['trainer_about']; ?></textarea>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="10" ><?php echo $trainer_single['trainer_about']; ?></textarea>
                 <br>
 
 

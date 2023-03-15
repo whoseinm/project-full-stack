@@ -49,21 +49,14 @@
                   </div>
 
                   <div class="properties__caption">
-                    <h3><a href="#">
-                        <?php echo $item['trainer_name'] ?>
-                      </a></h3>
+                    <h3 style="text-align:center;"><?php echo $item['trainer_name'] ?></h3>
+                    
                     <div class="properties__footer d-flex justify-content-between align-items-center">
                       <div class="restaurant-name">
-                        <div>
-                          <img width="40px" height="40px" style="border-radius:50%;"
-                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
-                          <p style="color:#6E7697; font-size: 17px;">
-                            <?php echo $item['trainer_name'] ?>
-                          </p>
-                        </div>
+
                       </div>
                     </div>
-                    <a href="#" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("trainer_single/".$item['trainer_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
                   </div>
                   
                 </div>

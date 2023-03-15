@@ -42,7 +42,7 @@
 
 
                 <label for="descr"><b>About</b></label>
-                <textarea name="description" id="descr" class="form-control" cols="30"
+                <textarea name="description" id="description" class="form-control" cols="30"
                     rows="10"><?php echo $hero_single['slider_description']; ?></textarea>
 
                 <label for="title"><b>Link</b></label>
