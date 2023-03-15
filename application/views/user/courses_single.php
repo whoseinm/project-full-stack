@@ -37,7 +37,7 @@
                 <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
                         <div class="img col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <img style="height: 550px; width:100%; object-fit: cover; border-radius:10px;"
+                            <img style="height: 550px; width:100%; object-fit: contain; border-radius:10px;"
                                 src="<?php echo base_url('uploads/courses/' . $course_single['course_img']) ?>" alt="">
                         </div>
 

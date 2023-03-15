@@ -30,6 +30,7 @@ class UserController extends CI_Controller{
 
     public function trainer_single($id){
         $data['trainer_single'] = $this->Trainers_model->trainer_single($id);
+        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
 
         $this->load->view('user/trainer_single', $data);
     }
@@ -59,11 +60,16 @@ class UserController extends CI_Controller{
     }
 
     public function blog(){
-        $this->load->view('user/blog');
+        $data['get_all_posts'] = $this->Posts_model->posts();
+        $data['admin'] = $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+
+        $this->load->view('user/blog',$data);
     }
 
-    public function blog_detail(){
-        $this->load->view('user/not_main/blog_details');
+    public function blog_detail($id){
+        $data['blog_detail'] = $this->Posts_model->post_single($id);
+
+        $this->load->view('user/not_main/blog_details', $data);
     }
 
 }

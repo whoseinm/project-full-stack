@@ -45,7 +45,7 @@
               <div class="properties properties2 mb-30">
                 <div class="properties__card">
                   <div class="properties__img overlay1">
-                    <a href="#"><img style="width:100%; height:250px; object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:250px; object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
                   </div>
 
                   <div class="properties__caption">
@@ -60,9 +60,9 @@
                         <div style="margin-top:10px;">
                           <img width="40px" height="40px" style="border-radius:50%;"
                             src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
-                          <p style="color:#6E7697; font-size: 17px;">
+                          <a href="<?php echo base_url("trainer_single/".$item['trainer_id']) ?>" style="color:#6E7697; font-size: 17px;">
                             <?php echo $item['trainer_name'] ?>
-                          </p>
+                          </a>
                         </div>
                       </div>
                     </div>
