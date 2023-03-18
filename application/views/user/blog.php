@@ -33,44 +33,79 @@
       <div class="row">
 
         <?php foreach ($get_all_posts as $item) { ?>
-          <div class="col-lg-12 mb-5 mb-lg-0">
-            <div class="blog_left_sidebar">
-              <article class="blog_item">
-                <div class="blog_item_img">
-                  <a href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
-                    <img class="card-img rounded-0" style="height:450px; object-fit: cover; object-position: top;"
-                      src="<?php echo base_url('uploads/posts/' . $item['post_img']) ?>" alt="">
 
-                  </a>
+          <?php if ($item['post_img']) { ?>
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="blog_left_sidebar">
+                <article class="blog_item">
+                  <div class="blog_item_img">
+                    <a href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
+                      <img class="card-img rounded-0" style="height:450px; object-fit: cover; object-position: top;"
+                        src="<?php echo base_url('uploads/posts/' . $item['post_img']) ?>" alt="">
 
-                </div>
-                <div class="blog_details">
-                  <a class="d-inline-block" href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
-                    <h2 class="blog-head" style="color: #2d2d2d;">
-                      <?php echo $item['post_title'] ?>
-                    </h2>
-                  </a>
-                  <p>
-                    <?php $title = mb_strimwidth($item['post_description'], 0, 100, '...');
-                    echo $title ?>
-                  </p>
-                  <ul class="blog-info-link">
-                    <li><a href="#"><i class="fa fa-user"></i>
-                        <?php echo $item['post_category'] ?>
-                      </a></li>
-                    <li><a href="#"><i class="fa fa-comments"></i>
-                        <?php echo $admin['a_name'] ?>
-                      </a></li>
-                  </ul>
-                </div>
-              </article>
+                    </a>
+
+                  </div>
+                  <div class="blog_details">
+                    <a class="d-inline-block" href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
+                      <h2 class="blog-head" style="color: #2d2d2d;">
+                        <?php echo $item['post_title'] ?>
+                      </h2>
+                    </a>
+                    <p>
+                      <?php $title = mb_strimwidth($item['post_description'], 0, 100, '...');
+                      echo $title ?>
+                    </p>
+                    <ul class="blog-info-link">
+                      <li><a href="#"><i class="fa fa-user"></i>
+                          <?php echo $item['post_category'] ?>
+                        </a></li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
             </div>
-          </div>
+
+          <?php } else{ ?>
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="blog_left_sidebar">
+                <article class="blog_item">
+                  <div class="blog_item_img">
+                    <a href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
+                      <img class="card-img rounded-0" style="height:450px; object-fit: contain; object-position: center;"
+                        src="<?php echo base_url('uploads/posts/logo.png') ?>" alt="">
+
+                    </a>
+
+                  </div>
+                  <div class="blog_details">
+                    <a class="d-inline-block" href="<?php echo base_url("blog_detail/" . $item['post_id']) ?>">
+                      <h2 class="blog-head" style="color: #2d2d2d;">
+                        <?php echo $item['post_title'] ?>
+                      </h2>
+                    </a>
+                    <p>
+                      <?php $title = mb_strimwidth($item['post_description'], 0, 100, '...');
+                      echo $title ?>
+                    </p>
+                    <ul class="blog-info-link">
+                      <li><a href="#"><i class="fa fa-user"></i>
+                          <?php echo $item['post_category'] ?>
+                        </a></li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+          <?php } ?>
+
         <?php } ?>
 
 
 
-        
+
       </div>
     </div>
   </section>

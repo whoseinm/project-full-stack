@@ -25,6 +25,13 @@ class Hero_model extends CI_Model{
     
     public function slides(){
         return $this->db
+        ->where('slider_status', "Active")
+        ->order_by('slider_id', 'DESC')
+        ->get('slider')->row_array();
+    }
+
+    public function slides_admin(){
+        return $this->db
         ->order_by('slider_id', 'DESC')
         ->get('slider')->result_array();
     }

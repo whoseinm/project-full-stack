@@ -11,7 +11,6 @@ class About_model extends CI_Model{
 
     public function about(){
         return $this->db
-        ->where('about_creator_id',$_SESSION['admin_login_id'])
         ->order_by('about_id', 'DESC')
         ->get('about')
         ->result_array();

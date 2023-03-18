@@ -11,7 +11,6 @@ class Trainers_model extends CI_Model{
 
     public function trainers(){
     return $this->db
-        ->where('trainer_creator_id',$_SESSION['admin_login_id'])
         ->order_by('trainer_id', 'DESC')
         ->get('trainers')
         ->result_array();

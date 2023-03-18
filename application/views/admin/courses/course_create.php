@@ -59,13 +59,13 @@
                         <?php } ?>
                     </select>
                 </div>
-
+                            
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px 10px">
                     <label for="cate">Category</label>
                     <select name="category" id="cate" class="form-control">
                         <option value="">-SELECT-</option>
                         <?php foreach ($get_all_categories as $item) { ?>
-                            <option value="<?php echo $item['category_title']; ?>"><?php echo $item['category_title']; ?>
+                            <option value="<?php echo $item['category_id']; ?>"><?php echo $item['category_title']; ?>
                             </option>
                         <?php } ?>
                     </select>

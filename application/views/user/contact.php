@@ -91,16 +91,16 @@
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
                             <h3><a href="tel:+9940555283545">(+994 55) 528 35 45</a></h3>
-                            <p>Mon to Fri 9am to 6pm</p>
+                            <p>Səhər saat 9 axşam saat 6 arası</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
                             <h3><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
-                                    data-cfemail="780b0d0808170a0c381b1714170a14111a561b1715">[email&#160;protected]</a>
+                                    data-cfemail="780b0d0808170a0c381b1714170a14111a561b1715">E-mail</a>
                             </h3>
-                            <p>Send us your query anytime!</p>
+                            <p>İstənilən vaxt sorğunuzu bizə göndərin!</p>
                         </div>
                     </div>
                 </div>

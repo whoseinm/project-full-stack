@@ -37,7 +37,6 @@
 
                         <tr>
                             <th>Title</th>
-                            <th>Img</th>
                             <th>Status</th>
                             <th>Actions</th>
 
@@ -48,17 +47,6 @@
                             <tr>
                                 <td>
                                     <?php echo $item['slider_title'] ?>
-                                </td>
-                                <td>
-                                    <?php if ($item["slider_img"]) { ?>
-                                        <img width="70px" height="60px" style="object-fit: cover;"
-                                            src="<?php echo base_url('uploads/slider/' . $item['slider_img']); ?>"
-                                            alt="img"></img>
-                                    <?php } else { ?>
-                                        <img width="80px" height="60px" style="object-fit: cover;"
-                                            src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg"
-                                            alt="img">
-                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($item['slider_status'] == "Active") { ?>

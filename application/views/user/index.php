@@ -11,8 +11,8 @@
           <div class="row">
             <div class="col-xl-6 col-lg-7 col-md-12">
               <div class="hero__caption">
-                <?php foreach ($slider as $item) { ?>
-                  <?php if ($item['slider_status'] == "Active") { if($item['slider_id'] == "1"){ ?>
+
+                  <?php if ($item) {  ?>
                     <h1 data-animation="fadeInLeft" data-delay="0.2s">
                     <?php echo $item['slider_title'] ?>
                   </h1>
@@ -21,7 +21,6 @@
                   </p>
                   <a href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
                     data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
-                  <?php } ?>
 
                   <?php } else { ?>
                     <h1 data-animation="fadeInLeft" data-delay="0.2s">CourseAZ Azərbaycanın ən yaxşı kurs yeri :)</h1>
@@ -29,11 +28,7 @@
                     </p>
                     <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft"
                       data-delay="0.7s">Kurslar</a>
-                    <div class="img">
-                      <img src="<?php echo $item['slider_img'] ?>" alt="">
-                    </div>
                   <?php } ?>
-                <?php } ?>
               </div>
 
             </div>
@@ -130,6 +125,7 @@
               </div>
             </div>
           <?php } ?>
+          
         <?php } ?>
 
       </div>
@@ -150,16 +146,15 @@
         </div>
       </div>
       <div class="row">
-        <?php foreach ($get_all_categories as $item) { ?>
-          <div class="col-lg-3 col-md-4 col-sm-6">
+        <?php foreach ($get_limit_10_category as $item) { ?>
+          <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6">
             <div class="single-topic text-center mb-30">
               <div class="topic-img">
-                <div
-                  style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; width:270px; border-radius: 10px;">
+                <div class="bg_gradient" style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; border-radius: 10px;">
                 </div>
                 <div class="topic-content-box">
                   <div class="topic-content">
-                    <h3><a href="#" style="text-decoration: none;">
+                    <h3><a href="<?php echo base_url("categories/".$item['category_id']) ?>" style="text-decoration: none;">
                         <?php echo $item['category_title'] ?>
                       </a></h3>
                   </div>

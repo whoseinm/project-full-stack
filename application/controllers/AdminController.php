@@ -68,7 +68,7 @@ class AdminController extends CI_Controller
 
     public function hero_caption()
     {
-        $data['slides'] = $this->Hero_model->slides();
+        $data['slides'] = $this->Hero_model->slides_admin();
 
         $this->load->view('admin/hero_caption/hero_caption', $data);
     }
@@ -835,7 +835,8 @@ class AdminController extends CI_Controller
     public function courses()
     {
         $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
-        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
+        $data['get_limit_10_category'] = $this->Courses_model->get_limit_10_category();
+        
         $this->load->view("admin/courses/courses", $data);
     }
 
@@ -843,6 +844,7 @@ class AdminController extends CI_Controller
     {
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
         $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
+
         $this->load->view("admin/courses/course_create", $data);
     }
 
@@ -857,6 +859,13 @@ class AdminController extends CI_Controller
 
 
         if (!empty($course_name) && !empty($description) && !empty($status) && !empty($category) && !empty($course_duration)) {
+
+            $check_category = $this->db->where('category_id', $category)->get('category')->row_array();
+            
+            if(empty($check_category)){
+                $this->session->set_flashdata('err', "Category tapilmadi");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
 
             $config['upload_path'] = './uploads/courses/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -878,7 +887,7 @@ class AdminController extends CI_Controller
                     'course_name' => $course_name,
                     'course_description' => $description,
                     'course_status' => $status,
-                    'course_category' => $category,
+                    'course_category_id' => $category,
                     'course_duration' => $course_duration,
                     'course_img' => $file_name,
                     'course_img_ext' => $file_ext,
@@ -903,6 +912,7 @@ class AdminController extends CI_Controller
                     'course_name' => $course_name,
                     'course_description' => $description,
                     'course_status' => $status,
+                    'course_category_id' => $category,
                     'course_duration' => $course_duration,
                     'course_trainer' => $trainer,
                     'course_creator_id' => $_SESSION['admin_login_id'],
@@ -937,16 +947,20 @@ class AdminController extends CI_Controller
     {
         $data['course_single'] = $this->Courses_model->get_single_course($id);
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
-
-
+        // print_r($data['course_single']);
+        // die();
+        
         $this->load->view('admin/courses/course_detail', $data);
     }
 
     public function course_edit($id)
     {
         $data['course_single'] = $this->Courses_model->get_single_course($id);
+        
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+        
         $data['get_single_data'] = $this->Courses_model->get_single_data($id);
+        
         $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
 
 
@@ -984,7 +998,7 @@ class AdminController extends CI_Controller
                     'course_name' => $course_name,
                     'course_description' => $description,
                     'course_status' => $status,
-                    'course_category' => $category,
+                    'course_category_id' => $category,
                     'course_duration' => $course_duration,
                     'course_img' => $file_name,
                     'course_img_ext' => $file_ext,
@@ -1009,9 +1023,10 @@ class AdminController extends CI_Controller
                     'course_name' => $course_name,
                     'course_description' => $description,
                     'course_status' => $status,
-                    'course_category' => $category,
+                    'course_category_id' => $category,
                     'course_duration' => $course_duration,
                     'course_trainer' => $trainer,
+                    'course_creator_id' => $_SESSION['admin_login_id'],
                 ];
 
                 $this->Courses_model->update_course($id, $data);

@@ -34,33 +34,65 @@
     <section class="blog_area single-post-area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 posts-list">
-                    <div class="single-post">
-                        <div class="feature-img">
-                            <img class="img-fluid" width="100%"
-                                style="height: 700px; object-fit:cover; object-position: top;"
-                                src="<?php echo base_url('uploads/posts/' . $blog_detail['post_img']) ?>" alt="">
-                        </div>
-                        <div class="blog_details">
-                            <p style="font-size: 16px;">
-                                <?php echo $blog_detail['post_description'] ?>
-                            </p>
+                <?php if ($blog_detail['post_img']) { ?>
+                    <div class="col-lg-12 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid" width="100%"
+                                    style="height: 700px; object-fit:cover; object-position: top;"
+                                    src="<?php echo base_url('uploads/posts/' . $blog_detail['post_img']) ?>" alt="">
+                            </div>
+                            <div class="blog_details">
+                                <p style="font-size: 16px;">
+                                    <?php echo $blog_detail['post_description'] ?>
+                                </p>
 
-                        </div>
-                        <div class="blog_details">
-                            <p style="font-size: 16px;">
-                                Paylaşıldığı Tarix:
-                                <b><?php echo $blog_detail['post_date'] ?></b> 
-                            </p>
+                            </div>
+                            <div class="blog_details">
+                                <p style="font-size: 16px;">
+                                    Paylaşıldığı Tarix:
+                                    <b>
+                                        <?php echo $blog_detail['post_date'] ?>
+                                    </b>
+                                </p>
 
+                            </div>
                         </div>
+
                     </div>
+                <?php } else { ?>
+                    <div class="col-lg-12 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid" width="100%"
+                                    style="height: 700px; object-fit:contain; object-position: center;"
+                                    src="<?php echo base_url('uploads/posts/logo.png') ?>" alt="">
+                            </div>
+                            <div class="blog_details">
+                                <p style="font-size: 16px;">
+                                    <?php echo $blog_detail['post_description'] ?>
+                                </p>
 
-                </div>
+                            </div>
+                            <div class="blog_details">
+                                <p style="font-size: 16px;">
+                                    Paylaşıldığı Tarix:
+                                    <b>
+                                    <?php echo date("d-m-Y", strtotime($blog_detail['post_date'])) ?>
+                                    </b>
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                <?php } ?>
+
             </div>
 
-            <a href="<?php echo base_url("blog")?>">
-                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; border-radius: 10px; color:white; background:#4255A4; cursor: pointer;">Back</button>
+            <a href="<?php echo base_url("blog") ?>">
+                <button
+                    style="width: 100%; padding: 5px 15px; outline: none; border: none; border-radius: 10px; color:white; background:#4255A4; cursor: pointer;">Back</button>
             </a>
 
         </div>

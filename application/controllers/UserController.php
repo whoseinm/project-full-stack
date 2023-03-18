@@ -16,8 +16,8 @@ class UserController extends CI_Controller{
 
     public function index(){
         $data['get_all_courses'] = $this->Courses_model->get_all_courses();
-        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
-        $data['slider'] = $this->Hero_model->slides();
+        $data['get_limit_10_category'] = $this->Courses_model->get_limit_10_category();
+        $data['item'] = $this->Hero_model->slides();
 
         $this->load->view('user/index',$data);
     }
@@ -53,6 +53,12 @@ class UserController extends CI_Controller{
         $this->load->view('user/courses', $data);
     }
 
+    public function categories($id){
+        $data['get_all_courses'] = $this->Courses_model->get_category_courses($id);
+        
+        $this->load->view('user/categories', $data);
+    }
+
     public function course_single($id){
         $data['course_single'] = $this->Courses_model->get_single_course($id);
 
@@ -61,7 +67,6 @@ class UserController extends CI_Controller{
 
     public function blog(){
         $data['get_all_posts'] = $this->Posts_model->posts();
-        $data['admin'] = $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
 
         $this->load->view('user/blog',$data);
     }

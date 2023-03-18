@@ -59,9 +59,9 @@
                     <select name="category" id="cate" class="form-control">
                         <option value="">-SELECT-</option>
                         <?php foreach($get_all_categories as $item){ ?>
-                            <option <?php if($item['category_title'] == $get_single_data['course_category']){
+                            <option <?php if($item['category_id'] == $get_single_data['course_category_id']){
                                 echo "SELECTED";
-                            } ?> value="<?php echo $item['category_title'];?>"><?php echo $item['category_title'] ?></option>
+                            } ?> value="<?php echo $item['category_id'];?>"><?php echo $item['category_title'] ?></option>
                        <?php } ?>
                     </select>
                 </div>

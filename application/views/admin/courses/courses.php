@@ -38,6 +38,7 @@
                         <tr>
                             <th>#</th>
                             <th>Course</th>
+                            <th>Category</th>
                             <th>Trainer</th>
                             <th>Course Duration</th>
                             <th>Trainer Img</th>
@@ -54,6 +55,9 @@
                                 </td>
                                 <td>
                                     <?php echo $item['course_name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $item['category_title'] ?>
                                 </td>
                                 <td>
                                     <?php echo $item['trainer_name'] ?>
