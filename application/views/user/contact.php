@@ -97,7 +97,7 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
+                            <h3><a href="mailto:office@stimul.az" class="__cf_email__"
                                     data-cfemail="780b0d0808170a0c381b1714170a14111a561b1715">E-mail</a>
                             </h3>
                             <p>İstənilən vaxt sorğunuzu bizə göndərin!</p>

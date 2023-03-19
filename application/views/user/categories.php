@@ -45,7 +45,7 @@
               <div class="properties properties2 mb-30">
                 <div class="properties__card">
                   <div class="properties__img overlay1">
-                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:250px; object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:340px; object-fit: contain;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
                   </div>
 
                   <div class="properties__caption">

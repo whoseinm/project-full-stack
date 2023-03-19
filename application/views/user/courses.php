@@ -45,7 +45,17 @@
               <div class="properties properties2 mb-30">
                 <div class="properties__card">
                   <div class="properties__img overlay1">
-                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:250px; object-fit: cover;" src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+
+                  <?php if($item['course_img']){ ?>
+                    <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                        style="width:100%; height:340px; object-fit: contain;"
+                        src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+                  <?php }else{ ?>
+                    <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                        style="width:100%; height:340px; object-fit: contain; background:white;"
+                        src="<?php echo base_url('uploads/courses/logo.png') ?>" alt=""></a>
+                  <?php } ?>
+                    
                   </div>
 
                   <div class="properties__caption">
@@ -58,17 +68,29 @@
                     <div class="properties__footer d-flex justify-content-between align-items-center">
                       <div class="restaurant-name">
                         <div style="margin-top:10px;">
-                          <img width="40px" height="40px" style="border-radius:50%;"
-                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
-                          <a href="<?php echo base_url("trainer_single/".$item['trainer_id']) ?>" style="color:#6E7697; font-size: 17px;">
-                            <?php echo $item['trainer_name'] ?>
-                          </a>
+                          <?php if ($item['trainer_img']) { ?>
+                            <img width="40px" height="40px" style="border-radius:50%; object-fit:cover;"
+                              src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
+                            <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"
+                              style="color:#6E7697; font-size: 17px;">
+                              <?php echo $item['trainer_name'] ?>
+                            </a>
+                          <?php } else { ?>
+                            <img width="40px" height="40px" style="border-radius:50%;"
+                              src="<?php echo base_url('uploads/trainers/logo.png'); ?>" alt="trainer_img">
+                            <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"
+                              style="color:#6E7697; font-size: 17px;">
+                              <?php echo $item['trainer_name'] ?>
+                            </a>
+                          <?php } ?>
+
                         </div>
                       </div>
                     </div>
-                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"
+                      class="border-btn border-btn2">Daha Çox</a>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -80,9 +102,9 @@
     </div>
 
 
-    
 
 
-    
+
+
 </main>
 <?php $this->load->view('user/includes/footer') ?>

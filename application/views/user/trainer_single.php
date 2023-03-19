@@ -67,7 +67,7 @@
                                         <div class="properties__card">
                                             <div class="properties__img">
                                                 <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
-                                                        style="width:100%; height:200px; object-fit: cover; border-radius: 20px;"
+                                                        style="width:100%; height:350px; object-fit: contain; border-radius: 20px;"
                                                         src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>"
                                                         alt=""></a>
                                             </div>

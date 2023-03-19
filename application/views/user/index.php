@@ -12,8 +12,8 @@
             <div class="col-xl-6 col-lg-7 col-md-12">
               <div class="hero__caption">
 
-                  <?php if ($item) {  ?>
-                    <h1 data-animation="fadeInLeft" data-delay="0.2s">
+                <?php if ($item) { ?>
+                  <h1 data-animation="fadeInLeft" data-delay="0.2s">
                     <?php echo $item['slider_title'] ?>
                   </h1>
                   <p data-animation="fadeInLeft" data-delay="0.4s">
@@ -22,13 +22,13 @@
                   <a href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
                     data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
 
-                  <?php } else { ?>
-                    <h1 data-animation="fadeInLeft" data-delay="0.2s">CourseAZ Azərbaycanın ən yaxşı kurs yeri :)</h1>
-                    <p data-animation="fadeInLeft" data-delay="0.4s">Əgər yaxşı kurslar axtarırsınızsa bizim sayta baxın :)
-                    </p>
-                    <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft"
-                      data-delay="0.7s">Kurslar</a>
-                  <?php } ?>
+                <?php } else { ?>
+                  <h1 data-animation="fadeInLeft" data-delay="0.2s">CourseAZ Azərbaycanın ən yaxşı kurs yeri :)</h1>
+                  <p data-animation="fadeInLeft" data-delay="0.4s">Əgər yaxşı kurslar axtarırsınızsa bizim sayta baxın :)
+                  </p>
+                  <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft"
+                    data-delay="0.7s">Kurslar</a>
+                <?php } ?>
               </div>
 
             </div>
@@ -92,40 +92,81 @@
 
         <?php foreach ($get_all_courses as $item) { ?>
           <?php if ($item['course_status'] == "Active") { ?>
-            <div class="col-lg-4">
-              <div class="properties properties2 mb-30">
-                <div class="properties__card">
-                  <div class="properties__img overlay1">
-                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>"><img style="width:100%; height:250px; object-fit: cover;"
-                        src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
-                  </div>
 
-                  <div class="properties__caption">
-                    <h3><a href="#">
-                        <p>
-                          <?php echo $item['course_duration'] ?>
-                        </p>
-                        <?php echo $item['course_name'] ?>
-                      </a></h3>
-                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                      <div class="restaurant-name">
-                        <div>
-                          <img width="40px" height="40px" style="border-radius:50%;"
-                            src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
-                          <p style="color:#6E7697; font-size: 17px;">
-                            <?php echo $item['trainer_name'] ?>
+            <?php if ($item['course_img']) { ?>
+              <div class="col-lg-4">
+                <div class="properties properties2 mb-30">
+                  <div class="properties__card">
+                    <div class="properties__img overlay1">
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                          style="width:100%; height:330px; object-fit: contain;"
+                          src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
+                    </div>
+
+                    <div class="properties__caption">
+                      <h3><a href="#">
+                          <p>
+                            <?php echo $item['course_duration'] ?>
                           </p>
+                          <?php echo $item['course_name'] ?>
+                        </a></h3>
+                      <div class="properties__footer d-flex justify-content-between align-items-center">
+                        <div class="restaurant-name">
+                          <div>
+                            <img width="40px" height="40px" style="border-radius:50%;"
+                              src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
+                            <p style="color:#6E7697; font-size: 17px;">
+                              <?php echo $item['trainer_name'] ?>
+                            </p>
+                          </div>
                         </div>
                       </div>
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"
+                        class="border-btn border-btn2">Daha Çox</a>
                     </div>
-                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
-                  </div>
 
+                  </div>
                 </div>
               </div>
-            </div>
+            <?php }else{ ?>
+              <div class="col-lg-4">
+                <div class="properties properties2 mb-30">
+                  <div class="properties__card">
+                    <div class="properties__img overlay1">
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                          style="width:100%; height:330px; object-fit: contain; background:white;"
+                          src="<?php echo base_url('uploads/courses/logo.png') ?>" alt=""></a>
+                    </div>
+
+                    <div class="properties__caption">
+                      <h3><a href="#">
+                          <p>
+                            <?php echo $item['course_duration'] ?>
+                          </p>
+                          <?php echo $item['course_name'] ?>
+                        </a></h3>
+                      <div class="properties__footer d-flex justify-content-between align-items-center">
+                        <div class="restaurant-name">
+                          <div>
+                            <img width="40px" height="40px" style="border-radius:50%;"
+                              src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
+                            <p style="color:#6E7697; font-size: 17px;">
+                              <?php echo $item['trainer_name'] ?>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"
+                        class="border-btn border-btn2">Daha Çox</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+
           <?php } ?>
-          
+
         <?php } ?>
 
       </div>
@@ -150,11 +191,13 @@
           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6">
             <div class="single-topic text-center mb-30">
               <div class="topic-img">
-                <div class="bg_gradient" style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; border-radius: 10px;">
+                <div class="bg_gradient"
+                  style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; border-radius: 10px;">
                 </div>
                 <div class="topic-content-box">
                   <div class="topic-content">
-                    <h3><a href="<?php echo base_url("categories/".$item['category_id']) ?>" style="text-decoration: none;">
+                    <h3><a href="<?php echo base_url("categories/" . $item['category_id']) ?>"
+                        style="text-decoration: none;">
                         <?php echo $item['category_title'] ?>
                       </a></h3>
                   </div>

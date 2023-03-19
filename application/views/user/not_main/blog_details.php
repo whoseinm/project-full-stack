@@ -52,7 +52,7 @@
                                 <p style="font-size: 16px;">
                                     Paylaşıldığı Tarix:
                                     <b>
-                                        <?php echo $blog_detail['post_date'] ?>
+                                        <?php echo date("d-m-Y", strtotime($blog_detail['post_date'])) ?>
                                     </b>
                                 </p>
 
@@ -78,7 +78,7 @@
                                 <p style="font-size: 16px;">
                                     Paylaşıldığı Tarix:
                                     <b>
-                                    <?php echo date("d-m-Y", strtotime($blog_detail['post_date'])) ?>
+                                        <?php echo date("d-m-Y", strtotime($blog_detail['post_date'])) ?>
                                     </b>
                                 </p>
 

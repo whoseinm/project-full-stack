@@ -835,7 +835,7 @@ class AdminController extends CI_Controller
     public function courses()
     {
         $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
-        $data['get_limit_10_category'] = $this->Courses_model->get_limit_10_category();
+        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
         
         $this->load->view("admin/courses/courses", $data);
     }

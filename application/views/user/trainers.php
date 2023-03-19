@@ -43,22 +43,32 @@
           <?php if ($item['trainer_status'] == "Active") { ?>
             <div class="col-lg-4">
               <div class="properties properties2 mb-30">
-                <div class="properties__card">
+                <div class="properties__card" style="background:white;">
                   <div class="properties__img overlay1">
-                    <a href="#"><img style="width:100%; height:350px; object-fit: cover;" src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']) ?>" alt=""></a>
+                    <?php if($item['trainer_img']){ ?>
+                      <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"><img style="width:100%; height:350px; object-fit: cover;"
+                        src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']) ?>" alt=""></a>
+                    <?php }else{?>
+                      <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"><img style="width:100%; height:350px; object-fit: contain;"
+                        src="<?php echo base_url('uploads/trainers/logo.png') ?>" alt=""></a>
+                    <?php } ?>
+
                   </div>
 
                   <div class="properties__caption">
-                    <h3 style="text-align:center;"><?php echo $item['trainer_name'] ?></h3>
-                    
+                    <h3 style="text-align:center;">
+                      <?php echo $item['trainer_name'] ?>
+                    </h3>
+
                     <div class="properties__footer d-flex justify-content-between align-items-center">
                       <div class="restaurant-name">
 
                       </div>
                     </div>
-                    <a href="<?php echo base_url("trainer_single/".$item['trainer_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"
+                      class="border-btn border-btn2">Daha Çox</a>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -73,6 +83,6 @@
 
 
 
-    
+
 </main>
 <?php $this->load->view('user/includes/footer') ?>
