@@ -88,21 +88,21 @@ a:focus,
 }
 
 a {
-    color: #000!important;
+    color: #000;
 }
 
 a:hover {
-    color: #000!important;
+    color: #000;
 }
 
 a:focus,
 a:hover {
-    text-decoration: none!important;
+    text-decoration: none;
 }
 
 a,
 button {
-    color: #000!important;
+    color: #000;
     outline: medium none;
 }
 

@@ -226,7 +226,7 @@
         <div class="section-tittle section-tittle2 mb-20">
           <div class="front-text">
             <h2 class="">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.</h2>
-            <a href="<?php echo base_url('contact') ?>" class="btn">Əlaqə</a>
+            <a href="<?php echo base_url('contact') ?>" style="color:white;" class="btn">Əlaqə</a>
           </div>
         </div>
       </div>

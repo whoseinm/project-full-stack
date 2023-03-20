@@ -65,7 +65,7 @@
 
 
     <div id="back-top">
-      <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+      <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt" style="color:white;"></i></a>
     </div>
 
     <script src="<?php echo base_url('assets/user/') ?>js/vendor/modernizr-3.5.0.min.js"></script>

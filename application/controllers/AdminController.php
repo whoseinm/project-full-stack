@@ -275,6 +275,13 @@ class AdminController extends CI_Controller
 
         if (!empty($title) && !empty($description) && !empty($date) && !empty($category) && !empty($status)) {
 
+            $check_category = $this->db->where('post_category', $category)->get('posts')->row_array();
+
+            if(empty($check_category)){
+                $this->session->set_flashdata('err', "Category tapilmadi");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+
             $config['upload_path'] = './uploads/posts/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['encrypt_name'] = TRUE;
