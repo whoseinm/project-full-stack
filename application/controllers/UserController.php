@@ -61,6 +61,16 @@ class UserController extends CI_Controller{
 
     public function course_single($id){
         $data['course_single'] = $this->Courses_model->get_single_course($id);
+        if($data['course_single']){
+            $this->load->view('user/course_single',$data);
+        }else{
+            redirect(base_url('courses'));
+        }
+
+        $true_url = $this->uri->segment(2);
+        if (!is_numeric($true_url)) {
+            redirect(base_url('home'));
+        }
 
         $this->load->view("user/courses_single", $data);
     }

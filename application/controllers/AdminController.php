@@ -311,6 +311,9 @@ class AdminController extends CI_Controller
                     'post_create_date' => date("Y-m-d H:i:s"),
                 ];
 
+
+                $data = $this->security->xss_clean($data);
+
                 // insert to DATABASE code
                 $this->Posts_model->insert($data);
 
@@ -330,6 +333,9 @@ class AdminController extends CI_Controller
                     'post_creator_id' => $_SESSION['admin_login_id'],
                     'post_create_date' => date("Y-m-d H:i:s"),
                 ];
+
+                $data = $this->security->xss_clean($data);
+
                 $this->Posts_model->insert($data);
 
                 $this->session->set_flashdata('success', "Post uğurla əlavə olundu");
@@ -404,6 +410,9 @@ class AdminController extends CI_Controller
                     'post_update_date' => date("Y-m-d H:i:s"),
                 ];
 
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
                 // insert to db code
                 $this->Posts_model->update_post($id, $data);
 
@@ -423,6 +432,9 @@ class AdminController extends CI_Controller
                     'post_updater_id' => $_SESSION['admin_login_id'],
                     'post_update_date' => date("Y-m-d H:i:s")
                 ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
 
                 // update in db info
                 $this->Posts_model->update_post($id, $data);
@@ -508,6 +520,8 @@ class AdminController extends CI_Controller
                     'trainer_creator_id' => $_SESSION['admin_login_id'],
                 ];
 
+                $data = $this->security->xss_clean($data);
+
                 // insert to DATABASE code
                 $this->Trainers_model->insert($data);
 
@@ -524,6 +538,8 @@ class AdminController extends CI_Controller
                     'trainer_status' => $status,
                     'trainer_creator_id' => $_SESSION['admin_login_id'],
                 ];
+                
+                $data = $this->security->xss_clean($data);
 
                 // insert to DATABASE code
                 $this->Trainers_model->insert($data);
@@ -596,6 +612,9 @@ class AdminController extends CI_Controller
                     'trainer_img_ext' => $file_ext,
                 ];
 
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
                 // insert to db code
                 $this->Trainers_model->update_trainer($id, $data);
 
@@ -611,6 +630,9 @@ class AdminController extends CI_Controller
                     'trainer_about' => $description,
                     'trainer_status' => $status,
                 ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
 
                 // update in db info
                 $this->Trainers_model->update_trainer($id, $data);
@@ -698,6 +720,9 @@ class AdminController extends CI_Controller
                     'about_creator_id' => $_SESSION['admin_login_id'],
                 ];
 
+
+                $data = $this->security->xss_clean($data);
+
                 // insert to DATABASE code
                 $this->About_model->insert($data);
 
@@ -714,6 +739,8 @@ class AdminController extends CI_Controller
                     'about_status' => $status,
                     'about_creator_id' => $_SESSION['admin_login_id'],
                 ];
+
+                $data = $this->security->xss_clean($data);
 
                 // insert to DATABASE code
                 $this->About_model->insert($data);
@@ -786,6 +813,9 @@ class AdminController extends CI_Controller
                     'about_img_ext' => $file_ext,
                 ];
 
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
                 // insert to db code
                 $this->About_model->update_about($id, $data);
 
@@ -801,6 +831,9 @@ class AdminController extends CI_Controller
                     'about_description' => $description,
                     'about_status' => $status,
                 ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
 
                 // update in db info
                 $this->About_model->update_about($id, $data);
@@ -902,6 +935,9 @@ class AdminController extends CI_Controller
                     'course_creator_id' => $_SESSION['admin_login_id'],
                 ];
 
+
+                $data = $this->security->xss_clean($data);
+
                 // insert to DATABASE code
                 $this->Courses_model->insert($data);
 
@@ -924,6 +960,9 @@ class AdminController extends CI_Controller
                     'course_trainer' => $trainer,
                     'course_creator_id' => $_SESSION['admin_login_id'],
                 ];
+
+
+                $data = $this->security->xss_clean($data);
 
                 // insert to DATABASE code
                 $this->Courses_model->insert($data);
@@ -1013,6 +1052,9 @@ class AdminController extends CI_Controller
                     'course_creator_id' => $_SESSION['admin_login_id'],
                 ];
 
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
                 // insert to DATABASE code
                 $this->Courses_model->update_course($id, $data);
 
@@ -1035,6 +1077,9 @@ class AdminController extends CI_Controller
                     'course_trainer' => $trainer,
                     'course_creator_id' => $_SESSION['admin_login_id'],
                 ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
 
                 $this->Courses_model->update_course($id, $data);
 
@@ -1098,6 +1143,9 @@ class AdminController extends CI_Controller
                 'contact_status' => "Müraciət cavablandırılmayıb"
             ];
 
+            
+            $data = $this->security->xss_clean($data);
+            
             // insert to DATABASE code
             $this->Contact_model->insert($data);
 

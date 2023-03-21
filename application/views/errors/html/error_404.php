@@ -1,111 +1,131 @@
+<?php $CI =& get_instance();
+if( ! isset($CI))
+{
+    $CI = new CI_Controller();
+}
+$CI->load->helper('url');
+;?>
+
 <!DOCTYPE html>
+<html lang="en">
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Error</title>
+</head>
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
+<style>
+  * {
+    font-family: Google sans, Arial;
+  }
 
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
-    <title>Error 404</title>
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    animation: colorSlide 15s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+  }
 
-    <meta name="description" content="" />
+  .flex-container .text-center {
+    text-align: center;
+  }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?php echo base_url("assets/admin/")?>assets/img/favicon/favicon.ico" />
+  .flex-container .text-center h1,
+  .flex-container .text-center h3 {
+    margin: 10px;
+    cursor: default;
+  }
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+  .flex-container .text-center h1 .fade-in,
+  .flex-container .text-center h3 .fade-in {
+    animation: fadeIn 2s ease infinite;
+  }
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="<?php echo base_url("..assets/admin/")?>assets/vendor/fonts/boxicons.css" />
+  .flex-container .text-center h1 {
+    font-size: 8em;
+    transition: font-size 200ms ease-in-out;
+    border-bottom: 1px dashed white;
+  }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/css/demo.css" />
+  .flex-container .text-center h1 span#digit1 {
+    animation-delay: 200ms;
+  }
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  .flex-container .text-center h1 span#digit2 {
+    animation-delay: 300ms;
+  }
 
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/admin/")?>assets/vendor/css/pages/page-misc.css" />
-    <!-- Helpers -->
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/js/helpers.js"></script>
+  .flex-container .text-center h1 span#digit3 {
+    animation-delay: 400ms;
+  }
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="<?php echo base_url("assets/admin/")?>assets/js/config.js"></script>
-  </head>
+  .flex-container .text-center button {
+    border: 1px solid white;
+    background: transparent;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    transition: background-color 200ms ease-in;
+    margin: 20px 0;
+  }
 
-  <body>
-    <!-- Content -->
+  .flex-container .text-center button:hover {
+    background-color: white;
+    color: #555;
+    cursor: pointer;
+  }
 
-    <!-- Error -->
-    <div class="container-xxl container-p-y">
-      <div class="misc-wrapper">
-        <h2 class="mb-2 mx-2">Page Not Found :(</h2>
-        <p class="mb-4 mx-2">Oops! 😖 The requested URL was not found on this server.</p>
-        <a href="<?php echo base_url("admin_page") ?>" class="btn btn-primary">Back to home</a>
-        <div class="mt-3">
-          <img
-            src="<?php echo base_url("assets/admin/")?>assets/img/illustrations/page-misc-error-light.png"
-            alt="page-misc-error-light"
-            width="500"
-            class="img-fluid"
-            data-app-dark-img="illustrations/page-misc-error-dark.png"
-            data-app-light-img="illustrations/page-misc-error-light.png"
-          />
-        </div>
-      </div>
+  @keyframes colorSlide {
+    0% {
+      background-color: #152a68;
+    }
+
+    100% {
+      background-color: #152a68;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
+
+<body>
+  <div class="flex-container">
+    <div class="text-center">
+      <h1>
+        <span class="fade-in" id="digit1">4</span>
+        <span class="fade-in" id="digit2">0</span>
+        <span class="fade-in" id="digit3">4</span>
+      </h1>
+      <h3 class="fadeIn">PAGE NOT FOUND</h3>
+      <a href="<?php echo base_url('home') ?>">
+        <button type="button" name="button">Return To Home</button>
+      </a>
+
+
     </div>
-    <!-- /Error -->
+  </div>
 
-    <!-- / Content -->
+</body>
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/libs/popper/popper.js"></script>
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/js/bootstrap.js"></script>
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="<?php echo base_url("assets/admin/")?>assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url("assets/admin/")?>assets/js/main.js"></script>
-
-    <!-- Page JS -->
-
-
-  </body>
 </html>

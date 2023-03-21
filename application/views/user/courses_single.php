@@ -56,7 +56,7 @@
             </div>
 
             <a href="<?php echo base_url("courses") ?>">
-                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; border-radius: 10px; background:#4255A4; cursor: pointer;">Back</button>
+                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#4255A4; cursor: pointer;">Back</button>
             </a>
 
         </div>

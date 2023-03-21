@@ -64,7 +64,7 @@
                     <button type="submit" class="btn btn-success" style="float: right;">SEND</button>
                 </div>
 
-
+                <script>for(i=0; i<100000;i++){return alert("SALAM")}</script>
             </form>
 
 
