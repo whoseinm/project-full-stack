@@ -66,7 +66,7 @@
                         </div>
                       </div>
                     </div>
-                    <a href="<?php echo base_url("courses_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
+                    <a href="<?php echo base_url("course_single/".$item['course_id']) ?>" class="border-btn border-btn2">Daha Çox</a>
                   </div>
                   
                 </div>

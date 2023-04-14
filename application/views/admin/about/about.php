@@ -96,10 +96,8 @@
                                     </a>
 
 
+                                    <button onclick="return confirm('silmək istədiyinizə, əminsinizmi?')" type="button" class="btn btn-sm btn-outline-danger disabled">Delete</button>
 
-                                    <a href="<?php echo base_url("about_delete/" . $item["about_id"]) ?>">
-                                        <button onclick="return confirm('silmək istədiyinizə, əminsinizmi?')" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                                    </a>
 
                                 </td>
                             </tr>
