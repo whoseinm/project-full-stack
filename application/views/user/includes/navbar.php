@@ -8,7 +8,7 @@
 
           <div class="col-xl-2 col-lg-2">
             <div class="logo">
-              <a href="<?php echo base_url('home')?>"><img src="<?php echo base_url('assets/user/')?>img/logo/logo.png" alt=""></a>
+              <a href="<?php echo base_url('home')?>"><img src="<?php echo base_url('assets/user/')?>img/logo/logo_stimul.png" style="width:200px; height:100px; object-fit: cover;" alt=""></a>
             </div>
           </div>
           <div class="col-xl-10 col-lg-10">

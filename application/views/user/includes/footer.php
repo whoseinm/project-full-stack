@@ -10,7 +10,7 @@
 
                 <div class="footer-logo mb-25">
                   <a href="<?php echo base_url("home") ?>"><img
-                      src="<?php echo base_url('assets/user/') ?>img/logo/logo2_footer.png" alt=""></a>
+                      src="<?php echo base_url('assets/user/') ?>img/logo/logo_stimul.png" width="250px" height="50px" style="object-fit:cover; margin-left:-20px;" alt=""></a>
                 </div>
                 <div class="footer-tittle">
                   <div class="footer-pera">

@@ -23,10 +23,10 @@
                     data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
 
                 <?php } else { ?>
-                  <h1 data-animation="fadeInLeft" data-delay="0.2s">CourseAZ Azərbaycanın ən yaxşı kurs yeri :)</h1>
-                  <p data-animation="fadeInLeft" data-delay="0.4s">Əgər yaxşı kurslar axtarırsınızsa bizim sayta baxın :)
+                  <h1 data-animation="fadeInLeft" data-delay="0.2s">Stimul Education and Consulting</h1>
+                  <p data-animation="fadeInLeft" data-delay="0.4s">Həyatınızın Stimulu
                   </p>
-                  <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft"
+                  <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft" style="color:white"
                     data-delay="0.7s">Kurslar</a>
                 <?php } ?>
               </div>

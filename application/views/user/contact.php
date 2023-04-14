@@ -40,7 +40,10 @@
                     <h2 class="contact-title">Əlaqə</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="<?php echo base_url('contact_message_act') ?>"
+                    
+                    <form class="form-contact contact_form" action="<?php if(!empty($subject) && !empty($message) && !empty($name) && !empty($email)){ ?>
+
+                    <?php } ?>" <?php echo base_url('contact_message_act') ?>
                         method="post">
                         <div class="row">
                             <div class="col-12">
