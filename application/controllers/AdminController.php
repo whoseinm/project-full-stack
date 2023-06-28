@@ -15,6 +15,7 @@ class AdminController extends CI_Controller
         $this->load->model('Partners_model');
         $this->load->model('Vacancy_model');
         $this->load->model('Testimonials_model');
+        $this->load->model('Achievements_model');
     }
 
 
@@ -1698,12 +1699,194 @@ class AdminController extends CI_Controller
 
     // =====================Achievements Start======================
     
-        public function achievements_list(){
+        public function achievements_list()
+        {
         $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
-        $data['get_all_achievements'] = $this->Testimonials_model->get_all_achievements();
+        $data['get_all_achievements'] = $this->Achievements_model->get_all_achievements();
 
-        $this->load->view("admin/achievements/testimonials", $data);
-    }
+        $this->load->view("admin/achievements/achievements", $data);
+        }
+
+        public function achievements_create()
+        {
+            $this->load->view("admin/achievements/achievements_create");
+        }
+
+        public function achievements_create_act(){
+            $achievement_name = $_POST['title'];
+            $achievement_vacancy = $_POST['description'];
+            $achievement_add_date = $_POST['date'];
+            $achievement_status = $_POST['status'];
+    
+            if (!empty($achievement_name) && !empty($achievement_vacancy) && !empty($achievement_add_date) && !empty($achievement_status)) {
+    
+                $config['upload_path'] = './uploads/achievements/';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['encrypt_name'] = TRUE;
+                // $config['max_size'] = 100;
+                // $config['max_width'] = 1024;
+                // $config['max_height'] = 768;
+    
+                $this->load->library('upload', $config);
+    
+                $this->upload->initialize($config);
+    
+    
+                if ($this->upload->do_upload('img')) {
+                    $file_name = $this->upload->data('file_name');
+                    $file_ext = $this->upload->data('file_ext');
+    
+    
+                    $data = [
+                        'achievement_name' => $achievement_name,
+                        'achievement_about' => $achievement_vacancy,
+                        'achievement_add_date' => $achievement_add_date,
+                        'achievement_status' => $achievement_status,
+                        'achievement_img' => $file_name,
+                        'achievement_img_ext' => $file_ext,
+                        'achievement_creator_id' => $_SESSION['admin_login_id'],
+                    ];
+    
+    
+                    $data = $this->security->xss_clean($data);
+    
+                    // insert to DATABASE code
+                    $this->Achievements_model->insert($data);
+    
+    
+                    // notification for post added successfully
+                    $this->session->set_flashdata('success', "Uğur uğurla əlavə olundu");
+    
+                    // redirect to page
+                    redirect(base_url('achievements_admin'));
+                } else {
+                    $data = [
+                        'achievement_name' => $achievement_name,
+                        'achievement_about' => $achievement_vacancy,
+                        'achievement_add_date' => $achievement_add_date,
+                        'achievement_status' => $achievement_status,
+                        'achievement_creator_id' => $_SESSION['admin_login_id'],
+                    ];
+    
+                    $data = $this->security->xss_clean($data);
+    
+                    $this->Achievements_model->insert($data);
+    
+                    $this->session->set_flashdata('success', "Uğur uğurla əlavə olundu");
+    
+                    redirect(base_url('achievements_admin'));
+                }
+    
+    
+            } else {
+                $this->session->set_flashdata('err', "Boşluq buraxmayın");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+
+        public function achievements_delete($id){
+            $this->Achievements_model->delete_achievements($id);
+        }
+
+        public function achievements_detail($id)
+        {
+            $data['achievement_single'] = $this->Achievements_model->get_single_achievement($id);
+            // print_r($data['course_single']);
+            // die();
+    
+            $this->load->view('admin/achievements/achievements_detail', $data);
+        }
+
+        public function achievements_edit($id)
+        {
+            $data['achievements_single'] = $this->db->where('achievement_id', $id)->get('achievements')->row_array();
+            $this->load->view('admin/achievements/achievements_edit', $data);
+        }
+
+        public function achievements_edit_act($id){
+            $achievement_name = $_POST['title'];
+            $achievement_about = $_POST['description'];
+            $achievement_add_date = $_POST['date'];
+            $achievement_status = $_POST['status'];
+    
+    
+            if (!empty($achievement_name) && !empty($achievement_about) && !empty($achievement_add_date) && !empty($achievement_status)) {
+    
+    
+                $config['upload_path'] = "./uploads/achievements/";
+                $config['allowed_types'] = "gif|jpg|png|jpeg";
+                $config['encrypt_name'] = TRUE;
+    
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+    
+    
+                if ($this->upload->do_upload('user_img')) {
+                    $file_name = $this->upload->data('file_name');
+                    $file_ext = $this->upload->data('file_ext');
+    
+                    $data = [
+                        'achievement_name' => $achievement_name,
+                        'achievement_about' => $achievement_about,
+                        'achievement_add_date' => $achievement_add_date,
+                        'achievement_status' => $achievement_status,
+                        'achievement_img' => $file_name,
+                        'achievement_img_ext' => $file_ext,
+                        'achievement_updater_id' => $_SESSION['admin_login_id'],
+                        'achievement_update_date' => date("Y-m-d H:i:s"),
+                    ];
+    
+                    $id = $this->security->xss_clean($id);
+                    $data = $this->security->xss_clean($data);
+    
+                    // insert to db code
+                    $this->Achievements_model->update_achievements($id, $data);
+    
+                    // notification
+                    $this->session->set_flashdata('success', "Uğur uğurla yeniləndi!");
+    
+                    // redirect page
+                    redirect(base_url('achievements_admin'));
+                } else {
+    
+                    $data = [
+                        'achievement_name' => $achievement_name,
+                        'achievement_about' => $achievement_about,
+                        'achievement_add_date' => $achievement_add_date,
+                        'achievement_status' => $achievement_status,
+                        'achievement_updater_id' => $_SESSION['admin_login_id'],
+                        'achievement_update_date' => date("Y-m-d H:i:s"),
+                    ];
+    
+                    $id = $this->security->xss_clean($id);
+                    $data = $this->security->xss_clean($data);
+    
+                    // update in db info
+                    $this->Achievements_model->update_achievements($id, $data);
+    
+                    $this->session->set_flashdata('success', "Uğur uğurla yeniləndi!");
+    
+                    redirect(base_url('achievements_admin'));
+                }
+    
+            } else {
+                $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+
+        public function achievements_img_delete($id){
+            $data = [
+                'achievement_img' => "",
+                'achievement_img_ext' => "",
+            ];
+    
+            $this->Achievements_model->update_achievements($id, $data);
+            $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+
     
     // ======================Achievements End=======================
 

@@ -20,8 +20,8 @@
 </style>
 <div class="container">
     <div class="card">
-        <h5 class="card-header spaceB">Rəylərin Siyahısı
-            <a href="<?php echo base_url('testimonial_create') ?>">
+        <h5 class="card-header spaceB">Uğurlarımızın Siyahısı
+            <a href="<?php echo base_url('achievements_create') ?>">
                 <button type="button" class="btn  btn-sm btn-success">Create</button>
             </a>
         </h5>
@@ -54,7 +54,7 @@
                         </tr>
 
                         <?php $say = 0;
-                        foreach ($get_all_testimonials as $item) {
+                        foreach ($get_all_achievements as $item) {
                             strrev($say++) ?>
                             <tr>
 
@@ -63,12 +63,12 @@
                                 </td>
                                 <td>
                                     <?php
-                                    $title = mb_strimwidth($item['testimonial_name'], 0, 30, '...');
+                                    $title = mb_strimwidth($item['achievement_name'], 0, 30, '...');
                                     echo $title ?>
                                 </td>
                                 </td>
                                 <td>
-                                    <?php echo date("d-m-Y", strtotime($item['testimonial_add_date'])); ?>
+                                    <?php echo date("d-m-Y", strtotime($item['achievement_add_date'])); ?>
                                 </td>
                                 <td>
                                     <?php echo $admin['a_name']; ?>
@@ -76,9 +76,9 @@
 
 
                                 <td>
-                                    <?php if ($item["testimonial_img"]) { ?>
+                                    <?php if ($item["achievement_img"]) { ?>
                                         <img width="70px" height="60px" style="object-fit: cover;"
-                                            src="<?php echo base_url('uploads/testimonials/' . $item['testimonial_img']); ?>" alt="img"></img>
+                                            src="<?php echo base_url('uploads/achievements/' . $item['achievement_img']); ?>" alt="img"></img>
                                     <?php } else { ?>
                                         <img width="80px" height="60px" style="object-fit: cover;"
                                             src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg"
@@ -86,13 +86,13 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <?php if ($item['testimonial_status'] == "Active") { ?>
+                                    <?php if ($item['achievement_status'] == "Active") { ?>
                                         <span class="badge bg-label-success me-1">
-                                            <?php echo $item['testimonial_status']; ?>
+                                            <?php echo $item['achievement_status']; ?>
                                         </span>
-                                    <?php } else if ($item['testimonial_status'] == "Deactive") { ?>
+                                    <?php } else if ($item['achievement_status'] == "Deactive") { ?>
                                             <span class="badge bg-label-danger me-1">
-                                            <?php echo $item['testimonial_status']; ?>
+                                            <?php echo $item['achievement_status']; ?>
                                             </span>
                                     <?php } else { ?>
                                             <span class="badge bg-label-primary me-1">---------</span>
@@ -104,13 +104,13 @@
 
                                 <td>
 
-                                    <a href="<?php echo base_url("testimonial_detail/". $item["testimonial_id"]) ; ?>">
+                                    <a href="<?php echo base_url("achievement_detail/". $item["achievement_id"]) ; ?>">
                                         <button type="button" class="btn btn-sm btn-outline-info">Detail</button>
                                     </a>
-                                    <a href="<?php echo base_url("testimonial_edit/". $item["testimonial_id"]) ; ?>">
+                                    <a href="<?php echo base_url("achievement_edit/". $item["achievement_id"]) ; ?>">
                                         <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
                                     </a>
-                                    <a href="<?php echo base_url("testimonial_delete/". $item["testimonial_id"]) ; ?>">
+                                    <a href="<?php echo base_url("achievement_delete/". $item["achievement_id"]) ; ?>">
                                         <button onclick="return confirm('Rəyi silmək istədiyinizə əminsiz?')" type="button"
                                             class="btn btn-sm btn-outline-danger">Delete</button>
                                     </a>
