@@ -12,6 +12,9 @@ class AdminController extends CI_Controller
         $this->load->model('Courses_model');
         $this->load->model('Contact_model');
         $this->load->model('Hero_model');
+        $this->load->model('Partners_model');
+        $this->load->model('Vacancy_model');
+        $this->load->model('Testimonials_model');
     }
 
 
@@ -277,7 +280,7 @@ class AdminController extends CI_Controller
 
             $check_category = $this->db->where('post_category', $category)->get('posts')->row_array();
 
-            if(empty($check_category)){
+            if (empty($check_category)) {
                 $this->session->set_flashdata('err', "Category tapilmadi");
                 redirect($_SERVER['HTTP_REFERER']);
             }
@@ -354,7 +357,6 @@ class AdminController extends CI_Controller
     public function delete_post($id)
     {
         $this->Posts_model->delete_post($id);
-
     }
 
     public function detail($id)
@@ -538,7 +540,7 @@ class AdminController extends CI_Controller
                     'trainer_status' => $status,
                     'trainer_creator_id' => $_SESSION['admin_login_id'],
                 ];
-                
+
                 $data = $this->security->xss_clean($data);
 
                 // insert to DATABASE code
@@ -876,7 +878,7 @@ class AdminController extends CI_Controller
     {
         $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
         $data['get_all_courses'] = $this->Courses_model->get_all_courses();
-        
+
         $this->load->view("admin/courses/courses", $data);
     }
 
@@ -901,8 +903,8 @@ class AdminController extends CI_Controller
         if (!empty($course_name) && !empty($description) && !empty($status) && !empty($category) && !empty($course_duration)) {
 
             $check_category = $this->db->where('category_id', $category)->get('category')->row_array();
-            
-            if(empty($check_category)){
+
+            if (empty($check_category)) {
                 $this->session->set_flashdata('err', "Category tapilmadi");
                 redirect($_SERVER['HTTP_REFERER']);
             }
@@ -995,18 +997,18 @@ class AdminController extends CI_Controller
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
         // print_r($data['course_single']);
         // die();
-        
+
         $this->load->view('admin/courses/course_detail', $data);
     }
 
     public function course_edit($id)
     {
         $data['course_single'] = $this->Courses_model->get_single_course($id);
-        
+
         $data['get_all_categories'] = $this->Courses_model->get_all_categories();
-        
+
         $data['get_single_data'] = $this->Courses_model->get_single_data($id);
-        
+
         $data['get_all_trainers'] = $this->Courses_model->get_all_trainers();
 
 
@@ -1115,88 +1117,678 @@ class AdminController extends CI_Controller
     // ========================COURSES END==========================
 
 
+    // ========================Partners Start=========================
+
+    public function partners_list()
+    {
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+        $data['get_all_partners'] = $this->Partners_model->get_all_partners();
+
+        $this->load->view("admin/partners/partners", $data);
+    }
+
+    public function partner_create()
+    {
+        $this->load->view("admin/partners/partners_create");
+    }
+
+    public function partner_create_act()
+    {
+        $partner_name = $_POST['title'];
+        $about_partner = $_POST['description'];
+        $partner_date = $_POST['date'];
+        $partner_status = $_POST['status'];
+
+        if (!empty($partner_name) && !empty($about_partner) && !empty($partner_date) && !empty($partner_status)) {
+
+            $config['upload_path'] = './uploads/partners/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('partner_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'partner_name' => $partner_name,
+                    'partner_about' => $about_partner,
+                    'partner_add_date' => $partner_date,
+                    'partner_status' => $partner_status,
+                    'partner_img' => $file_name,
+                    'partner_img_ext' => $file_ext,
+                    'partner_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Partners_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Partner uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('posts'));
+            } else {
+                $data = [
+                    'partner_name' => $partner_name,
+                    'partner_about' => $about_partner,
+                    'partner_add_date' => $partner_date,
+                    'partner_status' => $partner_status,
+                    'partner_creator' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Partners_model->insert($data);
+
+                $this->session->set_flashdata('success', "Partner uğurla əlavə olundu");
+
+                redirect(base_url('partners_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function partner_detail($id)
+    {
+        $data['partners_single'] = $this->Partners_model->get_single_partner($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/partners/partners_detail', $data);
+    }
+
+    public function partner_delete($id){
+        $this->Partners_model->delete_partner($id);
+    }
+
+    public function partner_edit($id)
+    {
+        $data['partner_single'] = $this->db->where('partner_id', $id)->get('partners')->row_array();
+        $this->load->view('admin/partners/partner_edit', $data);
+    }
+    public function partner_img_delete($id){
+        $data = [
+            'partner_img' => "",
+            'partner_img_ext' => "",
+        ];
+
+        $this->Partners_model->update_partner($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function partner_edit_act($id){
+        $partner_name = $_POST['title'];
+        $partner_about = $_POST['description'];
+        $partner_add_date = $_POST['date'];
+        $partner_status = $_POST['status'];
+
+
+        if (!empty($partner_name) && !empty($partner_about) && !empty($partner_add_date) && !empty($partner_status)) {
+
+
+            $config['upload_path'] = "./uploads/partners/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'partner_name' => $partner_name,
+                    'partner_about' => $partner_about,
+                    'partner_add_date' => $partner_add_date,
+                    'partner_status' => $partner_status,
+                    'partner_img' => $file_name,
+                    'partner_img_ext' => $file_ext,
+                    'partner_updater_id' => $_SESSION['admin_login_id'],
+                    'partner_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Partners_model->update_partner($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Partnyor uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('partners_admin'));
+            } else {
+
+                $data = [
+                    'partner_name' => $partner_name,
+                    'partner_about' => $partner_about,
+                    'partner_add_date' => $partner_add_date,
+                    'partner_status' => $partner_status,
+                    'partner_updater_id' => $_SESSION['admin_login_id'],
+                    'partner_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Partners_model->update_partner($id, $data);
+
+                $this->session->set_flashdata('success', "Partnyor uğurla yeniləndi!");
+
+                redirect(base_url('partners_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+
+    // ========================Partners End===========================
+
+
+
+    // =========================Vacancy Start=========================
+
+    public function vacancy_list(){
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+        $data['get_all_vacancies'] = $this->Vacancy_model->get_all_vacancies();
+
+        $this->load->view("admin/vacancy/vacancy_list", $data);
+    }
+
+    public function vacancy_create()
+    {
+        $this->load->view("admin/vacancy/vacancy_create");
+    }
+
+    public function vacancy_create_act(){
+        $vacancy_name = $_POST['title'];
+        $about_vacancy = $_POST['description'];
+        $vacancy_add_date = $_POST['date'];
+        $vacancy_status = $_POST['status'];
+
+        if (!empty($vacancy_name) && !empty($about_vacancy) && !empty($vacancy_add_date) && !empty($vacancy_status)) {
+
+            $config['upload_path'] = './uploads/vacancy/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'vacancy_name' => $vacancy_name,
+                    'vacancy_about' => $about_vacancy,
+                    'vacancy_add_date' => $vacancy_add_date,
+                    'vacancy_status' => $vacancy_status,
+                    'vacancy_img' => $file_name,
+                    'vacancy_img_ext' => $file_ext,
+                    'vacancy_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Vacancy_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Vakansiya uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('vacancies_admin'));
+            } else {
+                $data = [
+                    'vacancy_name' => $vacancy_name,
+                    'vacancy_about' => $about_vacancy,
+                    'vacancy_add_date' => $vacancy_add_date,
+                    'vacancy_status' => $vacancy_status,
+                    'vacancy_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Vacancy_model->insert($data);
+
+                $this->session->set_flashdata('success', "Vakansiya uğurla əlavə olundu");
+
+                redirect(base_url('vacancies_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function vacancy_delete($id){
+        $this->Vacancy_model->delete_vacancy($id);
+    }
+
+    public function vacancy_detail($id)
+    {
+        $data['vacancy_single'] = $this->Vacancy_model->get_single_vacancy($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/vacancy/vacancy_detail', $data);
+    }
+
+    public function vacancy_edit($id)
+    {
+        $data['vacancy_single'] = $this->db->where('vacancy_id', $id)->get('vacancy')->row_array();
+        $this->load->view('admin/vacancy/vacancy_edit', $data);
+    }
+
+    public function vacancy_edit_act($id){
+        $vacancy_name = $_POST['title'];
+        $vacancy_about = $_POST['description'];
+        $vacancy_add_date = $_POST['date'];
+        $vacancy_status = $_POST['status'];
+
+
+        if (!empty($vacancy_name) && !empty($vacancy_about) && !empty($vacancy_add_date) && !empty($vacancy_status)) {
+
+
+            $config['upload_path'] = "./uploads/vacancy/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'vacancy_name' => $vacancy_name,
+                    'vacancy_about' => $vacancy_about,
+                    'vacancy_add_date' => $vacancy_add_date,
+                    'vacancy_status' => $vacancy_status,
+                    'vacancy_img' => $file_name,
+                    'vacancy_img_ext' => $file_ext,
+                    'vacancy_updater_id' => $_SESSION['admin_login_id'],
+                    'vacancy_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Vacancy_model->update_vacancy($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Vakansiya uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('vacancies_admin'));
+            } else {
+
+                $data = [
+                    'vacancy_name' => $vacancy_name,
+                    'vacancy_about' => $vacancy_about,
+                    'vacancy_add_date' => $vacancy_add_date,
+                    'vacancy_status' => $vacancy_status,
+                    'vacancy_updater_id' => $_SESSION['admin_login_id'],
+                    'vacancy_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Vacancy_model->update_vacancy($id, $data);
+
+                $this->session->set_flashdata('success', "Vakansiya uğurla yeniləndi!");
+
+                redirect(base_url('vacancies_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function vacancy_img_delete($id){
+        $data = [
+            'vacancy_img' => "",
+            'vacancy_img_ext' => "",
+        ];
+
+        $this->Vacancy_model->update_vacancy($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+
+    // =========================Vacancy End=========================
+
+
+    // =====================Testimonials Start======================
+
+    public function testimonials_list(){
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+        $data['get_all_testimonials'] = $this->Testimonials_model->get_all_testimonials();
+
+        $this->load->view("admin/testimonials/testimonials", $data);
+    }
+
+    public function testimonial_create()
+    {
+        $this->load->view("admin/testimonials/testimonial_create");
+    }
+
+    public function testimonial_create_act(){
+        $testimonial_name = $_POST['title'];
+        $testimonial_vacancy = $_POST['description'];
+        $testimonial_add_date = $_POST['date'];
+        $testimonial_status = $_POST['status'];
+
+        if (!empty($testimonial_name) && !empty($testimonial_vacancy) && !empty($testimonial_add_date) && !empty($testimonial_status)) {
+
+            $config['upload_path'] = './uploads/testimonials/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'testimonial_name' => $testimonial_name,
+                    'testimonial_about' => $testimonial_vacancy,
+                    'testimonial_add_date' => $testimonial_add_date,
+                    'testimonial_status' => $testimonial_status,
+                    'testimonial_img' => $file_name,
+                    'testimonial_img_ext' => $file_ext,
+                    'testimonial_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Testimonials_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Rəy uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('testimonials_admin'));
+            } else {
+                $data = [
+                    'testimonial_name' => $testimonial_name,
+                    'testimonial_about' => $testimonial_vacancy,
+                    'testimonial_add_date' => $testimonial_add_date,
+                    'testimonial_status' => $testimonial_status,
+                    'testimonial_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Testimonials_model->insert($data);
+
+                $this->session->set_flashdata('success', "Rəy uğurla əlavə olundu");
+
+                redirect(base_url('testimonials_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function testimonial_delete($id){
+        $this->Testimonials_model->delete_testimonial($id);
+    }
+
+    public function testimonial_detail($id)
+    {
+        $data['testimonial_single'] = $this->Testimonials_model->get_single_testimonial($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/testimonials/testimonial_detail', $data);
+    }
+
+    public function testimonial_edit($id)
+    {
+        $data['testimonial_single'] = $this->db->where('testimonial_id', $id)->get('testimonials')->row_array();
+        $this->load->view('admin/testimonials/testimonial_edit', $data);
+    }
+
+    public function testimonial_edit_act($id){
+        $testimonial_name = $_POST['title'];
+        $testimonial_about = $_POST['description'];
+        $testimonial_add_date = $_POST['date'];
+        $testimonial_status = $_POST['status'];
+
+
+        if (!empty($testimonial_name) && !empty($testimonial_about) && !empty($testimonial_add_date) && !empty($testimonial_status)) {
+
+
+            $config['upload_path'] = "./uploads/testimonials/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'testimonial_name' => $testimonial_name,
+                    'testimonial_about' => $testimonial_about,
+                    'testimonial_add_date' => $testimonial_add_date,
+                    'testimonial_status' => $testimonial_status,
+                    'testimonial_img' => $file_name,
+                    'testimonial_img_ext' => $file_ext,
+                    'testimonial_updater_id' => $_SESSION['admin_login_id'],
+                    'testimonial_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Testimonials_model->update_testimonial($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Rəy uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('testimonials_admin'));
+            } else {
+
+                $data = [
+                    'testimonial_name' => $testimonial_name,
+                    'testimonial_about' => $testimonial_about,
+                    'testimonial_add_date' => $testimonial_add_date,
+                    'testimonial_status' => $testimonial_status,
+                    'testimonial_updater_id' => $_SESSION['admin_login_id'],
+                    'testimonial_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Testimonials_model->update_testimonial($id, $data);
+
+                $this->session->set_flashdata('success', "Rəy uğurla yeniləndi!");
+
+                redirect(base_url('testimonials_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function testimonial_img_delete($id){
+        $data = [
+            'testimonial_img' => "",
+            'testimonial_img_ext' => "",
+        ];
+
+        $this->Testimonials_model->update_testimonial($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    // ======================Testimonials End=======================
+
+
+
+
+    // =====================Achievements Start======================
+    
+        public function achievements_list(){
+        $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+        $data['get_all_achievements'] = $this->Testimonials_model->get_all_achievements();
+
+        $this->load->view("admin/achievements/testimonials", $data);
+    }
+    
+    // ======================Achievements End=======================
+
 
     // ========================CONTACT START==========================
 
 
-    public function contact_admin()
-    {
-        $data['get_messages'] = $this->Contact_model->get_all_messages();
+    // public function contact_admin()
+    // {
+    //     $data['get_messages'] = $this->Contact_model->get_all_messages();
 
-        $this->load->view('admin/contact/messages', $data);
-    }
+    //     $this->load->view('admin/contact/messages', $data);
+    // }
 
-    public function contact_message_act()
-    {
-        $message = $_POST['message'];
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $subject = $_POST['subject'];
+    // public function contact_message_act()
+    // {
+    //     $message = $_POST['message'];
+    //     $name = $_POST['name'];
+    //     $email = $_POST['email'];
+    //     $subject = $_POST['subject'];
 
-        if (!empty($message) && !empty($name) && !empty($email) && !empty($subject)) {
-            $data = [
-                'contact_message' => $message,
-                'contact_name' => $name,
-                'contact_email' => $email,
-                'contact_date' => date("Y-m-d H:i:s"),
-                'contact_subject' => $subject,
-                'contact_status' => "Müraciət cavablandırılmayıb"
-            ];
-
-            
-            $data = $this->security->xss_clean($data);
-            
-            // insert to DATABASE code
-            $this->Contact_model->insert($data);
+    //     if (!empty($message) && !empty($name) && !empty($email) && !empty($subject)) {
+    //         $data = [
+    //             'contact_message' => $message,
+    //             'contact_name' => $name,
+    //             'contact_email' => $email,
+    //             'contact_date' => date("Y-m-d H:i:s"),
+    //             'contact_subject' => $subject,
+    //             'contact_status' => "Müraciət cavablandırılmayıb"
+    //         ];
 
 
-            // notification for post added successfully
-            $this->session->set_flashdata('success', "Mesaj uğurla göndərildi");
+    //         $data = $this->security->xss_clean($data);
 
-            // redirect to page
-            redirect(base_url('contact'));
-        }
-    }
+    //         // insert to DATABASE code
+    //         $this->Contact_model->insert($data);
 
-    public function contact_message_detail($id)
-    {
-        $data['get_single_message'] = $this->Contact_model->contact_single($id);
 
-        $this->load->view('admin/contact/message_single', $data);
-    }
+    //         // notification for post added successfully
+    //         $this->session->set_flashdata('success', "Mesaj uğurla göndərildi");
 
-    public function contact_viewed($id)
-    {
+    //         // redirect to page
+    //         redirect(base_url('contact'));
+    //     }
+    // }
 
-        $data = [
-            'contact_status' => 'Müraciət cavablandırılıb',
-            'contact_viewer_id' => $_SESSION['admin_login_id'],
-            'contact_viewed_date' => date('Y-m-d H:i:s')
-        ];
+    // public function contact_message_detail($id)
+    // {
+    //     $data['get_single_message'] = $this->Contact_model->contact_single($id);
 
-        $this->Contact_model->viewed($id, $data);
+    //     $this->load->view('admin/contact/message_single', $data);
+    // }
 
-        redirect(base_url('admin_contact'));
+    // public function contact_viewed($id)
+    // {
 
-    }
+    //     $data = [
+    //         'contact_status' => 'Müraciət cavablandırılıb',
+    //         'contact_viewer_id' => $_SESSION['admin_login_id'],
+    //         'contact_viewed_date' => date('Y-m-d H:i:s')
+    //     ];
 
-    public function contact_view_delete($id)
-    {
-        $data = [
-            'contact_status' => 'Müraciət cavablandırılmayıb',
-            'contact_viewed_date' => '',
-            'contact_viewer_id' => '',
-        ];
+    //     $this->Contact_model->viewed($id, $data);
 
-        $this->Contact_model->view_delete($id, $data);
+    //     redirect(base_url('admin_contact'));
 
-        redirect(base_url('admin_contact'));
-    }
+    // }
 
-    public function contact_delete($id)
-    {
-        $this->Contact_model->contact_delete($id);
-    }
+    // public function contact_view_delete($id)
+    // {
+    //     $data = [
+    //         'contact_status' => 'Müraciət cavablandırılmayıb',
+    //         'contact_viewed_date' => '',
+    //         'contact_viewer_id' => '',
+    //     ];
+
+    //     $this->Contact_model->view_delete($id, $data);
+
+    //     redirect(base_url('admin_contact'));
+    // }
+
+    // public function contact_delete($id)
+    // {
+    //     $this->Contact_model->contact_delete($id);
+    // }
 
     // ========================CONTACT END==========================
 
