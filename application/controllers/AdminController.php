@@ -16,6 +16,7 @@ class AdminController extends CI_Controller
         $this->load->model('Vacancy_model');
         $this->load->model('Testimonials_model');
         $this->load->model('Achievements_model');
+        $this->load->model('Trainings_model');
     }
 
 
@@ -1889,6 +1890,189 @@ class AdminController extends CI_Controller
 
     
     // ======================Achievements End=======================
+
+
+
+    // ======================Trainings Start=======================
+
+    public function trainings_list()
+    {
+    $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+    $data['get_all_trainings'] = $this->Trainings_model->get_all_trainings();
+
+    $this->load->view("admin/trainings/trainings", $data);
+    }
+
+    public function trainings_create()
+    {
+        $this->load->view("admin/trainings/trainings_create");
+    }
+
+    public function trainings_create_act(){
+        $trainings_name = $_POST['title'];
+        $trainings_vacancy = $_POST['description'];
+        $trainings_add_date = $_POST['date'];
+        $trainings_status = $_POST['status'];
+
+        if (!empty($trainings_name) && !empty($trainings_vacancy) && !empty($trainings_add_date) && !empty($trainings_status)) {
+
+            $config['upload_path'] = './uploads/trainings/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'training_name' => $trainings_name,
+                    'training_about' => $trainings_vacancy,
+                    'training_add_date' => $trainings_add_date,
+                    'training_status' => $trainings_status,
+                    'training_img' => $file_name,
+                    'training_img_ext' => $file_ext,
+                    'training_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Trainings_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Təlim uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('trainings_admin'));
+            } else {
+                $data = [
+                    'training_name' => $trainings_name,
+                    'training_about' => $trainings_vacancy,
+                    'training_add_date' => $trainings_add_date,
+                    'training_status' => $trainings_status,
+                    'training_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Trainings_model->insert($data);
+
+                $this->session->set_flashdata('success', "Təlim uğurla əlavə olundu");
+
+                redirect(base_url('trainings_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function trainings_detail($id)
+    {
+        $data['trainings_single'] = $this->Trainings_model->get_single_trainings($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/trainings/trainings_detail', $data);
+    }
+
+    public function trainings_edit($id)
+    {
+        $data['trainings_single'] = $this->db->where('training_id', $id)->get('trainings')->row_array();
+        $this->load->view('admin/trainings/trainings_edit', $data);
+    }
+
+    public function trainings_edit_act($id){
+        $training_name = $_POST['title'];
+        $training_about = $_POST['description'];
+        $training_add_date = $_POST['date'];
+        $training_status = $_POST['status'];
+
+
+        if (!empty($training_name) && !empty($training_about) && !empty($training_add_date) && !empty($training_status)) {
+
+
+            $config['upload_path'] = "./uploads/trainings/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'training_name' => $training_name,
+                    'training_about' => $training_about,
+                    'training_add_date' => $training_add_date,
+                    'training_status' => $training_status,
+                    'training_img' => $file_name,
+                    'training_img_ext' => $file_ext,
+                    'training_updater_id' => $_SESSION['admin_login_id'],
+                    'training_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Trainings_model->update_trainings($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Təlim uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('trainings_admin'));
+            } else {
+
+                $data = [
+                    'training_name' => $training_name,
+                    'training_about' => $training_about,
+                    'training_add_date' => $training_add_date,
+                    'training_status' => $training_status,
+                    'training_updater_id' => $_SESSION['admin_login_id'],
+                    'training_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Trainings_model->update_trainings($id, $data);
+
+                $this->session->set_flashdata('success', "Təlim uğurla yeniləndi!");
+
+                redirect(base_url('trainings_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function trainings_delete($id){
+        $this->Trainings_model->delete_trainings($id);
+    }
+
+    // ======================Trainings End=========================
+
 
 
     // ========================CONTACT START==========================

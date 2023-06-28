@@ -165,7 +165,7 @@ $route['partner_img_delete/(.*)'] = 'AdminController/partner_img_delete/$1';
 
 // =========================Vacancy Start=========================
 $route['vacancies_admin'] = "AdminController/vacancy_list" ;
-$route['vacancy_create'] = "AdminController/vacancy_create" ;
+$route['vacancy_create'] = "AdminController/vacancy_create";
 $route['vacancy_create_act'] = "AdminController/vacancy_create_act";
 $route['vacancy_delete/(.*)'] = "AdminController/vacancy_delete/$1";
 $route['vacancy_detail/(.*)'] = "AdminController/vacancy_detail/$1";
@@ -179,7 +179,7 @@ $route['vacancy_img_delete/(.*)'] = 'AdminController/vacancy_img_delete/$1';
 // =========================Testimonials Start=========================
 
 $route['testimonials_admin'] = "AdminController/testimonials_list" ;
-$route['testimonial_create'] = "AdminController/testimonial_create" ;
+$route['testimonial_create'] = "AdminController/testimonial_create";
 $route['testimonial_create_act'] = "AdminController/testimonial_create_act";
 $route['testimonial_delete/(.*)'] = "AdminController/testimonial_delete/$1";
 $route['testimonial_detail/(.*)'] = "AdminController/testimonial_detail/$1";
@@ -194,7 +194,7 @@ $route['testimonial_img_delete/(.*)'] = 'AdminController/testimonial_img_delete/
 // =========================Achievements Start===========================
 
 $route['achievements_admin'] = "AdminController/achievements_list" ;
-$route['achievements_create'] = "AdminController/achievements_create" ;
+$route['achievements_create'] = "AdminController/achievements_create";
 $route['achievements_create_act'] = "AdminController/achievements_create_act";
 $route['achievement_delete/(.*)'] = "AdminController/achievements_delete/$1";
 $route['achievement_detail/(.*)'] = "AdminController/achievements_detail/$1";
@@ -204,6 +204,22 @@ $route['achievement_edit_act/(.*)'] = 'AdminController/achievements_edit_act/$1'
 $route['achievement_img_delete/(.*)'] = 'AdminController/achievements_img_delete/$1';
 
 // =========================Achievements End===========================
+
+
+
+// =========================Trainings Start===========================
+
+$route['trainings_admin'] = "AdminController/trainings_list" ;
+$route['training_create'] = "AdminController/trainings_create";
+$route['training_create_act'] = "AdminController/trainings_create_act";
+$route['training_delete/(.*)'] = "AdminController/trainings_delete/$1";
+$route['training_detail/(.*)'] = "AdminController/trainings_detail/$1";
+
+$route['training_edit/(.*)'] = "AdminController/trainings_edit/$1";
+$route['training_edit_act/(.*)'] = 'AdminController/trainings_edit_act/$1';
+
+// =========================Trainings Start===========================
+
 
 
 
