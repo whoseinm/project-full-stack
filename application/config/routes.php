@@ -148,6 +148,57 @@ $route['course_img_delete/(.*)'] = 'AdminController/course_img_delete/$1';
 
 
 
+// ========================Partners Start=========================
+
+$route['partners_admin'] = "AdminController/partners_list";
+$route['partner_create'] = "AdminController/partner_create";
+$route['partner_create_act'] = "AdminController/partner_create_act";
+$route['partners_detail/(.*)'] = "AdminController/partner_detail/$1";
+$route['partner_delete/(.*)'] = "AdminController/partner_delete/$1";
+
+$route['partner_edit/(.*)'] = "AdminController/partner_edit/$1";
+$route['partner_edit_act/(.*)'] = 'AdminController/partner_edit_act/$1';
+$route['partner_img_delete/(.*)'] = 'AdminController/partner_img_delete/$1';
+
+// ========================Partners End===========================
+
+
+// =========================Vacancy Start=========================
+$route['vacancies_admin'] = "AdminController/vacancy_list" ;
+$route['vacancy_create'] = "AdminController/vacancy_create" ;
+$route['vacancy_create_act'] = "AdminController/vacancy_create_act";
+$route['vacancy_delete/(.*)'] = "AdminController/vacancy_delete/$1";
+$route['vacancy_detail/(.*)'] = "AdminController/vacancy_detail/$1";
+
+$route['vacancy_edit/(.*)'] = "AdminController/vacancy_edit/$1";
+$route['vacancy_edit_act/(.*)'] = 'AdminController/vacancy_edit_act/$1';
+$route['vacancy_img_delete/(.*)'] = 'AdminController/vacancy_img_delete/$1';
+// =========================Vacancy End=========================
+
+
+// =========================Testimonials Start=========================
+
+$route['testimonials_admin'] = "AdminController/testimonials_list" ;
+$route['testimonial_create'] = "AdminController/testimonial_create" ;
+$route['testimonial_create_act'] = "AdminController/testimonial_create_act";
+$route['testimonial_delete/(.*)'] = "AdminController/testimonial_delete/$1";
+$route['testimonial_detail/(.*)'] = "AdminController/testimonial_detail/$1";
+
+$route['testimonial_edit/(.*)'] = "AdminController/testimonial_edit/$1";
+$route['testimonial_edit_act/(.*)'] = 'AdminController/testimonial_edit_act/$1';
+$route['testimonial_img_delete/(.*)'] = 'AdminController/testimonial_img_delete/$1';
+
+// =========================Testimonials End===========================
+
+
+// =========================Achievements Start===========================
+
+$route['achievements_admin'] = "AdminController/achievements_list" ;
+
+
+// =========================Achievements End===========================
+
+
 
 // =======================CONTACT START===========================
 $route['admin_contact'] = "AdminController/contact_admin";

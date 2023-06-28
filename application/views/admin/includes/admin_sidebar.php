@@ -62,7 +62,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">stimul admin</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">admin</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -117,11 +117,39 @@
             </li>
 
             <li class="menu-item">
+              <a href="<?php echo base_url("partners_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Analytics">Partnyorlar</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("vacancies_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-paperclip"></i>
+                <div data-i18n="Analytics">Vakansiyalar</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("testimonials_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-comment"></i>
+                <div data-i18n="Analytics">Rəylər</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("achievements_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-star"></i>
+                <div data-i18n="Analytics">Uğurlarımız</div>
+              </a>
+            </li>
+
+            <!-- <li class="menu-item">
               <a href="<?php echo base_url("admin_contact")?>" class="menu-link">
               <i class="menu-icon tf-icons bx bx-comment-edit"></i>
                 <div data-i18n="Analytics">Müraciətlər</div>
               </a>
-            </li>
+            </li> -->
 
 
             

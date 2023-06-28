@@ -235,4 +235,6 @@
 
 </main>
 
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12156.2440604024!2d49.8286822!3d40.3853403!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d9bdc74118b%3A0xc8377414faa8f86b!2sSTIMUL%20Education%20%26%20Consulting!5e0!3m2!1saz!2saz!4v1683124025755!5m2!1saz!2saz" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 <?php $this->load->view('user/includes/footer') ?>

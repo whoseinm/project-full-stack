@@ -41,9 +41,7 @@
                 </div>
                 <div class="col-lg-8">
                     
-                    <form class="form-contact contact_form" action="<?php if(!empty($subject) && !empty($message) && !empty($name) && !empty($email)){ ?>
-
-                    <?php } ?>" <?php echo base_url('contact_message_act') ?>
+                    <form class="form-contact contact_form" onsubmit="mailto:huseynmikayilzade07@gmail.com"
                         method="post">
                         <div class="row">
                             <div class="col-12">

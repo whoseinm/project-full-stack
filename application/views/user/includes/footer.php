@@ -10,7 +10,8 @@
 
                 <div class="footer-logo mb-25">
                   <a href="<?php echo base_url("home") ?>"><img
-                      src="<?php echo base_url('assets/user/') ?>img/logo/logo_stimul.png" width="250px" height="50px" style="object-fit:cover; margin-left:-20px;" alt=""></a>
+                      src="<?php echo base_url('assets/user/') ?>img/logo/logo_stimul.png" width="250px" height="50px"
+                      style="object-fit:cover; margin-left:-20px;" alt=""></a>
                 </div>
                 <div class="footer-tittle">
                   <div class="footer-pera">
@@ -26,7 +27,7 @@
 
                 <div class="footer-social">
                   <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.facebook.com/groups/35847307934" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.facebook.com/Stimul.edu.az" target="_blank"><i class="fab fa-facebook-f"></i></a>
                   <a href="#"><i class="fab fa-pinterest-p"></i></a>
                 </div>
               </div>
@@ -124,3 +125,22 @@
 
 
     </html>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        Email.send({
+          Host: "smtp.gmail.com",
+          Username: "huseynmikayilzade07@gmail.com",
+          Password: "Whoseinm1234",
+          To: "whoseinm12@gmail.com",
+          From: document.getElementById("email").value,
+          Subject: document.getElementById("subject").value,
+          Body: "Ad:" + document.getElementById("name").value 
+            + "<br> Email:" + document.getElementById("email").value
+            + "<br> Mesaj:" +document.getElementById("message").value
+        }).then(
+          message => alert(message)
+        );
+      }
+    </script>

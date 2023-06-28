@@ -38,7 +38,13 @@
                     <div class="row">
                         <div class="img col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <img style="height: 550px; width:100%; object-fit: contain; border-radius:10px;"
-                                src="<?php echo base_url('uploads/courses/' . $course_single['course_img']) ?>" alt="">
+                            <?php if($course_single['course_img']) { ?>
+                                src="<?php echo base_url('uploads/courses/' . $course_single['course_img']) ?>">
+                            <?php } else{ ?>
+                                src="<?php echo base_url('uploads/courses/logo.png') ?>">
+                            <?php } ?>
+                                
+
                         </div>
 
                         <div class="description col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -56,7 +62,7 @@
             </div>
 
             <a href="<?php echo base_url("courses") ?>">
-                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#4255A4; cursor: pointer;">Back</button>
+                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#4255A4; cursor: pointer;">Geri</button>
             </a>
 
         </div>
