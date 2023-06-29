@@ -158,6 +158,14 @@
               </a>
             </li>
 
+
+            <li class="menu-item">
+              <a href="<?php echo base_url("special_courses_admin")?>" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-bullseye"></i>
+                <div data-i18n="Analytics">Özəl Kurslar</div>
+              </a>
+            </li>
+
             <!-- <li class="menu-item">
               <a href="<?php echo base_url("admin_contact")?>" class="menu-link">
               <i class="menu-icon tf-icons bx bx-comment-edit"></i>

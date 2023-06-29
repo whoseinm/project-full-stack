@@ -18,6 +18,7 @@ class AdminController extends CI_Controller
         $this->load->model('Achievements_model');
         $this->load->model('Trainings_model');
         $this->load->model('StudyAbroad_model');
+        $this->load->model('Special_courses_model');
     }
 
 
@@ -2103,11 +2104,11 @@ class AdminController extends CI_Controller
 
     public function StudyAbroad_create_act(){
         $abroad_name = $_POST['title'];
-        $abroad_vacancy = $_POST['description'];
+        $abroad_about = $_POST['description'];
         $abroad_add_date = $_POST['date'];
         $abroad_status = $_POST['status'];
 
-        if (!empty($abroad_name) && !empty($abroad_vacancy) && !empty($abroad_add_date) && !empty($abroad_status)) {
+        if (!empty($abroad_name) && !empty($abroad_about) && !empty($abroad_add_date) && !empty($abroad_status)) {
 
             $config['upload_path'] = './uploads/studyAbroad/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -2128,7 +2129,7 @@ class AdminController extends CI_Controller
 
                 $data = [
                     'abroad_name' => $abroad_name,
-                    'abroad_about' => $abroad_vacancy,
+                    'abroad_about' => $abroad_about,
                     'abroad_add_date' => $abroad_add_date,
                     'abroad_status' => $abroad_status,
                     'abroad_img' => $file_name,
@@ -2151,7 +2152,7 @@ class AdminController extends CI_Controller
             } else {
                 $data = [
                     'abroad_name' => $abroad_name,
-                    'abroad_about' => $abroad_vacancy,
+                    'abroad_about' => $abroad_about,
                     'abroad_add_date' => $abroad_add_date,
                     'abroad_status' => $abroad_status,
                     'abroad_creator_id' => $_SESSION['admin_login_id'],
@@ -2276,6 +2277,202 @@ class AdminController extends CI_Controller
     }
 
     // ======================StudyAbroad End=========================
+
+
+
+    // ======================Special_Courses Start=========================
+    
+    
+    public function Special_Courses_list()
+    {
+    $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+    $data['get_all_special_courses'] = $this->Special_courses_model->get_all_special_courses();
+
+    $this->load->view("admin/special_courses/special_courses", $data);
+    }
+
+    public function Special_Courses_create()
+    {
+        $this->load->view("admin/special_courses/special_courses_create");
+    }
+
+    public function Special_Courses_act(){
+        $special_courses_name = $_POST['title'];
+        $special_courses_about = $_POST['description'];
+        $special_courses_add_date = $_POST['date'];
+        $special_courses_status = $_POST['status'];
+
+        if (!empty($special_courses_name) && !empty($special_courses_about) && !empty($special_courses_add_date) && !empty($special_courses_status)) {
+
+            $config['upload_path'] = './uploads/special_courses/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    's_course_name' => $special_courses_name,
+                    's_course_about' => $special_courses_about,
+                    's_course_add_date' => $special_courses_add_date,
+                    's_course_status' => $special_courses_status,
+                    's_course_img' => $file_name,
+                    's_course_img_ext' => $file_ext,
+                    's_course_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Special_courses_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Özəl Kurs uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('special_courses_admin'));
+            } else {
+                $data = [
+                    's_course_name' => $special_courses_name,
+                    's_course_about' => $special_courses_about,
+                    's_course_add_date' => $special_courses_add_date,
+                    's_course_status' => $special_courses_status,
+                    's_course_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Special_courses_model->insert($data);
+
+                $this->session->set_flashdata('success', "Özəl Kurs uğurla əlavə olundu");
+
+                redirect(base_url('special_courses_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Special_Courses_detail($id)
+    {
+        $data['Special_Courses_single'] = $this->Special_courses_model->get_single_special_course($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/special_courses/special_courses_detail', $data);
+    }
+
+    public function Special_Courses_edit_act($id){
+        $s_course_name = $_POST['title'];
+        $s_course_about = $_POST['description'];
+        $s_course_add_date = $_POST['date'];
+        $s_course_status = $_POST['status'];
+
+
+        if (!empty($s_course_name) && !empty($s_course_about) && !empty($s_course_add_date) && !empty($s_course_status)) {
+
+
+            $config['upload_path'] = "./uploads/special_courses/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    's_course_name' => $s_course_name,
+                    's_course_about' => $s_course_about,
+                    's_course_add_date' => $s_course_add_date,
+                    's_course_status' => $s_course_status,
+                    's_course_img' => $file_name,
+                    's_course_img_ext' => $file_ext,
+                    's_course_updater_id' => $_SESSION['admin_login_id'],
+                    's_course_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Special_courses_model->update_special_course($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Özəl kurs uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('special_courses_admin'));
+            } else {
+
+                $data = [
+                    's_course_name' => $s_course_name,
+                    's_course_about' => $s_course_about,
+                    's_course_add_date' => $s_course_add_date,
+                    's_course_status' => $s_course_status,
+                    's_course_updater_id' => $_SESSION['admin_login_id'],
+                    's_course_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Special_courses_model->update_special_course($id, $data);
+
+                $this->session->set_flashdata('success', "Özəl kurs uğurla yeniləndi!");
+
+                redirect(base_url('special_courses_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Special_Courses_delete($id){
+        $this->Special_courses_model->delete_special_course($id);
+    }
+
+    public function Special_Courses_edit($id)
+    {
+        $data['special_courses_single'] = $this->db->where('s_course_id', $id)->get('special_courses')->row_array();
+        $this->load->view('admin/special_courses/special_courses_edit', $data);
+    }
+
+    public function Special_Courses_img_delete($id){
+        $data = [
+            's_course_img' => "",
+            's_course_img_ext' => "",
+        ];
+
+        $this->Special_courses_model->update_special_course($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+
+    
+    // ======================Special_Courses End=========================
 
     
 

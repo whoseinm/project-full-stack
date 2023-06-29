@@ -243,6 +243,23 @@ $route['studyAbroad_img_delete/(.*)'] = 'AdminController/StudyAbroad_img_delete/
 
 
 
+// =========================Special Courses Start===========================
+
+$route['special_courses_admin'] = "AdminController/Special_Courses_list" ;
+$route['special_course_create'] = "AdminController/Special_Courses_create";
+$route['special_course_create_act'] = "AdminController/Special_Courses_act";
+$route['special_course_delete/(.*)'] = "AdminController/Special_Courses_delete/$1";
+$route['special_course_detail/(.*)'] = "AdminController/Special_Courses_detail/$1";
+
+$route['special_course_edit/(.*)'] = "AdminController/Special_Courses_edit/$1";
+$route['special_course_edit_act/(.*)'] = 'AdminController/Special_Courses_edit_act/$1';
+$route['special_course_img_delete/(.*)'] = 'AdminController/Special_Courses_img_delete/$1';
+
+
+// =========================Special Courses End===========================
+
+
+
 
 
 
