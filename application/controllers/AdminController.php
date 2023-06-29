@@ -17,6 +17,7 @@ class AdminController extends CI_Controller
         $this->load->model('Testimonials_model');
         $this->load->model('Achievements_model');
         $this->load->model('Trainings_model');
+        $this->load->model('StudyAbroad_model');
     }
 
 
@@ -2071,9 +2072,212 @@ class AdminController extends CI_Controller
         $this->Trainings_model->delete_trainings($id);
     }
 
+    public function trainings_img_delete($id){
+        $data = [
+            'training_img' => "",
+            'training_img_ext' => "",
+        ];
+
+        $this->Trainings_model->update_trainings($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     // ======================Trainings End=========================
 
 
+    // ======================StudyAbroad Start=========================
+    
+    public function StudyAbroad_list()
+    {
+    $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+    $data['get_all_study_abroad'] = $this->StudyAbroad_model->get_all_study_abroad();
+
+    $this->load->view("admin/studyAbroad/studyAbroad", $data);
+    }
+
+    public function StudyAbroad_create()
+    {
+        $this->load->view("admin/studyAbroad/studyAbroad_create");
+    }
+
+    public function StudyAbroad_create_act(){
+        $abroad_name = $_POST['title'];
+        $abroad_vacancy = $_POST['description'];
+        $abroad_add_date = $_POST['date'];
+        $abroad_status = $_POST['status'];
+
+        if (!empty($abroad_name) && !empty($abroad_vacancy) && !empty($abroad_add_date) && !empty($abroad_status)) {
+
+            $config['upload_path'] = './uploads/studyAbroad/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'abroad_name' => $abroad_name,
+                    'abroad_about' => $abroad_vacancy,
+                    'abroad_add_date' => $abroad_add_date,
+                    'abroad_status' => $abroad_status,
+                    'abroad_img' => $file_name,
+                    'abroad_img_ext' => $file_ext,
+                    'abroad_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->StudyAbroad_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Təhsil uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('studyAbroad_admin'));
+            } else {
+                $data = [
+                    'abroad_name' => $abroad_name,
+                    'abroad_about' => $abroad_vacancy,
+                    'abroad_add_date' => $abroad_add_date,
+                    'abroad_status' => $abroad_status,
+                    'abroad_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->StudyAbroad_model->insert($data);
+
+                $this->session->set_flashdata('success', "Təhsil uğurla əlavə olundu");
+
+                redirect(base_url('studyAbroad_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function StudyAbroad_detail($id)
+    {
+        $data['StudyAbroad_single'] = $this->StudyAbroad_model->get_single_abroad($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/studyAbroad/studyAbroad_detail', $data);
+    }
+
+    public function StudyAbroad_delete($id){
+        $this->StudyAbroad_model->delete_abroad($id);
+    }
+
+    public function StudyAbroad_edit($id)
+    {
+        $data['StudyAbroad_single'] = $this->db->where('abroad_id', $id)->get('studyAbroad')->row_array();
+        $this->load->view('admin/studyAbroad/studyAbroad_edit', $data);
+    }
+
+    public function StudyAbroad_edit_act($id){
+        $abroad_name = $_POST['title'];
+        $abroad_about = $_POST['description'];
+        $abroad_add_date = $_POST['date'];
+        $abroad_status = $_POST['status'];
+
+
+        if (!empty($abroad_name) && !empty($abroad_about) && !empty($abroad_add_date) && !empty($abroad_status)) {
+
+
+            $config['upload_path'] = "./uploads/studyAbroad/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'abroad_name' => $abroad_name,
+                    'abroad_about' => $abroad_about,
+                    'abroad_add_date' => $abroad_add_date,
+                    'abroad_status' => $abroad_status,
+                    'abroad_img' => $file_name,
+                    'abroad_img_ext' => $file_ext,
+                    'abroad_updater_id' => $_SESSION['admin_login_id'],
+                    'abroad_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->StudyAbroad_model->update_abroad($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Təhsil uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('studyAbroad_admin'));
+            } else {
+
+                $data = [
+                    'abroad_name' => $abroad_name,
+                    'abroad_about' => $abroad_about,
+                    'abroad_add_date' => $abroad_add_date,
+                    'abroad_status' => $abroad_status,
+                    'abroad_updater_id' => $_SESSION['admin_login_id'],
+                    'abroad_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->StudyAbroad_model->update_abroad($id, $data);
+
+                $this->session->set_flashdata('success', "Təhsil uğurla yeniləndi!");
+
+                redirect(base_url('studyAbroad_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+    
+    public function StudyAbroad_img_delete($id){
+        $data = [
+            'abroad_img' => "",
+            'abroad_img_ext' => "",
+        ];
+
+        $this->StudyAbroad_model->update_abroad($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    // ======================StudyAbroad End=========================
+
+    
 
     // ========================CONTACT START==========================
 

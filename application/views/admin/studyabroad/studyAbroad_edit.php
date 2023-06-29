@@ -13,8 +13,8 @@
 <div class="container">
     <div class="card">
 
-        <h5 class="card-header spaceB">Təlim edit
-            <a href="<?php echo base_url('trainings_admin') ?>">
+        <h5 class="card-header spaceB">Təhsil edit
+            <a href="<?php echo base_url('studyAbroad_admin') ?>">
                 <button type="button" class="btn  btn-sm btn-danger">Back</button>
             </a>
         </h5>
@@ -33,31 +33,31 @@
                 </div>
             <?php } ?>
 
-            <form action="<?php echo base_url('training_edit_act/').$trainings_single['training_id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('studyAbroad_edit_act/').$StudyAbroad_single['abroad_id']; ?>" method="post" enctype="multipart/form-data">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" class="form-control" value="<?php echo $trainings_single['training_name']; ?>">
+                <input type="text" id="title" name="title" class="form-control" value="<?php echo $StudyAbroad_single['abroad_name']; ?>">
                 <br>
 
                 <label for="descr">Description</label>
-                <textarea name="description" class="form-control" id="description" cols="30" rows="10" ><?php echo $trainings_single['training_about']; ?></textarea>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="10" ><?php echo $StudyAbroad_single['abroad_about']; ?></textarea>
                 <br>
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left;">
                     <label for="date">Date</label>
-                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $trainings_single['training_add_date']; ?>">
+                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $StudyAbroad_single['abroad_add_date']; ?>">
                 </div>
 
 
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="float: left; margin:0px 10px">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
-                    <option <?php if ($trainings_single['training_status'] == "") {
+                    <option <?php if ($StudyAbroad_single['abroad_status'] == "") {
                                     echo "SELECTED";
                                 } ?> value="">-SELECT-</option>
-                        <option <?php if ($trainings_single['training_status'] == "Active") {
+                        <option <?php if ($StudyAbroad_single['abroad_status'] == "Active") {
                                     echo "SELECTED";
                                 } ?> value="Active">Active</option>
-                        <option <?php if ($trainings_single['training_status'] == "Deactive") {
+                        <option <?php if ($StudyAbroad_single['abroad_status'] == "Deactive") {
                                     echo "SELECTED";
                                 } ?> value="Deactive">Deactive</option>
                     </select>
@@ -66,15 +66,15 @@
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left; margin:0px">
 
-                    <?php if ($trainings_single['training_img']) { ?>
-                        <?php if (empty($trainings_single['training_img'])) { ?>
+                    <?php if ($StudyAbroad_single['abroad_img']) { ?>
+                        <?php if (empty($StudyAbroad_single['abroad_img'])) { ?>
                             <img width="100%" style="object-fit: cover;" src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg" alt="">
 
                         <?php } else { ?>
-                            <img width="100%" style="object-fit: cover;" src="<?php echo base_url('uploads/trainings/' . $trainings_single['training_img']); ?>" alt="">
+                            <img width="100%" style="object-fit: cover;" src="<?php echo base_url('uploads/studyAbroad/' . $StudyAbroad_single['abroad_img']); ?>" alt="">
 
-                            <a href="<?php echo base_url('training_img_delete/'.$trainings_single['training_id']); ?>">
-                                <button onclick="return confirm('Şəkili silmək istədiyinizə əminsiniz?')" type="button" class="btn btn-danger">Delete img</button>
+                            <a href="<?php echo base_url('studyAbroad_img_delete/'.$StudyAbroad_single['abroad_id']); ?>">
+                                <button onclick="return confirm('Şəkli silmək istədiyinizə əminsiniz?')" type="button" class="btn btn-danger">Delete img</button>
                             </a>
 
 

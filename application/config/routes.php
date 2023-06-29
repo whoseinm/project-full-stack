@@ -207,6 +207,7 @@ $route['achievement_img_delete/(.*)'] = 'AdminController/achievements_img_delete
 
 
 
+
 // =========================Trainings Start===========================
 
 $route['trainings_admin'] = "AdminController/trainings_list" ;
@@ -217,8 +218,32 @@ $route['training_detail/(.*)'] = "AdminController/trainings_detail/$1";
 
 $route['training_edit/(.*)'] = "AdminController/trainings_edit/$1";
 $route['training_edit_act/(.*)'] = 'AdminController/trainings_edit_act/$1';
+$route['training_img_delete/(.*)'] = 'AdminController/trainings_img_delete/$1';
 
-// =========================Trainings Start===========================
+// =========================Trainings End===========================
+
+
+
+
+
+
+// =========================StudyAbroad Start===========================
+
+$route['studyAbroad_admin'] = "AdminController/StudyAbroad_list" ;
+$route['studyAbroad_create'] = "AdminController/StudyAbroad_create";
+$route['studyAbroad_create_act'] = "AdminController/StudyAbroad_create_act";
+$route['studyAbroad_delete/(.*)'] = "AdminController/StudyAbroad_delete/$1";
+$route['studyAbroad_detail/(.*)'] = "AdminController/StudyAbroad_detail/$1";
+
+$route['studyAbroad_edit/(.*)'] = "AdminController/StudyAbroad_edit/$1";
+$route['studyAbroad_edit_act/(.*)'] = 'AdminController/StudyAbroad_edit_act/$1';
+$route['studyAbroad_img_delete/(.*)'] = 'AdminController/StudyAbroad_img_delete/$1';
+
+// =========================StudyAbroad End===========================
+
+
+
+
 
 
 
