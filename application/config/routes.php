@@ -258,6 +258,13 @@ $route['special_course_img_delete/(.*)'] = 'AdminController/Special_Courses_img_
 
 // =========================Special Courses End===========================
 
+
+
+
+
+
+// =========================Prices Start===========================
+
 $route['prices_admin'] = "AdminController/Prices_list" ;
 $route['prices_create'] = "AdminController/Prices_create";
 $route['prices_create_act'] = "AdminController/Prices_create_act";
@@ -267,6 +274,27 @@ $route['prices_detail/(.*)'] = "AdminController/Prices_detail/$1";
 $route['prices_edit/(.*)'] = "AdminController/Prices_edit/$1";
 $route['prices_edit_act/(.*)'] = 'AdminController/Prices_edit_act/$1';
 $route['prices_img_delete/(.*)'] = 'AdminController/Prices_img_delete/$1';
+
+// =========================Prices End===========================
+
+
+// =========================Plans Start===========================
+
+$route['plans_admin'] = "AdminController/Plans_list" ;
+$route['plan_create'] = "AdminController/Plans_create";
+$route['plan_create_act'] = "AdminController/Plans_create_act";
+$route['plan_delete/(.*)'] = "AdminController/Plans_delete/$1";
+$route['plan_detail/(.*)'] = "AdminController/Plans_detail/$1";
+
+$route['plan_edit/(.*)'] = "AdminController/Plans_edit/$1";
+$route['plan_edit_act/(.*)'] = 'AdminController/Plans_edit_act/$1';
+$route['plan_img_delete/(.*)'] = 'AdminController/Plans_img_delete/$1';
+
+
+
+// =========================Plans End===========================
+
+
 
 
 

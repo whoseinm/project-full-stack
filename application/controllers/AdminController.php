@@ -20,6 +20,7 @@ class AdminController extends CI_Controller
         $this->load->model('StudyAbroad_model');
         $this->load->model('Special_courses_model');
         $this->load->model('Prices_model');
+        $this->load->model('Training_plan_model');
     }
 
 
@@ -2674,6 +2675,203 @@ class AdminController extends CI_Controller
 
 
 
+
+    // ======================Plans Start=========================
+
+
+    public function Plans_list()
+    {
+    $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+    $data['get_all_plans'] = $this->Training_plan_model->get_all_plans();
+
+    $this->load->view("admin/training_plan/training_plan", $data);
+    }
+
+    public function Plans_create()
+    {
+        $this->load->view("admin/training_plan/training_plan_create");
+    }
+
+    public function Plans_create_act(){
+        $plan_name = $_POST['title'];
+        $plan_about = $_POST['description'];
+        $plan_add_date = $_POST['date'];
+        $plan_status = $_POST['status'];
+
+        if (!empty($plan_name) && !empty($plan_about) && !empty($plan_add_date) && !empty($plan_status)) {
+
+            $config['upload_path'] = './uploads/plans/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'plan_name' => $plan_name,
+                    'plan_about' => $plan_about,
+                    'plan_add_date' => $plan_add_date,
+                    'plan_status' => $plan_status,
+                    'plan_img' => $file_name,
+                    'plan_img_ext' => $file_ext,
+                    'plan_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Training_plan_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Təlim planı uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('plans_admin'));
+            } else {
+                $data = [
+                    'plan_name' => $plan_name,
+                    'plan_about' => $plan_about,
+                    'plan_add_date' => $plan_add_date,
+                    'plan_status' => $plan_status,
+                    'plan_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Training_plan_model->insert($data);
+
+                $this->session->set_flashdata('success', "Təlim planı uğurla əlavə olundu");
+
+                redirect(base_url('plans_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Plans_detail($id)
+    {
+        $data['training_plan_single'] = $this->Training_plan_model->get_single_plan($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/training_plan/training_plan_detail', $data);
+    }
+
+    public function Plans_edit($id)
+    {
+        $data['training_plan_single'] = $this->db->where('plan_id', $id)->get('training_plan')->row_array();
+        $this->load->view('admin/training_plan/training_plan_edit', $data);
+    }
+
+    public function Plans_edit_act($id){
+        $plan_name = $_POST['title'];
+        $plan_about = $_POST['description'];
+        $plan_add_date = $_POST['date'];
+        $plan_status = $_POST['status'];
+
+
+        if (!empty($plan_name) && !empty($plan_about) && !empty($plan_add_date) && !empty($plan_status)) {
+
+
+            $config['upload_path'] = "./uploads/plans/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'plan_name' => $plan_name,
+                    'plan_about' => $plan_about,
+                    'plan_add_date' => $plan_add_date,
+                    'plan_status' => $plan_status,
+                    'plan_img' => $file_name,
+                    'plan_img_ext' => $file_ext,
+                    'plan_updater_id' => $_SESSION['admin_login_id'],
+                    'plan_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Training_plan_model->update_plan($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Təlim planı uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('plans_admin'));
+            } else {
+
+                $data = [
+                    'plan_name' => $plan_name,
+                    'plan_about' => $plan_about,
+                    'plan_add_date' => $plan_add_date,
+                    'plan_status' => $plan_status,
+                    'plan_updater_id' => $_SESSION['admin_login_id'],
+                    'plan_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Training_plan_model->update_plan($id, $data);
+
+                $this->session->set_flashdata('success', "Təlim planı uğurla yeniləndi!");
+
+                redirect(base_url('plans_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Plans_delete($id){
+        $this->Training_plan_model->delete_plan($id);
+    }
+
+    public function Plans_img_delete($id){
+        $data = [
+            'plan_img' => "",
+            'plan_img_ext' => "",
+        ];
+
+        $this->Training_plan_model->update_plan($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+
+    // ======================Plans End=========================
+
+
+
+    
 
 
 

@@ -13,8 +13,8 @@
 <div class="container">
     <div class="card">
 
-        <h5 class="card-header spaceB">Təhsil Detalları
-            <a href="<?php echo base_url('trainings_admin') ?>">
+        <h5 class="card-header spaceB">Təlim planı Detalları
+            <a href="<?php echo base_url('plans_admin') ?>">
                 <button type="button" class="btn  btn-sm btn-danger">Back</button>
             </a>
         </h5>
@@ -35,34 +35,34 @@
 
             <form action="<?php echo base_url('training_create_act'); ?>" method="post" enctype="multipart/form-data">
                 <label for="title"><b>Uğurun adı</b></label>
-                <p><?php echo $trainings_single['training_name'];?></p>
+                <p><?php echo $training_plan_single['plan_name'];?></p>
                 <br>
 
                 <label for="descr"><b>Description</b></label>
-                <p><?php echo $trainings_single['training_about'];?></p>
+                <p><?php echo $training_plan_single['plan_about'];?></p>
                 <br>
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="float: left;">
                     <label for="date"><b>Date</b></label>
-                    <p><?php echo $trainings_single['training_add_date'];?></p>
+                    <p><?php echo $training_plan_single['plan_add_date'];?></p>
                 </div>
 
 
 
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="float: left; margin:0px 10px">
                     <label for="status"><b>Status</b></label>
-                    <p><?php echo $trainings_single['training_status'];?></p>
+                    <p><?php echo $training_plan_single['plan_status'];?></p>
                 </div>
 
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="float: left; margin:0px 10px">
                     <label for="status"><b>Creator</b></label>
-                    <p><?php echo $trainings_single['a_name'];?></p>
+                    <p><?php echo $training_plan_single['a_name'];?></p>
                 </div>
 
-                <?php if ($trainings_single['training_updater_id'] != 0){ ?>
+                <?php if ($training_plan_single['plan_updater_id'] != 0){ ?>
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="float: left; margin:0px 10px">
                     <label for="cate"><b>Updater</b></label>
-                    <p><?php echo $trainings_single['training_updater_id'];?></p>
+                    <p><?php echo $training_plan_single['plan_updater_id'];?></p>
                 </div>
             <?php }else{ ?>
                    <label for="status"><b>Updater</b></label>
@@ -73,8 +73,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; margin:0px">
                     <label for="img"><b>File</b></label>
                     <br>
-                    <?php if(!empty($trainings_single["training_img"])){ ?>
-                        <img width="150px" height="150px" src="<?php echo base_url("uploads/trainings/".$trainings_single["training_img"]) ?>" alt="">
+                    <?php if(!empty($training_plan_single["plan_img"])){ ?>
+                        <img width="150px" height="150px" src="<?php echo base_url("uploads/plans/".$training_plan_single["plan_img"]) ?>" alt="">
                     <?php }else{ ?>
                         <img width="150px" height="150px" src="http://raddiantdiagnostics.com/wp-content/uploads/2019/12/no_img.jpg" alt="">
                     <?php } ?>
