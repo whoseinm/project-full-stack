@@ -19,6 +19,7 @@ class AdminController extends CI_Controller
         $this->load->model('Trainings_model');
         $this->load->model('StudyAbroad_model');
         $this->load->model('Special_courses_model');
+        $this->load->model('Prices_model');
     }
 
 
@@ -2296,7 +2297,7 @@ class AdminController extends CI_Controller
         $this->load->view("admin/special_courses/special_courses_create");
     }
 
-    public function Special_Courses_act(){
+    public function Special_Courses_act(){ //create
         $special_courses_name = $_POST['title'];
         $special_courses_about = $_POST['description'];
         $special_courses_add_date = $_POST['date'];
@@ -2376,6 +2377,11 @@ class AdminController extends CI_Controller
 
         $this->load->view('admin/special_courses/special_courses_detail', $data);
     }
+    public function Special_Courses_edit($id)
+    {
+        $data['special_courses_single'] = $this->db->where('s_course_id', $id)->get('special_courses')->row_array();
+        $this->load->view('admin/special_courses/special_courses_edit', $data);
+    }
 
     public function Special_Courses_edit_act($id){
         $s_course_name = $_POST['title'];
@@ -2453,11 +2459,7 @@ class AdminController extends CI_Controller
         $this->Special_courses_model->delete_special_course($id);
     }
 
-    public function Special_Courses_edit($id)
-    {
-        $data['special_courses_single'] = $this->db->where('s_course_id', $id)->get('special_courses')->row_array();
-        $this->load->view('admin/special_courses/special_courses_edit', $data);
-    }
+
 
     public function Special_Courses_img_delete($id){
         $data = [
@@ -2475,6 +2477,205 @@ class AdminController extends CI_Controller
     // ======================Special_Courses End=========================
 
     
+
+
+    // ======================Prices Start=========================
+
+
+    public function Prices_list()
+    {
+    $data['admin'] = $this->db->where('a_id', $_SESSION['admin_login_id'])->get('admin')->row_array();
+    $data['get_all_prices'] = $this->Prices_model->get_all_prices();
+
+    $this->load->view("admin/prices/prices", $data);
+    }
+
+    public function Prices_create()
+    {
+        $this->load->view("admin/prices/prices_create");
+    }
+
+    public function Prices_create_act(){
+        $Prices_name = $_POST['title'];
+        $Prices_about = $_POST['description'];
+        $Prices_add_date = $_POST['date'];
+        $Prices_status = $_POST['status'];
+
+        if (!empty($Prices_name) && !empty($Prices_about) && !empty($Prices_add_date) && !empty($Prices_status)) {
+
+            $config['upload_path'] = './uploads/prices/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['encrypt_name'] = TRUE;
+            // $config['max_size'] = 100;
+            // $config['max_width'] = 1024;
+            // $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+
+                $data = [
+                    'price_name' => $Prices_name,
+                    'price_about' => $Prices_about,
+                    'price_add_date' => $Prices_add_date,
+                    'price_status' => $Prices_status,
+                    'price_img' => $file_name,
+                    'price_img_ext' => $file_ext,
+                    'price_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+
+                $data = $this->security->xss_clean($data);
+
+                // insert to DATABASE code
+                $this->Prices_model->insert($data);
+
+
+                // notification for post added successfully
+                $this->session->set_flashdata('success', "Qiymət uğurla əlavə olundu");
+
+                // redirect to page
+                redirect(base_url('prices_admin'));
+            } else {
+                $data = [
+                    'price_name' => $Prices_name,
+                    'price_about' => $Prices_about,
+                    'price_add_date' => $Prices_add_date,
+                    'price_status' => $Prices_status,
+                    'price_creator_id' => $_SESSION['admin_login_id'],
+                ];
+
+                $data = $this->security->xss_clean($data);
+
+                $this->Prices_model->insert($data);
+
+                $this->session->set_flashdata('success', "Qiymət uğurla əlavə olundu");
+
+                redirect(base_url('prices_admin'));
+            }
+
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Prices_delete($id){
+        $this->Prices_model->delete_prices($id);
+    }
+
+    public function Prices_detail($id)
+    {
+        $data['Prices_single'] = $this->Prices_model->get_single_prices($id);
+        // print_r($data['course_single']);
+        // die();
+
+        $this->load->view('admin/prices/prices_detail', $data);
+    }
+
+    public function Prices_edit($id)
+    {
+        $data['Prices_single'] = $this->db->where('price_id', $id)->get('prices')->row_array();
+        $this->load->view('admin/prices/prices_edit', $data);
+    }
+
+    public function Prices_edit_act($id){
+        $price_name = $_POST['title'];
+        $price_about = $_POST['description'];
+        $price_add_date = $_POST['date'];
+        $price_status = $_POST['status'];
+
+
+        if (!empty($price_name) && !empty($price_about) && !empty($price_add_date) && !empty($price_status)) {
+
+
+            $config['upload_path'] = "./uploads/prices/";
+            $config['allowed_types'] = "gif|jpg|png|jpeg";
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+
+            if ($this->upload->do_upload('user_img')) {
+                $file_name = $this->upload->data('file_name');
+                $file_ext = $this->upload->data('file_ext');
+
+                $data = [
+                    'price_name' => $price_name,
+                    'price_about' => $price_about,
+                    'price_add_date' => $price_add_date,
+                    'price_status' => $price_status,
+                    'price_img' => $file_name,
+                    'price_img_ext' => $file_ext,
+                    'price_updater_id' => $_SESSION['admin_login_id'],
+                    'price_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // insert to db code
+                $this->Prices_model->update_prices($id, $data);
+
+                // notification
+                $this->session->set_flashdata('success', "Qiymət uğurla yeniləndi!");
+
+                // redirect page
+                redirect(base_url('prices_admin'));
+            } else {
+
+                $data = [
+                    'price_name' => $price_name,
+                    'price_about' => $price_about,
+                    'price_add_date' => $price_add_date,
+                    'price_status' => $price_status,
+                    'price_updater_id' => $_SESSION['admin_login_id'],
+                    'price_update_date' => date("Y-m-d H:i:s"),
+                ];
+
+                $id = $this->security->xss_clean($id);
+                $data = $this->security->xss_clean($data);
+
+                // update in db info
+                $this->Prices_model->update_prices($id, $data);
+
+                $this->session->set_flashdata('success', "Qiymət uğurla yeniləndi!");
+
+                redirect(base_url('prices_admin'));
+            }
+
+        } else {
+            $this->session->set_flashdata('err', "Boşluq buraxmayın!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function Prices_img_delete($id){
+        $data = [
+            'price_img' => "",
+            'price_img_ext' => "",
+        ];
+
+        $this->Prices_model->update_prices($id, $data);
+        $this->session->set_flashdata('success', "Şəkil uğurla silindi!");
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    // ======================Prices End=========================
+
+
+
+
+
+
 
     // ========================CONTACT START==========================
 

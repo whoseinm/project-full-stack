@@ -258,8 +258,15 @@ $route['special_course_img_delete/(.*)'] = 'AdminController/Special_Courses_img_
 
 // =========================Special Courses End===========================
 
+$route['prices_admin'] = "AdminController/Prices_list" ;
+$route['prices_create'] = "AdminController/Prices_create";
+$route['prices_create_act'] = "AdminController/Prices_create_act";
+$route['prices_delete/(.*)'] = "AdminController/Prices_delete/$1";
+$route['prices_detail/(.*)'] = "AdminController/Prices_detail/$1";
 
-
+$route['prices_edit/(.*)'] = "AdminController/Prices_edit/$1";
+$route['prices_edit_act/(.*)'] = 'AdminController/Prices_edit_act/$1';
+$route['prices_img_delete/(.*)'] = 'AdminController/Prices_img_delete/$1';
 
 
 
