@@ -3,7 +3,7 @@
 
 <main>
 
-  <section class="slider-area ">
+  <section class="slider-area" style="background:#16164C;!important">
     <div class="slider-active">
 
       <div class="single-slider slider-height d-flex align-items-center">
@@ -19,7 +19,7 @@
                   <p data-animation="fadeInLeft" data-delay="0.4s">
                     <?php echo $item['slider_description'] ?>
                   </p>
-                  <a href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
+                  <a style="background: white!important; color: #16164C;" href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
                     data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
 
                 <?php } else { ?>
@@ -32,45 +32,56 @@
               </div>
 
             </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12" style="margin: 20px 0px;">
+              <div class="hero__caption">
+
+                <?php if ($item) { ?>
+                  <img src="uploads/slider/<?php echo $item['slider_img'] ?>" style="width: 500px; height: 400px; border-radius: 10px; background-size:cover;" alt="">
+
+                <?php } ?>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="services-area">
-    <div class="container">
+  <div class="services-area" style="margin: 20px;">
+    <div class="container" >
       <div class="row justify-content-sm-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30">
+          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
-              <img src="<?php echo base_url('assets/user/') ?>img/icon/icon1.svg" alt="">
+              <img src="<?php echo base_url('assets/user/') ?>img/icon/icon1.png" alt="">
             </div>
-            <div class="features-caption">
-              <h3>20+ Kurs sayısı</h3>
-              <p>Əsas sayı deyil əsas onların necə keçirildiyidir.</p>
+            <div class="features-caption" >
+              <h3 style="color: #16164C!important;">20+ Kurs sayısı</h3>
+              <p style="color: #16164C!important;">Əsas sayı deyil əsas onların necə keçirildiyidir.</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30">
+          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
               <img src="<?php echo base_url('assets/user/') ?>img/icon/icon2.svg" alt="">
             </div>
-            <div class="features-caption">
-              <h3>İşində Ekspert Treynerlər</h3>
-              <p>Müəllimlərimiz sizin üçün hər an hazırdırlar</p>
+            <div class="features-caption" style="color: #16164C;">
+              <h3 style="color: #16164C!important;">İşində Ekspert Treynerlər</h3>
+              <p style="color: #16164C!important;">Müəllimlərimiz sizin üçün hər an hazırdırlar</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30">
+          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
               <img src="<?php echo base_url('assets/user/') ?>img/icon/icon3.svg" alt="">
             </div>
-            <div class="features-caption">
-              <h3>Yaxşı Kurslar</h3>
-              <p>Ən yaxşı kursları siz sadəcə burda tapa bilərsiniz.</p>
+            <div class="features-caption" style="color: #16164C;">
+              <h3 style="color: #16164C!important;">Yaxşı Kurslar</h3>
+              <p style="color: #16164C!important;">Ən yaxşı kursları siz sadəcə burda tapa bilərsiniz.</p>
             </div>
           </div>
         </div>
@@ -182,7 +193,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2>Məşhur Kategoriyalar</h2>
+            <h2>Məşhur Təlimlər</h2>
           </div>
         </div>
       </div>
@@ -192,7 +203,7 @@
             <div class="single-topic text-center mb-30">
               <div class="topic-img">
                 <div class="bg_gradient"
-                  style="background:linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); height:170px; border-radius: 10px;">
+                  style="background:#16164C; height:170px; border-radius: 10px;">
                 </div>
                 <div class="topic-content-box">
                   <div class="topic-content">

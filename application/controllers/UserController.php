@@ -11,6 +11,15 @@ class UserController extends CI_Controller{
         $this->load->model('Courses_model');
         $this->load->model('Contact_model');
         $this->load->model('Hero_model');
+        $this->load->model('Partners_model');
+        $this->load->model('Vacancy_model');
+        $this->load->model('Testimonials_model');
+        $this->load->model('Achievements_model');
+        $this->load->model('Trainings_model');
+        $this->load->model('StudyAbroad_model');
+        $this->load->model('Special_courses_model');
+        $this->load->model('Prices_model');
+        $this->load->model('Training_plan_model');
     }
 
 

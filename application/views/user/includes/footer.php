@@ -1,5 +1,5 @@
 <footer>
-  <div class="footer-wrappper footer-bg">
+  <div class="footer-wrappper footer-bg" style="background:#16164C;!important">
 
     <div class="footer-area footer-padding">
       <div class="container">
