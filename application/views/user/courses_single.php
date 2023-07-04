@@ -49,7 +49,7 @@
 
                         <div class="description col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <h1
-                                style="color:#4255A4; font-size: 30px; text-align: center; margin-top:15px; font-weight: bold;">
+                                style="color:#16164C; font-size: 30px; text-align: center; margin-top:15px; font-weight: bold;">
                                 Kurs Haqqında</h1>
                             <div>
                                 <p>
@@ -62,7 +62,7 @@
             </div>
 
             <a href="<?php echo base_url("courses") ?>">
-                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#4255A4; cursor: pointer;">Geri</button>
+                <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#16164C; cursor: pointer;">Geri</button>
             </a>
 
         </div>

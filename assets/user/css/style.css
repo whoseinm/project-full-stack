@@ -264,10 +264,13 @@ li {
 .border-btn.border-btn2 {
     width: 100%;
     text-align: center;
+    background: #16164C;
+    color: #fff;
 }
 
 .border-btn.border-btn2:hover {
-    color: #fff
+    color: #fff;
+    background: #16164C!important;
 }
 
 .border-btn2 {
@@ -1811,16 +1814,15 @@ li {
 
 .courses-area .properties__caption h3 a:hover {
     text-decoration: underline;
-    color: #4255A4
+    color: #16164C;
 }
 
 .courses-area .properties__caption P {
-    color: #6E7697
+    color: #16164C;
 }
 
 .courses-area .properties__caption P span {
-    color: #C86FFF;
-    font-size: 16px
+    color: #16164C;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1862,7 +1864,7 @@ li {
 
 .courses-area .properties:hover .border-btn2 {
     color: #fff;
-    background: #FF9F67;
+    background: #16164C;
     -webkit-transition: .4s;
     -moz-transition: .4s;
     -o-transition: .4s;

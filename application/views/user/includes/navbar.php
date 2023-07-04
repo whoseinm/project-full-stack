@@ -1,5 +1,4 @@
 <header>
-
 <div class="header-area header-transparent" style="color:white!important;">
   <div class="main-header ">
   <div class="col-xl-12 col-lg-12" style="display:flex; justify-content:center; background:#16164C;">

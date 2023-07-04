@@ -3,7 +3,7 @@
 
 <main>
 
-  <section class="slider-area slider-area2">
+  <section class="slider-area slider-area2" >
     <div class="slider-active">
 
       <div class="single-slider slider-height3" style="height: 500px; display: flex; align-items:center;">
@@ -33,7 +33,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2>Kurslarımız</h2>
+            <h2 style="color: #16164C;">Kurslarımız</h2>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
                         <p>
                           <?php echo $item['course_duration'] ?>
                         </p>
-                        <?php echo $item['course_name'] ?>
+                        <?php echo mb_strimwidth($item['course_name'], 0, 26, "...");?>
                       </a></h3>
                     <div class="properties__footer d-flex justify-content-between align-items-center">
                       <div class="restaurant-name">
@@ -72,7 +72,7 @@
                             <img width="40px" height="40px" style="border-radius:50%; object-fit:cover;"
                               src="<?php echo base_url('uploads/trainers/' . $item['trainer_img']); ?>" alt="trainer_img">
                             <a href="<?php echo base_url("trainer_single/" . $item['trainer_id']) ?>"
-                              style="color:#6E7697; font-size: 17px;">
+                              style="color:#16164C; font-size: 17px;">
                               <?php echo $item['trainer_name'] ?>
                             </a>
                           <?php } else { ?>

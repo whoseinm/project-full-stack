@@ -1,15 +1,27 @@
 <?php $this->load->view('user/includes/header_style') ?>
 <?php $this->load->view('user/includes/navbar') ?>
 
+<div style=""></div>
 <main>
-
   <section class="slider-area" style="background:#16164C;!important">
     <div class="slider-active">
 
-      <div class="single-slider slider-height d-flex align-items-center">
-        <div class="container">
+      <div class="single-slider slider-height d-flex align-items-center" style="min-height: 800px!important;">
+        <div class="container" style="margin-top: 150px; margin-bottom: 10px;">
           <div class="row">
-            <div class="col-xl-6 col-lg-7 col-md-12">
+
+            <div class="col-xl-6 col-lg-6 col-md-12" style="margin: 30px 0px;">
+              <div class="hero__caption">
+
+                <?php if ($item) { ?>
+                  <img src="uploads/slider/<?php echo $item['slider_img'] ?>" style="width: 500px; height: 400px; border-radius: 10px; background-size:cover;" alt="">
+
+                <?php } ?>
+              </div>
+
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
               <div class="hero__caption">
 
                 <?php if ($item) { ?>
@@ -28,17 +40,6 @@
                   </p>
                   <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft" style="color:white"
                     data-delay="0.7s">Kurslar</a>
-                <?php } ?>
-              </div>
-
-            </div>
-
-            <div class="col-xl-6 col-lg-6 col-md-12" style="margin: 20px 0px;">
-              <div class="hero__caption">
-
-                <?php if ($item) { ?>
-                  <img src="uploads/slider/<?php echo $item['slider_img'] ?>" style="width: 500px; height: 400px; border-radius: 10px; background-size:cover;" alt="">
-
                 <?php } ?>
               </div>
 
@@ -94,7 +95,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2><a href="<?php echo base_url('courses') ?>" style="text-decoration:none; color:#4255A4;">Kurslarımız</a>
+            <h2><a href="<?php echo base_url('courses') ?>" style="text-decoration:none; color:#16164C;">Kurslarımız</a>
             </h2>
           </div>
         </div>
@@ -119,7 +120,8 @@
                           <p>
                             <?php echo $item['course_duration'] ?>
                           </p>
-                          <?php echo $item['course_name'] ?>
+                          <?php echo mb_strimwidth($item['course_name'], 0, 26, "...");?>
+
                         </a></h3>
                       <div class="properties__footer d-flex justify-content-between align-items-center">
                         <div class="restaurant-name">
@@ -236,8 +238,9 @@
 
         <div class="section-tittle section-tittle2 mb-20">
           <div class="front-text">
-            <h2 class="">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.</h2>
-            <a href="<?php echo base_url('contact') ?>" style="color:white;" class="btn">Əlaqə</a>
+            <h2 style="color: #16164C;!important">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.</h2>
+            <a style="background: #16164C!important; color: white;" href="<?php echo base_url('contact') ?>" target="_blank" class="btn hero-btn"
+                    data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
           </div>
         </div>
       </div>

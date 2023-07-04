@@ -23,12 +23,9 @@ class About_model extends CI_Model{
         ->result_array();
     }
 
-
-
     public function about_single($id){
         return $this->db
-        ->where('about_status', "Active")
-        ->order_by('about_id', 'DESC')
-        ->get('about')->row_array();
+        ->where('about_id',$id)
+        ->get("about")->row_array();
     }
 }

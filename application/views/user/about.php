@@ -35,12 +35,12 @@
           <div class="support-wrapper align-items-center" style="margin: 50px 0px 50px 0px; width:100%!important;">
             <div class="left-content1" style="width:82%!important; text-align:center;">
                 <img src="<?php echo base_url('uploads/about/'.$item['about_img'])?>" alt="">
-              
+            
 
               <div class="section-tittle section-tittle2 mb-45">
                 <div class="front-text">
-                  <h2 class=""><?php echo $item['about_title'] ?></h2>
-                  <p><?php echo $item['about_description'] ?></p>
+                  <h2 style="color: #16164C;"><?php echo $item['about_title'] ?></h2>
+                  <p style="color: #16164C;"><?php echo $item['about_description'] ?></p>
                 </div>
               </div>
 
