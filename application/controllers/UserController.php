@@ -25,10 +25,69 @@ class UserController extends CI_Controller{
 
     public function index(){
         $data['get_all_courses'] = $this->Courses_model->get_all_courses();
+        $data['get_all_teachers'] = $this->Trainers_model->trainers();
         $data['get_limit_10_category'] = $this->Courses_model->get_limit_10_category();
         $data['item'] = $this->Hero_model->slides();
 
         $this->load->view('user/index',$data);
+    }
+
+    public function about(){
+        $data['about'] = $this->About_model->about();
+        $data['get_all_trainers'] = $this->Trainers_model->trainers();
+
+        $this->load->view('user/about',$data);
+    }
+
+    public function courses(){
+        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
+        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
+
+        $this->load->view('user/courses', $data);
+    }
+
+    public function course_single($id){
+        $data['course_single'] = $this->Courses_model->get_single_course($id);
+
+        $this->load->view("user/courses_single", $data);
+    }
+
+    public function trainings(){
+        $data['get_all_trainings'] = $this->Trainings_model->get_all_trainings();
+
+        $this->load->view('user/trainings', $data);
+    }
+
+    public function trainings_single($id){
+        $data['training_single'] = $this->Trainings_model->get_single_trainings($id);
+
+        $this->load->view("user/trainings_single", $data);
+    }
+
+    public function studyAbroad(){
+        $data['get_all_abroad'] = $this->StudyAbroad_model->get_all_study_abroad();
+
+        $this->load->view('user/studyAbroad', $data);
+    }
+
+    
+    public function studyAbroad_single($id){
+        $data['abroad_single'] = $this->StudyAbroad_model->get_single_abroad($id);
+
+        $this->load->view("user/abroad_single", $data);
+    }
+
+    public function special_courses(){
+        $data['get_all_special_courses'] = $this->Special_courses_model->get_all_special_courses();
+
+        $this->load->view('user/special_courses', $data);
+    }
+
+    
+    public function special_course_single($id){
+        $data['abroad_single'] = $this->Special_courses_model->get_single_abroad($id);
+
+        $this->load->view("user/abroad_single", $data);
     }
 
     public function trainers(){
@@ -44,34 +103,14 @@ class UserController extends CI_Controller{
         $this->load->view('user/trainer_single', $data);
     }
 
-    public function about(){
-        $data['about'] = $this->About_model->about();
-        $data['get_all_trainers'] = $this->Trainers_model->trainers();
-
-        $this->load->view('user/about',$data);
-    }
-
     public function contact(){
         $this->load->view('user/contact');
     }
     
-    public function courses(){
-        $data['get_all_courses'] = $this->Courses_model->get_all_courses();
-        $data['get_all_categories'] = $this->Courses_model->get_all_categories();
-
-        $this->load->view('user/courses', $data);
-    }
-
     public function categories($id){
         $data['get_all_courses'] = $this->Courses_model->get_category_courses($id);
         
         $this->load->view('user/categories', $data);
-    }
-
-    public function course_single($id){
-        $data['course_single'] = $this->Courses_model->get_single_course($id);
-
-        $this->load->view("user/courses_single", $data);
     }
 
     public function blog(){

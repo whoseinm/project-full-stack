@@ -14,7 +14,8 @@
               <div class="hero__caption">
 
                 <?php if ($item) { ?>
-                  <img src="uploads/slider/<?php echo $item['slider_img'] ?>" style="width: 500px; height: 400px; border-radius: 10px; background-size:cover;" alt="">
+                  <img src="uploads/slider/<?php echo $item['slider_img'] ?>"
+                    style="width: 500px; height: 400px; border-radius: 10px; background-size:cover;" alt="">
 
                 <?php } ?>
               </div>
@@ -31,15 +32,15 @@
                   <p data-animation="fadeInLeft" data-delay="0.4s">
                     <?php echo $item['slider_description'] ?>
                   </p>
-                  <a style="background: white!important; color: #16164C;" href="<?php echo $item['slider_link'] ?>" target="_blank" class="btn hero-btn"
-                    data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
+                  <a style="background: white!important; color: #16164C;" href="<?php echo $item['slider_link'] ?>"
+                    target="_blank" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
 
                 <?php } else { ?>
                   <h1 data-animation="fadeInLeft" data-delay="0.2s">Stimul Education and Consulting</h1>
                   <p data-animation="fadeInLeft" data-delay="0.4s">Həyatınızın Stimulu
                   </p>
-                  <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft" style="color:white"
-                    data-delay="0.7s">Kurslar</a>
+                  <a href="<?php echo base_url("courses") ?>" class="btn hero-btn" data-animation="fadeInLeft"
+                    style="color:white" data-delay="0.7s">Kurslar</a>
                 <?php } ?>
               </div>
 
@@ -51,21 +52,23 @@
   </section>
 
   <div class="services-area" style="margin: 20px;">
-    <div class="container" >
+    <div class="container">
       <div class="row justify-content-sm-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
+          <div class="single-services mb-30"
+            style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
               <img src="<?php echo base_url('assets/user/') ?>img/icon/icon1.png" alt="">
             </div>
-            <div class="features-caption" >
+            <div class="features-caption">
               <h3 style="color: #16164C!important;">20+ Kurs sayısı</h3>
               <p style="color: #16164C!important;">Əsas sayı deyil əsas onların necə keçirildiyidir.</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
+          <div class="single-services mb-30"
+            style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
               <img src="<?php echo base_url('assets/user/') ?>img/icon/icon2.svg" alt="">
             </div>
@@ -76,7 +79,8 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="single-services mb-30" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
+          <div class="single-services mb-30"
+            style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
             <div class="features-icon">
               <img src="<?php echo base_url('assets/user/') ?>img/icon/icon3.svg" alt="">
             </div>
@@ -120,7 +124,7 @@
                           <p>
                             <?php echo $item['course_duration'] ?>
                           </p>
-                          <?php echo mb_strimwidth($item['course_name'], 0, 26, "...");?>
+                          <?php echo mb_strimwidth($item['course_name'], 0, 26, "..."); ?>
 
                         </a></h3>
                       <div class="properties__footer d-flex justify-content-between align-items-center">
@@ -141,7 +145,7 @@
                   </div>
                 </div>
               </div>
-            <?php }else{ ?>
+            <?php } else { ?>
               <div class="col-lg-4">
                 <div class="properties properties2 mb-30">
                   <div class="properties__card">
@@ -204,8 +208,7 @@
           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6">
             <div class="single-topic text-center mb-30">
               <div class="topic-img">
-                <div class="bg_gradient"
-                  style="background:#16164C; height:170px; border-radius: 10px;">
+                <div class="bg_gradient" style="background:#16164C; height:170px; border-radius: 10px;">
                 </div>
                 <div class="topic-content-box">
                   <div class="topic-content">
@@ -226,6 +229,7 @@
 
 
 
+
   <section class="about-area2 fix pb-padding">
     <div class="support-wrapper align-items-center">
       <div class="right-content2">
@@ -238,9 +242,10 @@
 
         <div class="section-tittle section-tittle2 mb-20">
           <div class="front-text">
-            <h2 style="color: #16164C;!important">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.</h2>
-            <a style="background: #16164C!important; color: white;" href="<?php echo base_url('contact') ?>" target="_blank" class="btn hero-btn"
-                    data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
+            <h2 style="color: #16164C;!important">Şəxsi və peşəkar məqsədlərinizə doğru növbəti addımı bizimlə atın.
+            </h2>
+            <a style="background: #16164C!important; color: white;" href="<?php echo base_url('contact') ?>"
+              target="_blank" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Ətraflı</a>
           </div>
         </div>
       </div>
@@ -249,6 +254,9 @@
 
 </main>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12156.2440604024!2d49.8286822!3d40.3853403!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d9bdc74118b%3A0xc8377414faa8f86b!2sSTIMUL%20Education%20%26%20Consulting!5e0!3m2!1saz!2saz!4v1683124025755!5m2!1saz!2saz" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12156.2440604024!2d49.8286822!3d40.3853403!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d9bdc74118b%3A0xc8377414faa8f86b!2sSTIMUL%20Education%20%26%20Consulting!5e0!3m2!1saz!2saz!4v1683124025755!5m2!1saz!2saz"
+  width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <?php $this->load->view('user/includes/footer') ?>
