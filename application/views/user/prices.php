@@ -11,12 +11,12 @@
           <div class="row">
             <div class="col-xl-8 col-lg-12 col-md-12">
               <div class="hero__caption hero__caption2">
-                <h1 data-animation="bounceIn" data-delay="0.2s">ACCA, CIA, DipIFR</h1>
+                <h1 data-animation="bounceIn" data-delay="0.2s">Qiymətlər</h1>
 
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url('home') ?>">Ana səhifə</a></li>
-                    <li class="breadcrumb-item"><a href="#">ACCA, CIA, DipIFR</a></li>
+                    <li class="breadcrumb-item"><a href="#">Qiymətlər</a></li>
                   </ol>
                 </nav>
 
@@ -33,37 +33,37 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2 style="color: #16164C;">ACCA, CIA, DipIFR</h2>
+            <h2 style="color: #16164C;">Qiymətlər</h2>
           </div>
         </div>
       </div>
       <div class="row">
 
-        <?php foreach ($get_all_special_courses as $item) { ?>
-          <?php if ($item['s_course_status'] == "Active") { ?>
+        <?php foreach ($get_all_prices as $item) { ?>
+          <?php if ($item['price_status'] == "Active") { ?>
             <div class="col-lg-4">
               <div class="properties properties2 mb-30">
                 <div class="properties__card">
                   <div class="properties__img overlay1">
 
-                  <?php if($item['s_course_img']){ ?>
-                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']) ?>"><img
+                  <?php if($item['price_img']){ ?>
+                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"><img
                         style="width:100%; height:340px; object-fit: contain;"
-                        src="<?php echo base_url('uploads/special_courses/' . $item['s_course_img']) ?>" alt=""></a>
+                        src="<?php echo base_url('uploads/prices/logo.png') ?>" alt=""></a>
                   <?php }else{ ?>
-                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']) ?>"><img
+                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"><img
                         style="width:100%; height:340px; object-fit: contain; background:white;"
-                        src="<?php echo base_url('uploads/special_courses/logo.png') ?>" alt=""></a>
+                        src="<?php echo base_url('uploads/prices/logo.png') ?>" alt=""></a>
                   <?php } ?>
                     
                   </div>
 
                   <div class="properties__caption">
                     <h3><a href="#">
-                        <?php echo mb_strimwidth($item['s_course_name'], 0, 29, "...");?>
+                        <?php echo mb_strimwidth($item['price_name'], 0, 29, "...");?>
                       </a></h3>
                       <br>
-                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']) ?>"
+                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

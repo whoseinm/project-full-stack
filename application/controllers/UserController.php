@@ -85,9 +85,33 @@ class UserController extends CI_Controller{
 
     
     public function special_course_single($id){
-        $data['abroad_single'] = $this->Special_courses_model->get_single_abroad($id);
+        $data['special_single'] = $this->Special_courses_model->get_single_special_course($id);
 
-        $this->load->view("user/abroad_single", $data);
+        $this->load->view("user/special_course_single", $data);
+    }
+
+    public function prices(){
+        $data['get_all_prices'] = $this->Prices_model->get_all_prices();
+
+        $this->load->view('user/prices', $data);
+    }
+
+    public function price_single($id){
+        $data['price_single'] = $this->Prices_model->get_single_prices($id);
+
+        $this->load->view("user/price_single", $data);
+    }
+
+    public function training_plan(){
+        $data['get_all_plans'] = $this->Training_plan_model->get_all_plans();
+
+        $this->load->view('user/training_plan', $data);
+    }
+
+    public function training_plan_single($id){
+        $data['plan_single'] = $this->Training_plan_model->get_single_plan($id);
+
+        $this->load->view("user/plan_single", $data);
     }
 
     public function trainers(){

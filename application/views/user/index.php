@@ -199,7 +199,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2>Məşhur Təlimlər</h2>
+            <h2 style="color: #16164C;">Məşhur Təlimlər</h2>
           </div>
         </div>
       </div>

@@ -62,7 +62,13 @@ $route['studyAbroad'] = "UserController/studyAbroad" ;
 $route['abroad_single/(.*)'] = "UserController/studyAbroad_single/$1";
 
 $route['special_courses'] = "UserController/special_courses" ;
-$route['abroad_single/(.*)'] = "UserController/studyAbroad_single/$1";
+$route['special_course_single/(.*)'] = "UserController/special_course_single/$1";
+
+$route['prices'] = "UserController/prices" ;
+$route['price_single/(.*)'] = "UserController/price_single/$1";
+
+$route['training_plan'] = "UserController/training_plan" ;
+$route['plan_single/(.*)'] = "UserController/training_plan_single/$1";
 
 $route['treyners'] = "UserController/trainers";
 $route['trainer_single/(.*)'] = "UserController/trainer_single/$1";
