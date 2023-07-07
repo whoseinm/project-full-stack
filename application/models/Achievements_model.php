@@ -2,8 +2,8 @@
 
 class Achievements_model extends CI_Model{
 
-    public function insert($data){
-        $this->db->insert('achievements', $data);
+    public function insert($data,$img){
+        $this->db->insert('achievements', $data,$img);
     }
 
     public function delete_achievements($id){

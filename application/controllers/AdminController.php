@@ -1747,16 +1747,22 @@ class AdminController extends CI_Controller
                         'achievement_about' => $achievement_vacancy,
                         'achievement_add_date' => $achievement_add_date,
                         'achievement_status' => $achievement_status,
-                        'achievement_img' => $file_name,
-                        'achievement_img_ext' => $file_ext,
                         'achievement_creator_id' => $_SESSION['admin_login_id'],
                     ];
-    
-    
                     
+                    $img = [
+                        'achievement_img' => $file_name,
+                        'achievement_img_ext' => $file_ext,
+                    ];
+
+                    
+                    
+                    
+                    $data = $this->security->xss_clean($data);
+
     
                     // insert to DATABASE code
-                    $this->Achievements_model->insert($data);
+                    $this->Achievements_model->insert($data,$img);
     
     
                     // notification for post added successfully
