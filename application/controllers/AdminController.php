@@ -1753,7 +1753,7 @@ class AdminController extends CI_Controller
                     ];
     
     
-                    $data = $this->security->xss_clean($data);
+                    
     
                     // insert to DATABASE code
                     $this->Achievements_model->insert($data);
@@ -1773,7 +1773,7 @@ class AdminController extends CI_Controller
                         'achievement_creator_id' => $_SESSION['admin_login_id'],
                     ];
     
-                    $data = $this->security->xss_clean($data);
+                    
     
                     $this->Achievements_model->insert($data);
     
@@ -1842,7 +1842,7 @@ class AdminController extends CI_Controller
                     ];
     
                     $id = $this->security->xss_clean($id);
-                    $data = $this->security->xss_clean($data);
+                    
     
                     // insert to db code
                     $this->Achievements_model->update_achievements($id, $data);
@@ -1864,7 +1864,7 @@ class AdminController extends CI_Controller
                     ];
     
                     $id = $this->security->xss_clean($id);
-                    $data = $this->security->xss_clean($data);
+                    
     
                     // update in db info
                     $this->Achievements_model->update_achievements($id, $data);

@@ -11,12 +11,12 @@
           <div class="row">
             <div class="col-xl-8 col-lg-12 col-md-12">
               <div class="hero__caption hero__caption2">
-                <h1 data-animation="bounceIn" data-delay="0.2s">Təlimlər</h1>
+                <h1 data-animation="bounceIn" data-delay="0.2s">Təlim Planı</h1>
 
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url('home') ?>">Ana səhifə</a></li>
-                    <li class="breadcrumb-item"><a href="#">Təlimlər</a></li>
+                    <li class="breadcrumb-item"><a href="#">Təlim Planı</a></li>
                   </ol>
                 </nav>
 
@@ -33,7 +33,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8">
           <div class="section-tittle text-center mb-55">
-            <h2 style="color: #16164C;">Təlimlərimiz</h2>
+            <h2 style="color: #16164C;">Təlim Planı</h2>
           </div>
         </div>
       </div>

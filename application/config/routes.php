@@ -70,6 +70,15 @@ $route['price_single/(.*)'] = "UserController/price_single/$1";
 $route['training_plan'] = "UserController/training_plan" ;
 $route['plan_single/(.*)'] = "UserController/training_plan_single/$1";
 
+$route['vacancies'] = "UserController/vacancies" ;
+$route['vacancy_single/(.*)'] = "UserController/vacancy_single/$1";
+
+$route['customers'] = "UserController/customers" ;
+$route['customer_single/(.*)'] = "UserController/customer_single/$1";
+
+$route['achievements'] = "UserController/achievements" ;
+$route['achievement_single/(.*)'] = "UserController/achievement_single/$1";
+
 $route['treyners'] = "UserController/trainers";
 $route['trainer_single/(.*)'] = "UserController/trainer_single/$1";
 

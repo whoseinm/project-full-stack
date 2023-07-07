@@ -149,4 +149,46 @@ class UserController extends CI_Controller{
         $this->load->view('user/not_main/blog_details', $data);
     }
 
+
+
+
+
+
+
+    public function vacancies(){
+        $data['get_all_vacancies'] = $this->Vacancy_model->get_all_vacancies();
+
+        $this->load->view('user/vacancies', $data);
+    }
+
+    public function vacancy_single($id){
+        $data['vacancy_single'] = $this->Vacancy_model->get_single_vacancy($id);
+
+        $this->load->view("user/vacancy_single", $data);
+    }
+
+    public function customers(){
+        $data['get_all_partners'] = $this->Partners_model->get_all_partners();
+
+        $this->load->view('user/customers', $data);
+    }
+
+    public function customer_single($id){
+        $data['customer_single'] = $this->Partners_model->get_single_partner($id);
+
+        $this->load->view("user/customer_single", $data);
+    }
+
+    public function achievements(){
+        $data['get_all_achievements'] = $this->Achievements_model->get_all_achievements();
+
+        $this->load->view('user/achievements', $data);
+    }
+
+    public function achievement_single($id){
+        $data['achievement_single'] = $this->Achievements_model->get_single_achievement($id);
+
+        $this->load->view("user/achievement_single", $data);
+    }
+
 }

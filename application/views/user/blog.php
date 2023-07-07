@@ -11,12 +11,12 @@
           <div class="row">
             <div class="col-xl-8 col-lg-11 col-md-12">
               <div class="hero__caption hero__caption2">
-                <h1 data-animation="bounceIn" data-delay="0.2s">Eventlər</h1>
+                <h1 data-animation="bounceIn" data-delay="0.2s">Xəbərlər</h1>
 
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url("home") ?>">Ana səhifə</a></li>
-                    <li class="breadcrumb-item"><a href="#">Eventlər</a></li>
+                    <li class="breadcrumb-item"><a href="#">Xəbərlər</a></li>
                   </ol>
                 </nav>
 

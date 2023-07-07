@@ -12,14 +12,14 @@
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="hero__caption hero__caption2">
                                 <h1 data-animation="bounceIn" data-delay="0.2s">
-                                    Təlim planı
+                                    Uğurumuz haqqında
                                 </h1>
 
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('home') ?>">Ana
                                                 səhifə</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Təlim Planı</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Uğurumuzlarımız</a></li>
                                     </ol>
                                 </nav>
 
@@ -40,11 +40,11 @@
                         <div class="description col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <h1
                                 style="color:#16164C; font-size: 30px; text-align: center; margin-top:15px; font-weight: bold;">
-                                Təlim Planı Haqqında</h1>
+                                Uğurumuz haqqında</h1>
                             <div>
                                 <p>
-                                    <h2 style="font-size: 30px; color: #16164C; text-align:center;"><?php echo $plan_single['plan_name'] ?></h2> 
-                                    <?php echo $plan_single['plan_about'] ?>
+                                    <h2 style="font-size: 30px; color: #16164C; text-align:center;"><?php echo $achievement_single['achievement_name'] ?></h2> 
+                                    <?php echo $achievement_single['achievement_about'] ?>
                                 </p>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <a href="<?php echo base_url("training_plan") ?>">
+            <a href="<?php echo base_url("achievements") ?>">
                 <button style="width: 100%; padding: 5px 15px; outline: none; border: none; color:white!important; border-radius: 10px; background:#16164C; cursor: pointer;">Geri</button>
             </a>
 
