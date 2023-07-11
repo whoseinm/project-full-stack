@@ -29,6 +29,7 @@ class Testimonials_model extends CI_Model{
         ->get('testimonials')->row_array();
     }
 
+
     public function update_testimonial($id,$data){
         $this->db->where("testimonial_id", $id)->update("testimonials", $data);
     }

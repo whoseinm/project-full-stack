@@ -79,6 +79,9 @@ $route['customer_single/(.*)'] = "UserController/customer_single/$1";
 $route['achievements'] = "UserController/achievements" ;
 $route['achievement_single/(.*)'] = "UserController/achievement_single/$1";
 
+$route['testimonials'] = "UserController/testimonials" ;
+$route['testimonial_single/(.*)'] = "UserController/testimonial_single/$1";
+
 $route['treyners'] = "UserController/trainers";
 $route['trainer_single/(.*)'] = "UserController/trainer_single/$1";
 

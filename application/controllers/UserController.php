@@ -191,4 +191,20 @@ class UserController extends CI_Controller{
         $this->load->view("user/achievement_single", $data);
     }
 
+    public function testimonials(){
+        $data['get_all_testimonials'] = $this->Testimonials_model->get_all_testimonials();
+
+        $this->load->view('user/testimonials', $data);
+    }
+
+    public function testimonial_single($id){
+        $data['testimonial_single'] = $this->Testimonials_model->get_single_testimonial($id);
+
+
+        $this->load->view("user/testimonial_single", $data, $url_title);
+        
+    }
+
+    
+
 }

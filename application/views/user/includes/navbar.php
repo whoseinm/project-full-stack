@@ -1,10 +1,11 @@
 <header>
-  <div style="width: 100%; height: 40px; background: #E8BE5D; display: flex; align-items:center; justify-content: flex-start; font-family: Josefin Sans, sans-serif;">
+  <div style="width: 100%; height: 40px; font-size: 13; background: #E8BE5D; display: flex; align-items:center; justify-content: flex-start; font-family: Josefin Sans, sans-serif;">
 
-    <a href="<?php echo base_url('vacancies') ?>" style="color: white; padding-left: 20px">Vakansiyalar</a>
-    <a href="<?php echo base_url('treyners') ?>" style="color: white; padding-left: 20px">Təlimçilər</a>
-    <a href="<?php echo base_url('customers') ?>" style="color: white; padding-left: 20px">Müştərilərimiz</a>
-    <a href="<?php echo base_url('achievements') ?>" style="color: white; padding-left: 20px">Uğurlarımız</a>
+    <a href="<?php echo base_url('vacancies') ?>" style="color: white; padding-left: 15px">Vakansiyalar</a>
+    <a href="<?php echo base_url('treyners') ?>" style="color: white; padding-left: 15px">Təlimçilər</a>
+    <a href="<?php echo base_url('customers') ?>" style="color: white; padding-left: 15px">Müştərilərimiz</a>
+    <a href="<?php echo base_url('achievements') ?>" style="color: white; padding-left: 15px">Uğurlarımız</a>
+    <a href="<?php echo base_url('testimonials') ?>" style="color: white; padding-left: 15px">Rəylər</a>
 
   </div>
 
