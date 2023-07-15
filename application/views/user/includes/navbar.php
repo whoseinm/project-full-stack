@@ -26,7 +26,7 @@
             <div class="col-xl-12 col-lg-12">
               <div class="menu-wrapper d-flex align-items-center justify-content-end">
 
-                <div class="main-menu d-none d-lg-block" style="margin-right:150px!important;">
+                <div class="main-menu d-none d-lg-block" style="margin-right:212px!important;">
                   <nav>
                     <ul id="navigation">
                       <li><a href="<?php echo base_url('about') ?>">Haqqımızda</a></li>
@@ -36,7 +36,6 @@
                       <li><a href="<?php echo base_url('special_courses') ?>">ACCA, CİA, DipİFR</a></li>
                       <li><a href="<?php echo base_url('prices') ?>">Qiymətlərimiz</a></li>
                       <li><a href="<?php echo base_url('training_plan') ?>">Təlim planı</a></li>
-                      <li><a href="<?php echo base_url('blog') ?>">Xəbərlər</a></li>
                       <li><a href="<?php echo base_url('contact') ?>">Əlaqə</a></li>
                     </ul>
                   </nav>

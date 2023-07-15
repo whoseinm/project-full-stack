@@ -114,7 +114,7 @@
                 <div class="properties properties2 mb-30">
                   <div class="properties__card">
                     <div class="properties__img overlay1">
-                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']."/".  str_replace(' ', '-', $item['course_name'])) ?>"><img
                           style="width:100%; height:330px; object-fit: contain;"
                           src="<?php echo base_url('uploads/courses/' . $item['course_img']) ?>" alt=""></a>
                     </div>
@@ -138,7 +138,7 @@
                           </div>
                         </div>
                       </div>
-                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']."/".  str_replace(' ', '-', $item['course_name'])) ?>"
                         class="border-btn border-btn2">Daha Çox</a>
                     </div>
 
@@ -150,7 +150,7 @@
                 <div class="properties properties2 mb-30">
                   <div class="properties__card">
                     <div class="properties__img overlay1">
-                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"><img
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']."/".  str_replace(' ', '-', $item['course_name'])) ?>"><img
                           style="width:100%; height:330px; object-fit: contain; background:white;"
                           src="<?php echo base_url('uploads/courses/logo.png') ?>" alt=""></a>
                     </div>
@@ -173,7 +173,7 @@
                           </div>
                         </div>
                       </div>
-                      <a href="<?php echo base_url("course_single/" . $item['course_id']) ?>"
+                      <a href="<?php echo base_url("course_single/" . $item['course_id']."/".  str_replace(' ', '-', $item['course_name'])) ?>"
                         class="border-btn border-btn2">Daha Çox</a>
                     </div>
 
@@ -212,7 +212,7 @@
                 </div>
                 <div class="topic-content-box">
                   <div class="topic-content">
-                    <h3><a href="<?php echo base_url("categories/" . $item['category_id']) ?>"
+                    <h3><a href="<?php echo base_url("categories/" . $item['category_id']."/".  str_replace(' ', '-', $item['category_title'])) ?>"
                         style="text-decoration: none;">
                         <?php echo $item['category_title'] ?>
                       </a></h3>

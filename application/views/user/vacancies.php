@@ -46,7 +46,7 @@
                 <div class="properties__card" style="background:white;">
                   <div class="properties__img overlay1">
                     <?php if($item['vacancy_img']){ ?>
-                      <a href="<?php echo base_url("vacancy_single/" . $item['vacancy_id']) ?>"><img style="width:100%; height:350px; object-fit: cover;"
+                      <a href="<?php echo base_url("vacancy_single/" . $item['vacancy_id']."/".  str_replace(' ', '-', $item['vacancy_name'])) ?>"><img style="width:100%; height:350px; object-fit: cover;"
                         src="<?php echo base_url('uploads/vacancy/' . $item['vacancy_img']) ?>" alt=""></a>
                     <?php }else{?>
                       <a href="<?php echo base_url("vacancy_single/" . $item['vacancy_id']) ?>"><img style="width:100%; height:350px; object-fit: contain;"
@@ -65,7 +65,7 @@
 
                       </div>
                     </div>
-                    <a href="<?php echo base_url("vacancy_single/" . $item['vacancy_id']) ?>"
+                    <a href="<?php echo base_url("vacancy_single/" . $item['vacancy_id']."/".  str_replace(' ', '-', $item['vacancy_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

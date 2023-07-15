@@ -47,7 +47,7 @@
                   <div class="properties__img overlay1">
 
                   <?php if($item['plan_img']){ ?>
-                    <a href="<?php echo base_url("plan_single/" . $item['plan_id']) ?>"><img
+                    <a href="<?php echo base_url("plan_single/" . $item['plan_id']."/".  str_replace(' ', '-', $item['plan_name'])) ?>"><img
                         style="width:100%; height:340px; object-fit: contain;"
                         src="<?php echo base_url('uploads/plans/' . $item['plan_img']) ?>" alt=""></a>
                   <?php }else{ ?>
@@ -63,7 +63,7 @@
                         <?php echo mb_strimwidth($item['plan_name'], 0, 29, "...");?>
                       </a></h3>
                       <br>
-                    <a href="<?php echo base_url("plan_single/" . $item['plan_id']) ?>"
+                    <a href="<?php echo base_url("plan_single/" . $item['plan_id']."/".  str_replace(' ', '-', $item['plan_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

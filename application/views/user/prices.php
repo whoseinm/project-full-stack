@@ -46,24 +46,15 @@
                 <div class="properties__card">
                   <div class="properties__img overlay1">
 
-                  <?php if($item['price_img']){ ?>
-                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"><img
-                        style="width:100%; height:340px; object-fit: contain;"
-                        src="<?php echo base_url('uploads/prices/logo.png') ?>" alt=""></a>
-                  <?php }else{ ?>
-                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"><img
-                        style="width:100%; height:340px; object-fit: contain; background:white;"
-                        src="<?php echo base_url('uploads/prices/logo.png') ?>" alt=""></a>
-                  <?php } ?>
                     
                   </div>
 
-                  <div class="properties__caption">
+                  <div class="properties__caption"style="text-align: center;">
                     <h3><a href="#">
                         <?php echo mb_strimwidth($item['price_name'], 0, 29, "...");?>
                       </a></h3>
                       <br>
-                    <a href="<?php echo base_url("price_single/" . $item['price_id']) ?>"
+                    <a href="<?php echo base_url("price_single/" . $item['price_id']."/".  str_replace(' ', '-', $item['price_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

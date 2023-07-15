@@ -72,6 +72,8 @@
                 </div>
               </div>
             </div>
+          <?php }else{ ?>
+           <?php echo "Kateqoriyaya uyğun kurs tapılmadı" ?> 
           <?php } ?>
         <?php } ?>
 

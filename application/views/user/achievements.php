@@ -46,7 +46,7 @@
                 <div class="properties__card" style="background:white;">
                   <div class="properties__img overlay1">
                     <?php if($item['achievement_img']){ ?>
-                      <a href="<?php echo base_url("achievement_single/" . $item['achievement_id']) ?>"><img style="width:100%; height:350px; object-fit: contain;"
+                      <a href="<?php echo base_url("achievement_single/" . $item['achievement_id']."/".  str_replace(' ', '-', $item['achievement_name'])) ?>"><img style="width:100%; height:350px; object-fit: contain;"
                         src="<?php echo base_url('uploads/achievements/' . $item['achievement_img']) ?>" alt=""></a>
                     <?php }else{?>
                       <a href="<?php echo base_url("achievement_single/" . $item['achievement_id']) ?>"><img style="width:100%; height:350px; object-fit: contain;"
@@ -65,7 +65,7 @@
 
                       </div>
                     </div>
-                    <a href="<?php echo base_url("achievement_single/" . $item['achievement_id']) ?>"
+                    <a href="<?php echo base_url("achievement_single/" . $item['achievement_id']."/".  str_replace(' ', '-', $item['achievement_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

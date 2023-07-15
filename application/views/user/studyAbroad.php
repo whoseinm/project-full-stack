@@ -47,7 +47,7 @@
                   <div class="properties__img overlay1">
 
                   <?php if($item['abroad_img']){ ?>
-                    <a href="<?php echo base_url("abroad_single/" . $item['abroad_id']) ?>"><img
+                    <a href="<?php echo base_url("abroad_single/" . $item['abroad_id']."/".  str_replace(' ', '-', $item['abroad_name'])) ?>"><img
                         style="width:100%; height:340px; object-fit: contain;"
                         src="<?php echo base_url('uploads/studyAbroad/' . $item['abroad_img']) ?>" alt=""></a>
                   <?php }else{ ?>
@@ -63,7 +63,7 @@
                         <?php echo mb_strimwidth($item['abroad_name'], 0, 29, "...");?>
                       </a></h3>
                       <br>
-                    <a href="<?php echo base_url("abroad_single/" . $item['abroad_id']) ?>"
+                    <a href="<?php echo base_url("abroad_single/" . $item['abroad_id']."/".  str_replace(' ', '-', $item['abroad_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 

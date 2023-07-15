@@ -47,7 +47,7 @@
                   <div class="properties__img overlay1">
 
                   <?php if($item['s_course_img']){ ?>
-                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']) ?>"><img
+                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']."/".  str_replace(' ', '-', $item['s_course_name'])) ?>"><img
                         style="width:100%; height:340px; object-fit: contain;"
                         src="<?php echo base_url('uploads/special_courses/' . $item['s_course_img']) ?>" alt=""></a>
                   <?php }else{ ?>
@@ -63,7 +63,7 @@
                         <?php echo mb_strimwidth($item['s_course_name'], 0, 29, "...");?>
                       </a></h3>
                       <br>
-                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']) ?>"
+                    <a href="<?php echo base_url("special_course_single/" . $item['s_course_id']."/".  str_replace(' ', '-', $item['s_course_name'])) ?>"
                       class="border-btn border-btn2">Daha Çox</a>
                   </div>
 
